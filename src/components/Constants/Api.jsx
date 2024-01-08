@@ -1,5 +1,5 @@
 export const GET_PRODUCTS_CATEGORYWISE = (category) => {
-    return `https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"subCategory": "${category}"}`;
+    return `https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"subCategory": "${category}"}`;
 }
 export const  SEARCH_PRODUCT_LIST=(value)=>{
     return `https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?search={"name": "${value}"}`;

@@ -1,5 +1,8 @@
-.product-cart {
+.prodcart {
     display: flex;
+    background-color: white;
 }
-
+.emptycart{
+    background-color: white;
+}
 

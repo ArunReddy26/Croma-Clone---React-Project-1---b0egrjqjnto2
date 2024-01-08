@@ -8,15 +8,28 @@ import { IoPencil } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import BasicMenu from "../Dropdown/dropdown";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import { SEARCH_PRODUCT_LIST } from "../Constants/Api";
 import Maininput from "../Input/input";
+import { CiHeart } from "react-icons/ci";
 
 
 const Header = () => {
+  const navigate=useNavigate()
   const [dropdown, setdropdown] = useState([]);
-  const [inputdata, setinputdata] = useState("");
-  const [suggestion, setsuggestion] = useState([]);
+  const [open, setopen] = useState(false);
+
+  const handlelogout=()=>{
+    localStorage.removeItem("token");
+    navigate("/")
+
+  }
+
+
+
+
+
+
   async function getDropdown() {
     const response = await fetch(
       "https://academics.newtonschool.co/api/v1/ecommerce/electronics/categories",
@@ -49,13 +62,15 @@ const Header = () => {
     })
 
   }
-  const handleChange = (value) => {
-    setinputdata(value);
-    fetchinputdata(value);
-  }
+  // const handleChange = (value) => {
+  //   setinputdata(value);
+  //   fetchinputdata(value);
+  // }
   useEffect(() => {
     getDropdown();
   }, []);
+
+
   return (
 
 
@@ -63,10 +78,12 @@ const Header = () => {
     <header className="header">
       <div className="content1">
         <div>
-          <img
-            src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1637759004/Croma%20Assets/CMS/Category%20icon/Final%20icon/Croma_Logo_acrkvn.svg"
-            alt="chromalogo"
-          />
+          <Link to="/">
+            <img
+              src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1637759004/Croma%20Assets/CMS/Category%20icon/Final%20icon/Croma_Logo_acrkvn.svg"
+              alt="chromalogo"
+            />
+          </Link>
         </div>
         <div className="Menu">
 
@@ -76,9 +93,9 @@ const Header = () => {
           <p className="text-sm">Menu</p>
         </div>
 
-        <Maininput/>
+        <Maininput />
 
-        
+
 
 
 
@@ -100,8 +117,31 @@ const Header = () => {
           </p>
           <IoPencil className="text-xs" />
         </div>
-        <div style={{ fontSize: "1.25rem", lineHeight: "2rem" }}>
-          <FaUser />
+        <div style={{ fontSize: "1.25rem", lineHeight: "2rem", cursor:"pointer"}}>
+          <FaUser onClick={()=>setopen(!open)}/>
+          {open && (
+            <div className="dropdown-content" style={{position:"absolute", right:"8rem", top:"100%", padding:"10px", zIndex:"1", backgroundColor:"black"}}>
+              <ul className="profile">
+                <li><Link to="/mywhislist">My Whishlist</Link></li>
+                <li><Link to="/orders">My Orders</Link></li>
+                <li onClick={handlelogout}>Logout</li>
+              </ul>
+            </div>
+          )}
+          {/* {open &&(
+            <div style={{ background: "white", position:"absolute" }}>
+              <ul>
+                {
+                  Profile.map((data) => {
+                    <li key={data}>{data}</li>
+                  })
+                }
+
+              </ul>
+            </div>
+          )
+
+          } */}
         </div>
         <div style={{ fontSize: "1.25rem", lineHeight: "1rem" }}>
           {
@@ -120,4 +160,6 @@ const Header = () => {
 
   );
 };
+
+
 export default Header;

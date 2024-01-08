@@ -66,8 +66,8 @@ const Cart = () => {
         );
         const response = await promise.json();
 
-        setproducts(response.data.items);
-        settotalprice(response.data.totalPrice);
+        setproducts(response.data?.items);
+        settotalprice(response.data?.totalPrice);
 
 
     }
@@ -108,7 +108,7 @@ const Cart = () => {
             }
         );
         const response = await wish.json();
-        setwhislist(response.data.items)
+        setwhislist(response.data?.items)
 
 
 
@@ -127,6 +127,7 @@ const Cart = () => {
         // AddCart(location.state.id);
         Getcart();
         Getwhislist();
+        
     }, [])
 
     return (
@@ -135,8 +136,8 @@ const Cart = () => {
 
             <Header />
 
-            {products.length > 0 ? (
-                <div className="product-cart">
+            {products?.length > 0 ? (
+                <div className="prodcart">
                     <div style={{ display: "flex", flexDirection: "column" }}>
 
                         {products.map((pro) => {
@@ -151,10 +152,10 @@ const Cart = () => {
             ) : (
 
                 <div className="emptycart">
-                    <h2 style={{ textAlign: "left", marginLeft: "8rem" }}>YOUR CART</h2>
+                    <h2 style={{ textAlign: "left", marginLeft: "8rem"}}>YOUR CART</h2>
                     <div className="image" style={{ margin: "auto" }}>
                         <img src="https://kind-leakey-f7509c.netlify.app/img/Empty.png" style={{ width: "260px", height: "150px" }} alt="empty-cart" />
-                        <h3 style={{ fontWeight: "800" }}> Your Cart is Empty</h3>
+                        <h3 style={{ fontWeight: "800"}}> Your Cart is Empty</h3>
                         <Link to="/" style={{ color: "#088466", fontWeight: "800", textDecoration: "underline" }}>continue shopping</Link>
                     </div>
 
@@ -164,14 +165,16 @@ const Cart = () => {
             )
 
             }
-            <div>
+            <div style={{backgroundColor:"white"}}>
                 {
-                    whislist.length > 0 ? (
-                        <>
-                            <div>________________________________________________________________________________________________________________________________________________________________</div>
+                    whislist?.length > 0 ? (
+                        <div style={{marginTop:"2rem"}}>
+                            {/* <div style={{background:"white"}}>________________________________________________________________________________________________________________________________________________________________</div> */}
+                           {/* <hr></hr> */}
+                            <h2 style={{textAlign:"left", marginLeft:"6rem"}}>YOUR WISHLIST</h2>
 
 
-                            <div style={{ display: "flex", gap:"2rem", flexWrap:"wrap" }}>
+                            <div style={{ display: "flex", gap:"2rem", flexWrap:"wrap", marginLeft:"6rem"}}>
 
                                 {whislist.map((wish) => {
                                   
@@ -182,7 +185,7 @@ const Cart = () => {
 
 
 
-                        </>
+                        </div>
                     ) : (
                         <div></div>
 

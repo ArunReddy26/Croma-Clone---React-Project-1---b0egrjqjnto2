@@ -4,12 +4,12 @@ import Slider from "react-slick";
 import "./images.css";
 import { useEffect, useState } from "react";
 import Productcard from "../Card/productcard";
-const Carousel = (props) => {
-  const {isModalOpen, setModalOpen}=props;
+const Carousel = () => {
+  // const { isModalOpen, setModalOpen } = props;
   // console.log("open",open);
   // console.log("close",close);
 
-  
+
 
   const [productlist, setproductlist] = useState([]);
   const [audio, setaudio] = useState([]);
@@ -211,18 +211,34 @@ const Carousel = (props) => {
     const data = promise2.data;
 
     const audio = data.filter((item) => item.subCategory === "audio");
-    const kitchenappliances = data.filter(
-      (item) => item.subCategory === "kitchenappliances"
-    );
+
+
     const washing = data.filter(
       (item) => item.subCategory === "washingMachine"
     );
 
     setaudio(audio);
 
-    setkitchenappliances(kitchenappliances);
+
     setwashingMachine(washing);
-  
+
+  }
+
+  async function getKitchenproduct() {
+    const response = await fetch(
+      'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"subCategory":"kitchenappliances"}',
+      {
+        headers: {
+          projectID: "b0egrjqjnto2",
+        },
+      }
+    );
+    const promise2 = await response.json();
+    const data = promise2.data;
+    const kitchenappliances = data.filter(
+      (item) => item.subCategory === "kitchenappliances"
+    );
+    setkitchenappliances(kitchenappliances);
   }
 
 
@@ -240,6 +256,7 @@ const Carousel = (props) => {
     gethealth();
     getTravel();
     gettrendingproducts();
+    getKitchenproduct();
 
   }, [])
 
@@ -335,7 +352,7 @@ const Carousel = (props) => {
 
           productlist.map((product) => {
 
-            return <Productcard product={product}  isModalOpen={isModalOpen} setModalOpen={setModalOpen}/>
+            return <Productcard product={product} />
 
           })
 
@@ -353,7 +370,7 @@ const Carousel = (props) => {
           color: "white",
         }}
       >
-       Top Trending Deals
+        Top Trending Deals
       </p>
 
       <Slider {...settings1}>

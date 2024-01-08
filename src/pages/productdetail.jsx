@@ -1,12 +1,14 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header/header";
 import { GET_PRODUCT_DETAILS, PRODUCT_REVIEW } from "../components/Constants/Api";
 import { useState, useEffect } from "react";
+import { MdOutlineStar } from "react-icons/md";
 
 import "./productdetail.css";
 import Footer from "../components/Footer/footer";
 const Productdetail = () => {
+    const navigate=useNavigate();
     const { product_id } = useParams();
     const [productdetails, setProductDetails] = useState({});
     const [productReviews, setProductReviews] = useState([]);
@@ -41,9 +43,55 @@ const Productdetail = () => {
             console.log(error);
         }
     }
+
+
+
+
+    const Addcart = async (productID) => {
+        const options = {
+            method: 'PATCH',
+            headers: new Headers({ projectID: 'b0egrjqjnto2', 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}` }),
+            quantity: 1,
+        }
+        const data = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/cart/${productID}`, options)
+        const resData = await data.json();
+        // console.log("resdata", resData);
+    }
+
+
+    function GotoCart(id){
+
+        if(localStorage.getItem('token')){
+        Addcart(id);
+        navigate("/cart");
+        }
+        else{
+            navigate("/login");
+        }
+
+    }
+
+
+function addedtocart(id){
+
+
+    if(localStorage.getItem('token')){
+        Addcart(id);
+        alert("Product Added to Cart");
+       
+        }
+        else{
+            navigate("/login");
+        }
+
+   
+
+}
+
     useEffect(() => {
         getProductDetails(product_id);
         getProductReviews(product_id);
+        window.scrollTo(0, 0);
     }, [])
 
 
@@ -100,9 +148,13 @@ const Productdetail = () => {
 
                         <div
                             id="star"
-                            style={{ display: "inline-block", marginLeft: "20px" }}
+                            style={{ marginLeft: "20px", color: "#12daa8", textAlign: "left" }}
                         >
-                            ⭐⭐⭐⭐⭐
+                            <MdOutlineStar className="stars" />
+                            <MdOutlineStar className="stars" />
+                            <MdOutlineStar className="stars" />
+                            <MdOutlineStar className="stars" />
+                            <MdOutlineStar className="stars" />
                         </div>
                         <div id="sp-price-box">
                             <span id="sp-discounted-amount">₹25990</span>
@@ -124,19 +176,19 @@ const Productdetail = () => {
                         <hr />
 
                         <div className="sp-add-to-cart-btn">
-                            <button className="sp-add-to-cart">Buy Now</button>
-                            <button className="sp-buy-now">Add to Cart</button>
+                            <button className="sp-add-to-cart" onClick={() => GotoCart(product_id)}>Buy Now</button>
+                            <button className="sp-buy-now" onClick={()=>addedtocart(product_id)}>Add to Cart</button>
                         </div>
                     </div>
                 </div>
                 <div className="container2">
-                    <h2 style={{ color: "white", marginLeft: "2rem", marginTop: "2rem" }}>
+                    <h2 style={{ color: "white", marginLeft: "2rem", marginTop: "1.2rem" }}>
                         Overview
                     </h2>
                     <div dangerouslySetInnerHTML={{ __html: productdetails.description }} />
                 </div>
                 <div className="container3">
-                    <h2 style={{ color: "white", marginLeft: "2rem", marginTop: "2rem" }}>
+                    <h2 style={{ color: "white", marginLeft: "2rem", marginTop: "1.2rem" }}>
                         Reviews
                     </h2>
                     <span>({productdetails.name})</span>
@@ -152,7 +204,7 @@ const Productdetail = () => {
                 </div>
             </div>
 
-            <Footer/>
+            <Footer />
 
 
         </div>

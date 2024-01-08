@@ -12,7 +12,7 @@ const Cartproducts = (props) => {
             <div className="cart" >
                 <div className="images">
                     <img
-                        src={product && product.product.displayImage}
+                        src={product && product?.product?.displayImage}
                         alt=""
                         style={{ width: "200px", height: "200px" }}
                     />
@@ -22,7 +22,7 @@ const Cartproducts = (props) => {
                     <div className="content">
                         <div className="title" style={{ textAlign: "left" }}>
                             <p style={{ width: "400px", fontWeight: "600" }}>
-                                {product.product.name}
+                                {product?.product?.name}
                             </p>
                             <div className="star">
                                 <MdOutlineStar className="stars" />
@@ -40,7 +40,7 @@ const Cartproducts = (props) => {
                             </div>
                         </div>
                     </div>
-                    <h2>₹{product.product.price}</h2>
+                    <h2>₹{product?.product?.price}</h2>
                 </div>
                 {/* <div className="price">
             <div className="main1">

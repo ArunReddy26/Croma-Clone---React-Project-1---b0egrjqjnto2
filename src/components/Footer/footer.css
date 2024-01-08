@@ -79,7 +79,8 @@
     font-family:"Nunito",sans-serif;
 }
 .foo_item_div>div>a:hover {
-    color: #49a5a2;
+    /* color: #49a5a2; */
+    color: #12daa8;
 }
 #bodybox {
     float:right;

@@ -73,22 +73,22 @@
   border-radius: 5px;
   margin-top: 1rem;
 } */
-.slider {
+/* .slider {
     width: 270px;
     height: 400px;
     background-color: black;
     padding: 15px;
     border-radius: 5px;
     margin-top: 1rem;
-  }
-  
-  /* .slider .image img {
+  } */
+
+/* .slider .image img {
     background-color: black;
     width: 15rem;
     height: 15rem;
     padding: 10px;
   } */
-  .slider .image img {
+/* .slider .image img {
     background-color: black;
     width: 13rem;
     height: 15rem;
@@ -110,8 +110,6 @@
   .product-name {
     display: flex;
     flex-direction: column;
-    /* width: 100%;
-    height: 30%; */
     text-align: left;
   }
   .product-name p {
@@ -133,4 +131,134 @@
     float: right;
     margin-top: 1rem;
   }
-  
+   */
+
+
+.main {
+  width: 250.25px;
+  margin-right: 25px;
+  height: 380px;
+  background: #121212;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* .slider .image img {
+    background-color: black;
+    width: 15rem;
+    height: 15rem;
+    padding: 10px;
+  } */
+/* 
+.main .image {
+  background: #121212;
+
+
+}
+
+.main .image img {
+  background-color: #121212;
+  width: 10rem;
+  height: 13rem;
+  margin-left: 1.5rem;
+  padding: 15px;
+  position: relative;
+  cursor: pointer;
+} */
+.images{
+
+  width: 30%;
+  padding-right: 2.5rem;
+}
+.heart {
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 3px;
+}
+
+.heart:hover {
+  color: rgb(66, 248, 194);
+  ;
+}
+
+.product-details {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 4px;
+  padding-bottom: 3px;
+  box-sizing: border-box;
+  background: #121212;
+}
+
+.product-name {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.product-name p {
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+}
+
+.product-name span {
+  font-weight: bolder;
+  font-size: larger;
+  color: white;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.star {
+  text-align: left;
+  color: rgb(66, 248, 194);
+}
+
+.heart {
+  font-size: 1.55rem;
+  float: right;
+  margin-top: 1rem;
+}
+
+.star {
+  display: flex;
+  gap: 0.1rem;
+  cursor: pointer;
+}
+
+.whislist-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #191919;
+  margin: auto;
+  padding: 1rem;
+  width: 70%;
+  border-radius: 8px;
+  border: 2px solid #353535;
+  margin-top: 6rem;
+}
+
+.content1 p {
+  color: white;
+}
+
+.Button {
+  display: flex;
+  gap: 1rem
+}
+
+.Button .add {
+  width: 150px;
+  background: #12daa8;
+  border: 1px solid #12daa8;
+}
+
+.Button .delete {
+  background: #fff;
+  color: black;
+  width: 100px;
+}

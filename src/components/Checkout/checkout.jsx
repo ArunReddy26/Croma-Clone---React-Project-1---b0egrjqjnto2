@@ -1,8 +1,15 @@
 import React from "react";
 import "./checkout.css";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = (props) => {
     const {Price}=props;
+    const navigate=useNavigate();
+
+    const handlecheckout=()=>{
+        navigate("/checkout");
+
+    }
     return (
             <div className="checkout-form">
                 <div className="checkout-total-summary">
@@ -21,6 +28,7 @@ const Checkout = (props) => {
                     </div>
                     <button
                         className="cart-checkout-btn"
+                        onClick={handlecheckout}
                         style={{
                             width: "100%",
                             background: "#12daa8",

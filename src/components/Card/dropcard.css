@@ -13,12 +13,10 @@
 
 .dropcontainer{
   width:350px;
-  height: 380px;
-  padding-left: 3rem;
-
 }
 
 .dropcontainer .imagecontainer{
+  position: relative;
   background: #393939;
   border-radius: 1rem;
 
@@ -30,6 +28,7 @@
   height:260px;
   background: #393939;
   padding: 1rem;
+  cursor: pointer;
 }
 .dropcontainer .product-details {
   display: flex;
@@ -57,6 +56,17 @@
   margin-top: 5px;
 }
 
-
+.dropheart {
+  position: absolute;
+  top: 13px;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right:30px;
+  color: white;
+}
+.dropheart:hover{
+  color: rgb(66, 248, 194);;
+}
 
 /* style={{ width: "350px", height: "380px", paddingLeft: "3rem", background: "#191919" }} */

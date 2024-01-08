@@ -11,6 +11,9 @@ import Login from "../pages/login";
 import Emptycart from "../pages/emptycart";
 import Checkoutform from "../pages/checkoutform";
 import Inputproduct from "../pages/inputproducts";
+import Payment from "../pages/payment";
+import Order from "../pages/order";
+import Favouritelist from "../pages/favoritelist";
 
 
 function App() {
@@ -30,6 +33,9 @@ function App() {
       <Route path="/emptycart" element={<Emptycart/>}/>
       <Route path="/checkout" element={<Checkoutform/>}/>
       <Route path="/search/:userinput" element={<Inputproduct/>}/>
+      <Route path="/payment" element={<Payment/>}/>
+      <Route path="/orders" element={<Order/>}/>
+      <Route path="/mywhislist" element={<Favouritelist/>}/>
      
     </Routes>
     </div >

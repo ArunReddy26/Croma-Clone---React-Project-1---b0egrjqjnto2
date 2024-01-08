@@ -6,9 +6,9 @@ import "./home.css";
 import Carousel from "../Banner/images";
 import Footer from "../Footer/footer";
 import { createPortal } from "react-dom";
-import Login from "../Modal/Modal";
+
 const Home = () => {
-    const [isModalOpen, setModalOpen] = useState(false);
+    // const [isModalOpen, setModalOpen] = useState(false);
 //   const openModal = () => setModalOpen(true);
 //   const closeModal = () => setModalOpen(false);
 
@@ -49,9 +49,9 @@ const Home = () => {
                     style={{ width: "550px", borderRadius: "10px" }}
                 />
             </div>
-            <Carousel isModalOpen={isModalOpen} setModalOpen={setModalOpen}/>
+            <Carousel />
             <Footer/>
-            {
+            {/* {
 
                 isModalOpen ? (
                 <>
@@ -60,7 +60,7 @@ const Home = () => {
                 }
 
                 </>): null
-            }
+            } */}
            
 
         </div >

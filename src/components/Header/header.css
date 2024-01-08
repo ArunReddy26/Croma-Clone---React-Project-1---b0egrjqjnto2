@@ -1,48 +1,66 @@
 .header {
-    background: black;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    padding-left: 10rem;
-    padding-right: 15rem;
-    top:0;
-    position: sticky;
-    z-index: 50;
-  }
-  .content1 {
-    display: flex;
-    align-items: center;
-    padding: 0.875rem;
-    gap: 1rem;
-    width: 80%;
-  
-  }
-  .content1 img {
-    width: 8rem;
-  }
-  
-  .Menu {
-    display: flex;
-    align-items: center;
-    margin-right: 1rem;
-  }
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10rem;
+  padding-right: 15rem;
+  top: 0;
+  position: sticky;
+  z-index: 50;
+}
+
+.content1 {
+  display: flex;
+  align-items: center;
+  padding: 0.875rem;
+  gap: 1rem;
+  width: 80%;
+
+}
+
+.content1 img {
+  width: 8rem;
+}
+
+.Menu {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
 
 
 
-  .IoMenuOutline {
-    font-size: 1.875rem;
+.IoMenuOutline {
+  font-size: 1.875rem;
+  cursor: pointer;
+}
+
+.Menu .text-sm {
+  font-size: 0.875rem;
+  color: white;
+}
+
+.MdLocationOn {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.carticon {
+  color: white;
+
+}
+
+.profile {
+  width: 200px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+
+.profile li:hover{
+    background-color:#12daa8;
     cursor: pointer;
-  }
-  .Menu .text-sm {
-    font-size: 0.875rem;
-    color: white;
-  }
-  
-  .MdLocationOn {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-  .carticon{
-    color: white;
-
   }
