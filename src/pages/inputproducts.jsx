@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./inputproducts.css";
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header/header";
 import Dropcard from "../components/Card/dropcard";
 const Inputproduct = () => {
+  const navigate=useNavigate();
 
   const [userproducts, setuserproducts] = useState([]);
   const { userinput } = useParams();
+
+  const cardclick = (_id) => {
+    navigate(`/details/${_id}`)
+  }
 
   const updateSuggestions = async (value) => {
     try {
@@ -129,7 +134,7 @@ const Inputproduct = () => {
           {userproducts &&
             Array.isArray(userproducts) &&
             userproducts.map((user) => {
-              return <Dropcard key={user._id} product={user} />;
+              return <Dropcard key={user._id} product={user} click={cardclick}/>;
             })}
         </div>
       </div>
