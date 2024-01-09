@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header/header";
 import Dropcard from "../components/Card/dropcard";
 const Inputproduct = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const [userproducts, setuserproducts] = useState([]);
   const { userinput } = useParams();
@@ -60,21 +60,37 @@ const Inputproduct = () => {
       setuserproducts(sortedProducts);
     }
 
-    else if(value==="trending"){
+    else if (value === "trending") {
       const trending = userproducts.filter(product => product.sellerTag === 'trending');
       setuserproducts(trending);
 
 
     }
-    else if(value==="best seller"){
+    else if (value === "best seller") {
       const seller = userproducts.filter(product => product.sellerTag === 'best seller');
       setuserproducts(seller);
-    
+
     }
-    else if(value==="new arrival"){
+    else if (value === "new arrival") {
       const arrival = userproducts.filter(product => product.sellerTag === 'new arrival');
-      setuserproducts(arrival);  
+      setuserproducts(arrival);
     }
+    else if (value === "Croma") {
+      const Croma = userproducts.filter(product => product.brand === 'Croma');
+      setuserproducts(Croma);
+
+    }
+    else if (value === "Apple") {
+      const Apple = userproducts.filter(product => product.brand === 'Apple');
+      setuserproducts(Apple);
+
+    }
+    else if (value === "electronics") {
+      const electronics = userproducts.filter(product => product.category === 'electronics');
+      setuserproducts(electronics);
+
+    }
+
 
 
   };
@@ -90,23 +106,24 @@ const Inputproduct = () => {
           <div className="firstlist">
             <div className="sort-dropdown">
 
-              <select >
+              <select onChange={handleSelectChange}>
                 <option value="">Category</option>
-                <option value="topRated">Top Rated</option>
+                <option value="electronics">Electronics</option>
                 <option value="priceLowToHigh">Price (Lowest to Highest)</option>
                 <option value="priceHighToLow">Price (Highest to Lowest)</option>
               </select>
             </div>
             <div className="sort-dropdown">
 
-              <select >
+              <select onChange={handleSelectChange} >
                 <option value="">Brand</option>
                 <option value="Croma">Croma</option>
-                <option value="LG">LG</option>
+                {/* <option value="LG">LG</option>
                 <option value="Acer">Acer</option>
                 <option value="OnePlus">OnePlus</option>
                 <option value="Xiaomi">Xiaomi</option>
-                <option value="Samsung">Samsung</option>
+                <option value="Samsung">Samsung</option> */}
+                <option value="Apple">Apple</option>
               </select>
             </div>
             <div className="sort-dropdown">
@@ -134,7 +151,7 @@ const Inputproduct = () => {
           {userproducts &&
             Array.isArray(userproducts) &&
             userproducts.map((user) => {
-              return <Dropcard key={user._id} product={user} click={cardclick}/>;
+              return <Dropcard key={user._id} product={user} click={cardclick} />;
             })}
         </div>
       </div>

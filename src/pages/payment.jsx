@@ -142,19 +142,12 @@ const Payment = () => {
             </div>
           </div>
         </div>
-        <div className="payout-form">
+        {/* <div className="payout-form">
           <div className="checkout-total-summary">
             <h3 className="checkout-form-heading">Order Summary</h3>
             <div className="paymentimagecontainer" style={{ display: "flex" }}>
 
-              {/* 
-                 paymentproduct.map((pay))=>{
-    
-             
-    
-              
-
-              } */}
+          
               {paymentproduct.map((pay, index) => (
                 <div key={index}>
                   <img src={pay.product.displayImage} />
@@ -167,7 +160,7 @@ const Payment = () => {
             </div>
 
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

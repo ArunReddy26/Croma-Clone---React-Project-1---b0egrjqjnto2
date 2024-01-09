@@ -21,7 +21,7 @@ function ProductContainer() {
       },
     });
     const jsonData = await response.json();
-    console.log("jsondata",jsonData )
+    console.log("jsondata", jsonData)
     setProducts(jsonData.data);
   }
 
@@ -37,39 +37,53 @@ function ProductContainer() {
 
   const handleSelectChange = (e) => {
     const value = e.target.value;
-    console.log("value", value);  
-    if(value==="top rated") 
-    {
-    const topRatedProducts = products.filter(product => product.sellerTag === 'top rated');
-    setProducts(topRatedProducts);
+    console.log("value", value);
+    if (value === "top rated") {
+      const topRatedProducts = products.filter(product => product.sellerTag === 'top rated');
+      setProducts(topRatedProducts);
     }
-    else if(value==="priceLowToHigh"){
+    else if (value === "priceLowToHigh") {
       const filteredProducts = products.filter(product => product.price > 0);
       const sortedProducts = filteredProducts.sort((a, b) => a.price - b.price);
       setProducts(sortedProducts);
     }
-    else if(value==="priceHighToLow"){
+    else if (value === "priceHighToLow") {
       const filteredProducts = products.filter(product => product.price > 0);
       const sortedProducts = filteredProducts.sort((a, b) => b.price - a.price);
       setProducts(sortedProducts);
     }
-    else if(value==="trending"){
+    else if (value === "trending") {
       const trending = products.filter(product => product.sellerTag === 'trending');
       setProducts(trending);
 
 
     }
-    else if(value==="best seller"){
+    else if (value === "best seller") {
       const seller = products.filter(product => product.sellerTag === 'best seller');
       setProducts(seller);
-    
+
     }
-    else if(value==="new arrival"){
+    else if (value === "new arrival") {
       const arrival = products.filter(product => product.sellerTag === 'new arrival');
       setProducts(arrival);
-    
+
     }
-  
+    else if (value === "Croma") {
+      const Croma = products.filter(product => product.brand === 'Croma');
+      setProducts(Croma);
+
+    }
+    else if (value === "Apple") {
+      const Apple = products.filter(product => product.brand === 'Apple');
+      setProducts(Apple);
+
+    }
+    else if (value === "electronics") {
+      const electronics = products.filter(product => product.category === 'electronics');
+      setProducts(electronics);
+
+    }
+
 
   };
 
@@ -85,28 +99,29 @@ function ProductContainer() {
         <div className="dropdowns">
           <div className="firstlist">
             <div className="sort-dropdown">
-            
+
               <select >
                 <option value="">Category</option>
-                <option value="topRated">Top Rated</option>
+                <option value="electronics">Electronics</option>
                 <option value="priceLowToHigh">Price (Lowest to Highest)</option>
                 <option value="priceHighToLow">Price (Highest to Lowest)</option>
               </select>
             </div>
             <div className="sort-dropdown">
-             
-              <select >
+
+              <select onChange={handleSelectChange}>
                 <option value="">Brand</option>
                 <option value="Croma">Croma</option>
-                <option value="LG">LG</option>
+                {/* <option value="LG">LG</option>
                 <option value="Acer">Acer</option>
                 <option value="OnePlus">OnePlus</option>
                 <option value="Xiaomi">Xiaomi</option>
-                <option value="Samsung">Samsung</option>
+                <option value="Samsung">Samsung</option> */}
+                <option value="Apple">Apple</option>
               </select>
             </div>
             <div className="sort-dropdown">
-              
+
               <select onChange={handleSelectChange} >
                 <option value="">SellerTag</option>
                 <option value="trending">Trending</option>
@@ -116,8 +131,8 @@ function ProductContainer() {
             </div>
           </div>
           <div className="sort-dropdown">
-           
-            <select  onChange={handleSelectChange} >
+
+            <select onChange={handleSelectChange} >
               <option value="">Sort By</option>
               <option value="top rated">Top Rated</option>
               <option value="priceLowToHigh">Price (Lowest to Highest)</option>
