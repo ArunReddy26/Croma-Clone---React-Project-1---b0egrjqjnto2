@@ -21,7 +21,19 @@ function ProductContainer() {
       },
     });
     const jsonData = await response.json();
-    console.log("jsondata", jsonData)
+    setProducts(jsonData.data);
+  }
+  async function dropcategories(value, productCategory) {
+    console.log("value", value);
+    console.log("productCategory", productCategory);
+    const response = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"sellerTag":"${value}","subCategory":"${productCategory}"}`, {
+      headers: {
+        projectID: "b0egrjqjnto2",
+      },
+    });
+    const jsonData = await response.json();
+    // console.log("jsondata", jsonData.data);
+
     setProducts(jsonData.data);
   }
 
@@ -37,10 +49,9 @@ function ProductContainer() {
 
   const handleSelectChange = (e) => {
     const value = e.target.value;
-    console.log("value", value);
+
     if (value === "top rated") {
-      const topRatedProducts = products.filter(product => product.sellerTag === 'top rated');
-      setProducts(topRatedProducts);
+      dropcategories(value, productCategory)
     }
     else if (value === "priceLowToHigh") {
       const filteredProducts = products.filter(product => product.price > 0);
@@ -53,19 +64,18 @@ function ProductContainer() {
       setProducts(sortedProducts);
     }
     else if (value === "trending") {
-      const trending = products.filter(product => product.sellerTag === 'trending');
-      setProducts(trending);
+      dropcategories(value, productCategory)
 
 
     }
     else if (value === "best seller") {
-      const seller = products.filter(product => product.sellerTag === 'best seller');
-      setProducts(seller);
+      dropcategories(value, productCategory)
+
 
     }
     else if (value === "new arrival") {
-      const arrival = products.filter(product => product.sellerTag === 'new arrival');
-      setProducts(arrival);
+      dropcategories(value, productCategory)
+
 
     }
     else if (value === "Croma") {
@@ -117,7 +127,8 @@ function ProductContainer() {
                 <option value="OnePlus">OnePlus</option>
                 <option value="Xiaomi">Xiaomi</option>
                 <option value="Samsung">Samsung</option> */}
-                <option value="Apple">Apple</option>
+                {/* <option value="Apple">Apple</option> */}
+                <option value="top rated">Top Rated</option>
               </select>
             </div>
             <div className="sort-dropdown">
@@ -142,11 +153,19 @@ function ProductContainer() {
 
         </div>
         <div className="producContainer2">
-          {products &&
-            Array.isArray(products) &&
+          {products.length > 0 ? (
+            // Array.isArray(products) &&
             products.map((product) => {
               return <Dropcard key={product._id} product={product} click={cardclick} />;
-            })}
+            })) : (
+            <div>
+              "No Products Found"
+            </div>
+
+
+
+          )
+          }
         </div>
       </div>
     </div>

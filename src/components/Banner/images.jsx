@@ -408,7 +408,7 @@ const Carousel = () => {
       >
         {audioimages.map((image, index) => (
 
-          <img src={image} alt={`Image ${index + 1}`} style={{ width: "280px", borderRadius: "10px" }} />
+          <img src={image} alt={`Image ${index + 1}`} style={{ width: "265px", borderRadius: "10px" }} />
         ))}
       </div>
 
@@ -456,7 +456,7 @@ const Carousel = () => {
 
         {kitchenimages.map((image, index) => (
 
-          <img src={image} alt={`Image ${index + 1}`} style={{ width: "280px", borderRadius: "10px" }} />
+          <img src={image} alt={`Image ${index + 1}`} style={{ width: "265px", borderRadius: "10px" }} />
         ))}
       </div>
 
@@ -509,10 +509,13 @@ const Carousel = () => {
 
         {laptopimages.map((image, index) => (
 
-          <img src={image} alt={`Image ${index + 1}`} style={{ width: "280px", borderRadius: "10px" }} />
+          <img src={image} alt={`Image ${index + 1}`} style={{ width: "265px", borderRadius: "10px" }} />
         ))}
       </div>
-      <Slider {...settings1}>
+
+      
+
+      <Slider {...settings1} style={{marginTop:"2rem"}}>
         {
 
           laptops.map((product) => {

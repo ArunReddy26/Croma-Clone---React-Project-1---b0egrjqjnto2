@@ -5,9 +5,11 @@ import { LiaToolsSolid } from "react-icons/lia";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Dropcard = (props) => {
   const [isClicked, setIsClicked] = useState(false);
+  const navigate=useNavigate();
 
   const DeleteWhislist = async (productID) => {
        
