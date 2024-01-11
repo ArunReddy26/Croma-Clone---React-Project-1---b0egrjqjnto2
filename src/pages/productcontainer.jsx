@@ -153,18 +153,11 @@ function ProductContainer() {
 
         </div>
         <div className="producContainer2">
-          {products.length > 0 ? (
-            // Array.isArray(products) &&
+          {products.length > 0 &&
+            Array.isArray(products) &&
             products.map((product) => {
               return <Dropcard key={product._id} product={product} click={cardclick} />;
-            })) : (
-            <div>
-              "No Products Found"
-            </div>
-
-
-
-          )
+            })
           }
         </div>
       </div>

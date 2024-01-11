@@ -14,6 +14,7 @@ import Inputproduct from "../pages/inputproducts";
 import Payment from "../pages/payment";
 import Order from "../pages/order";
 import Favouritelist from "../pages/favoritelist";
+import Register from "../pages/register";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
       <Route path="/payment" element={<Payment/>}/>
       <Route path="/orders" element={<Order/>}/>
       <Route path="/mywhislist" element={<Favouritelist/>}/>
+      <Route path="/signup" element={<Register/>}/>
      
     </Routes>
     </div >

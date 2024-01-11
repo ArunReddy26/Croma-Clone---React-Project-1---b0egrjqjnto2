@@ -1,31 +1,34 @@
-import React, { useState, useEffect } from "react";
-import "./login.css";
-import { useNavigate,Link } from "react-router-dom";
+import React from "react";
+import { useState } from "react";
+
+import "./register.css";
+
 import Header from "../components/Header/header";
+import { Link, useNavigate} from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
+    const navigate=useNavigate();
 
-    const navigate = useNavigate();
-    const [user, setuser]=useState(false);
+
+    const [user, setuser] = useState(false);
 
 
 
     async function userLogin(userData) {
         try {
-            const response = await fetch("https://academics.newtonschool.co/api/v1/user/login", {
+            const response = await fetch("https://academics.newtonschool.co/api/v1/user/signup", {
                 method: 'POST',
                 headers: { 'projectID': 'b0egrjqjnto2', "Content-Type": "application/json", },
                 body: JSON.stringify(userData),
             });
             const jsonData = await response.json();
-            if(jsonData.status === "success")
-            {
-            localStorage.setItem('token', jsonData.token);
-            delete jsonData['token'];
-            navigate("/");
-            console.log(jsonData);
+            if (jsonData.status === "success") {
+                localStorage.setItem('token', jsonData.token);
+                delete jsonData['token'];
+                navigate("/");
+                console.log(jsonData);
             }
-            else{
+            else {
                 setuser(true);
             }
         }
@@ -34,14 +37,15 @@ const Login = () => {
         }
     }
 
-    useEffect(() => {
-        if (localStorage.getItem('token')) {
-            navigate('/');
-        }
-        window.scrollTo(0, 0);
-    }, [])
+    // useEffect(() => {
+    //     if (localStorage.getItem('token')) {
+    //         navigate('/');
+    //     }
+    //     window.scrollTo(0, 0);
+    // }, [])
 
     const [loginData, setLoginData] = useState({
+        name: "",
         email: "",
         password: "",
         appType: "ecommerce"
@@ -53,17 +57,26 @@ const Login = () => {
         setLoginData(updateddata);
     }
     const signedin = () => {
-        if (loginData.email && loginData.password)
+        if (loginData.email && loginData.password && loginData.name)
             userLogin(loginData);
 
     }
     return (
         <div>
-        <Header/>
-            <div style={{display:"flex", alignItems:"center", justifyContent:"center", background:"#191919", height:"92vh"}}>
-                <div className="login">
-                    <p>Please enter your Email ID or Phone number</p>
+            <Header />
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "#191919", height: "92vh" }}>
+                <div className="signup">
+                    <p style={{fontSize:"1.4rem", fontWeight:"700"}}>Create New Account</p>
                     <div className="details">
+                    <input
+                            type="text"
+                            name="name"
+                            className="input"
+                            placeholder="Enter your Name"
+                            onChange={handleSubmit}
+                            required
+                        />
+
                         <input
                             type="email"
                             name="email"
@@ -81,22 +94,13 @@ const Login = () => {
                             required
                         />
                     </div>
-                    <div className="logincheck">
-                        <input type="checkbox" />
-                        <p style={{ fontSize: "0.85rem" }}>Keep me signed in</p>
-                    </div>
-
-                    <p className="terms">By continuing you agree to our terms and policies</p>
-                    <button onClick={signedin}>Continue</button>
-                    {
-                        user ? <h4 style={{color:"Red"}}>Not a Valid User Create an Account</h4>:""
-
-                    }
-                    <p className="new-user">Don't have an account? <Link to="/signup"style={{color:"#12daa8"}}>Register</Link></p>
+                    <button style={{marginTop:"1rem"}}onClick={signedin}>Proceed</button>
+                    <p className="new-user">Already Registered? <Link to="/login" style={{ color: "#12daa8" }}>Login</Link></p>
                 </div>
             </div>
         </div>
     )
 
+
 }
-export default Login;
+export default Register;

@@ -1,9 +1,10 @@
 .login {
   width: 450px;
-  height: 350px;
+  height: 380px;
   padding-top: 2rem;
   margin-left: 5rem;
   background-color:black;
+  border-radius: 3px;
 }
 
 .details {
@@ -51,7 +52,9 @@ button {
 .terms {
   font-size: 0.75rem;
 }
-
+.new-user{
+  color:"white";
+}
 /* .closeopopup{
   color: white;
   font-size: 1.5rem;
