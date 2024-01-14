@@ -15,20 +15,43 @@ const Inputproduct = () => {
   }
 
   const updateSuggestions = async (value) => {
-    try {
-      const response = await fetch(
-        `https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&search={"name":"${value}"}`,
-        {
-          headers: {
-            projectID: "b0egrjqjnto2",
-          },
-        }
-      );
-      const results = await response.json();
-      setuserproducts(results.data);
+    if(value=="washingmachine"){
+      value="washingMachine";
     }
-    catch (error) {
-      console.error("Error fetching suggestions:", error);
+    if (value == "laptop" || value=="ac" || value=="washingMachine" || value=="kitchenappliances"|| value=="tablet"|| value=="audio") {
+      try {
+        const response = await fetch(
+          `https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"subCategory":"${value}"}`,
+          {
+            headers: {
+              projectID: "b0egrjqjnto2",
+            },
+          }
+        );
+        const results = await response.json();
+        setuserproducts(results.data);
+      }
+      catch (error) {
+        console.error("Error fetching suggestions:", error);
+      }
+
+    }
+    else {
+      try {
+        const response = await fetch(
+          `https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&search={"name":"${value}"}`,
+          {
+            headers: {
+              projectID: "b0egrjqjnto2",
+            },
+          }
+        );
+        const results = await response.json();
+        setuserproducts(results.data);
+      }
+      catch (error) {
+        console.error("Error fetching suggestions:", error);
+      }
     }
   }
   // var heading;
@@ -38,7 +61,7 @@ const Inputproduct = () => {
 
   useEffect(() => {
     if (userinput) {
-      updateSuggestions(userinput);
+      updateSuggestions(userinput.toLowerCase());
     }
   }, [userinput]);
 

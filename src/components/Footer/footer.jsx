@@ -1,5 +1,10 @@
 import React from "react";
 import "./footer.css";
+import { CiYoutube } from "react-icons/ci";
+import { SlSocialFacebook } from "react-icons/sl";
+import { FaInstagram } from "react-icons/fa6";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
 
 const Footer=()=>{
     return(
@@ -9,16 +14,17 @@ const Footer=()=>{
         <div className="foo">
             <div className="foo_item">
                 <h3 className="foothead">CONNECT WITH US</h3>
-                <div className="foo_input">
+                {/* <div className="foo_input">
                     <input type="email" name="" id="foo_email" placeholder="Enter Email ID"/>
                     <button className="email_btn"><i className="fas fa-arrow-right"></i></button>
-                </div>
+                </div> */}
+                
                 <div className="contact_us">
-                    <div className="contact_us_item"><a href="https://www.youtube.com/user/CromaRetail"></a><img className="logo" src="https://www.pneumaticsindia.com/wp-content/uploads/2020/04/Youtube.png"/></div>
-                    <div className="contact_us_item"><a href="https://www.facebook.com/CromaRetail/"><img className="logo" src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png"/></a></div>
-                    <div className="contact_us_item"><a href="https://www.instagram.com/croma.retail/"><img className="logo" src="https://toppng.com/uploads/preview/instagram-logo-transparent-logo-instagram-vector-2021-116177766354twhxoagvv.png"/></a></div>
-                    <div className="contact_us_item"><a href="https://www.linkedin.com/company/infiniti-retail-limited-croma---a-tata-enterprise/"><img className="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/768px-LinkedIn_logo_initials.png"/></a></div>
-                    <div className="contact_us_item"><a href="https://twitter.com/cromaretail?s=11"><img className="logo" src="https://toppng.com//public/uploads/preview/red-twitter-logo-11549680466ua0eyzyb5c.png"/></a></div>
+                    <div className="contact_us_item"><a href="https://www.youtube.com/user/CromaRetail"><CiYoutube className="logo"/></a></div>
+                    <div className="contact_us_item"><a href="https://www.facebook.com/CromaRetail/"><SlSocialFacebook className="logo"/></a></div>
+                    <div className="contact_us_item"><a href="https://www.instagram.com/croma.retail/"><FaInstagram className="logo"/></a></div>
+                    <div className="contact_us_item"><a href="https://www.linkedin.com/company/infiniti-retail-limited-croma---a-tata-enterprise/"><FaLinkedinIn className="logo"/></a></div>
+                    <div className="contact_us_item"><a href="https://twitter.com/cromaretail?s=11"><FaTwitter className="logo"/></a></div>
                 </div>
                 <p className="lastline">© Copyright 2021 Croma. All rights reserved</p>
                 

@@ -3,11 +3,13 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "./images.css";
 import { useEffect, useState } from "react";
+import { useNavigate,Link } from "react-router-dom";
 import Productcard from "../Card/productcard";
 const Carousel = () => {
   // const { isModalOpen, setModalOpen } = props;
   // console.log("open",open);
   // console.log("close",close);
+  const navigate=useNavigate();
 
 
 
@@ -323,16 +325,57 @@ const Carousel = () => {
 
   }
 
+const imageclick=(e,index)=>{
+  console.log(`Clicked on image with index: ${index}`);
+  if(index==1){ 
+    navigate(`/search/iphone`)
+  }
 
+  else if(index==2){
+    navigate(`/search/tv`);
+
+
+  }
+  else if(index==3){
+
+    navigate(`/search/laptop`);
+  }
+  else if(index==5){
+    navigate(`/search/refrigerator`);
+
+  }
+
+  else if(index==7){
+    navigate(`/search/ac`);
+
+  }
+  else if(index==8){
+    navigate(`/search/audio`);
+
+  }
+  else if(index==9){
+    navigate(`/search/washingMachine`);
+
+  }
+  else if(index==10){
+    navigate(`/search/kitchenappliances`);
+
+  }
+  else if(index==12){
+    navigate(`/search/tablet`);
+
+  }
+
+}
 
 
   return (
 
     <div className="carousel">
       <Slider {...settings}>
-        {images.map((image, index) => (
-          <div key={index} className="images">
-            <img src={image} alt={`Image ${index + 1}`} />
+        {images?.map((image, index) => (
+          <div key={index} className="images" onClick={(e) => imageclick(e, index)} >
+            <img src={image} alt={`Image ${index + 1}`}/>
           </div>
         ))}
       </Slider>

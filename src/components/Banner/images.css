@@ -15,5 +15,6 @@
   .images img {
     width: 129px;
     height: 157px;
+    cursor: pointer;
   }
   

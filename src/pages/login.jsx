@@ -89,7 +89,7 @@ const Login = () => {
                     <p className="terms">By continuing you agree to our terms and policies</p>
                     <button onClick={signedin}>Continue</button>
                     {
-                        user ? <h4 style={{color:"Red"}}>Not a Valid User Create an Account</h4>:""
+                        user ? <h4 style={{color:"Red"}}>Not a Valid User Create Your Account</h4>:""
 
                     }
                     <p className="new-user">Don't have an account? <Link to="/signup"style={{color:"#12daa8"}}>Register</Link></p>

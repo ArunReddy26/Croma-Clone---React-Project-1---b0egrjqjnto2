@@ -78,7 +78,8 @@ const Favouritelist = () => {
                 ) : (
 
                     <div className="orderscart" style={{ background: "#191919", height: "100vh" }}>
-                        <h2 style={{ textAlign: "center", color: "white" }}>My Whislist</h2>
+                        
+                        <h2 style={{ textAlign: "center", color: "white" ,marginTop:"0"}}>My Whislist</h2>
                         <div className="image" style={{ margin: "auto" }}>
                             <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/f_auto,q_auto,d_Croma%20Assets:No_image.png/Croma%20Assets/UI%20Assets/sshz69afrixwivcsgnpx.svg" style={{ width: "260px", height: "150px" }} alt="order-cart" />
                             <h3 style={{ fontWeight: "800", color: "white" }}>Oops! Your wishlist looks empty</h3>

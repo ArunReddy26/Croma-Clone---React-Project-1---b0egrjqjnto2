@@ -20,8 +20,13 @@ const Header = () => {
   const [open, setopen] = useState(false);
 
   const handlelogout=()=>{
-    localStorage.removeItem("token");
-    navigate("/")
+
+    if(localStorage.getItem('token')){
+      localStorage.removeItem("token");
+      navigate("/");
+      alert(" You logged out successfully!")
+
+    }
 
   }
 
