@@ -17,6 +17,10 @@ const Inputproduct = () => {
   const updateSuggestions = async (value) => {
     if(value=="washingmachine"){
       value="washingMachine";
+      
+    }
+    else if(value=="mobile"|| value=="mobiles"){
+      value="iphone"
     }
     if (value == "laptop" || value=="ac" || value=="washingMachine" || value=="kitchenappliances"|| value=="tablet"|| value=="audio") {
       try {
