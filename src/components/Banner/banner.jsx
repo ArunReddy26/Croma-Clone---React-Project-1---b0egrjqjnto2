@@ -3,8 +3,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./banner.css"; // Import your custom CSS file
+import { useNavigate } from "react-router-dom";
 
 const Banner = () => {
+  const navigate=useNavigate();
   const settings = {
     dots: true,
     infinite: true,
@@ -24,12 +26,35 @@ const Banner = () => {
     "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1702033427/Croma%20Assets/CMS/LP%20Page%20Banners/2023/Croma%20Gifting/Hp%20Rotating/HP_OLWedding_8dec2023_gnnv2u.jpg?tr=w-2048",
   ];
 
+  const bannerclick=(e,index)=>{
+    console.log(`Clicked on image with index: ${index}`);
+    if(index==0){
+      navigate("/dealscorner");
+    
+
+    }
+    else if(index==1){ 
+      navigate(`/search/audio`)
+    }
+    else if(index==2){
+      navigate(`/search/tv`)
+    }
+    else if(index==3){
+      navigate(`/search/tablet`)
+
+    }
+    else if(index==4){
+      navigate(`/search/refrigerator`)
+
+    }
+  }
+
   return (
     
     <Slider {...settings}>
       {images.map((image, index) => {
         return (
-          <div className="image">
+          <div className="image" onClick={(e) => bannerclick(e, index)}>
             <img src={image} style={{width:"100%"}}alt={`Slide ${index + 1}`} />
           </div>
         );

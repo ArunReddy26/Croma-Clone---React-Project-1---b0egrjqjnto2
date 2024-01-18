@@ -16,6 +16,8 @@ import Order from "../pages/order";
 import Favouritelist from "../pages/favoritelist";
 import Register from "../pages/register";
 import Bankdiscount from "../pages/bankdiscount";
+import Dealscorner from "../pages/component/Bannners/dealscorner";
+import Newproducts from "../pages/component/Bannners/newproducts";
 
 
 function App() {
@@ -40,6 +42,9 @@ function App() {
       <Route path="/mywhislist" element={<Favouritelist/>}/>
       <Route path="/signup" element={<Register/>}/>
       <Route path="/lp-more-for-your-money" element={<Bankdiscount/>}/>
+      <Route path="/dealscorner" element={<Dealscorner/>}/>
+      <Route path="/unboxed" element={<Newproducts/>}/>
+      
      
     </Routes>
     </div >

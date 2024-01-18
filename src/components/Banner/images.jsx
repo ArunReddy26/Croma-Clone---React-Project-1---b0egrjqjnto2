@@ -327,7 +327,10 @@ const Carousel = () => {
 
 const imageclick=(e,index)=>{
   console.log(`Clicked on image with index: ${index}`);
-  if(index==1){ 
+  if(index==0){ 
+    navigate(`/unboxed`)
+  }
+  else if(index==1){ 
     navigate(`/search/iphone`)
   }
 

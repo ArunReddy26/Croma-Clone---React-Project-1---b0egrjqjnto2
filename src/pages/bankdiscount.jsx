@@ -5,7 +5,8 @@ const Bankdiscount = () => {
     return (
         <div className="">
             <Header />
-            <div style={{ backgroundColor: "#191919", margin: "auto" }}>
+            <div style={{ backgroundColor: "#191919", margin: "auto", color:"white", padding:"1rem" }}>
+                <h2>More For Your Money</h2>
 
                 <div>
 

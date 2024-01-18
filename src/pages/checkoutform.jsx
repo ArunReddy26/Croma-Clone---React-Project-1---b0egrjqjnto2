@@ -3,8 +3,11 @@ import Checkoutheader from "./checkoutheader";
 import "./checkoutform.css";
 import Checkout from "../components/Checkout/checkout";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Checkoutform = () => {
+    const navigate=useNavigate();
+
     const [totalprice, settotalprice] = useState("");
     
 
@@ -104,10 +107,15 @@ const Checkoutform = () => {
             // console.log("form submitted");
             localStorage.setItem('addresses', JSON.stringify(userAddress));
             setUserAddress(updateddata);
+            alert("form Details saved succesfully");
 
         }
 
 
+    }
+
+    function gottopaymentpage(){
+        navigate("/payment");
     }
     return (
         <div style={{ width: "100%", height: "100%" }}>
@@ -158,7 +166,7 @@ const Checkoutform = () => {
                     <button className="" style={{width:"150px", border:"2px solid #12daa8"}}onClick={addnewaddress}>Add New Address</button>
                     </div>
                 </form>
-                <Checkout Price={totalprice}/>
+                <Checkout Price={totalprice} paymentclick={gottopaymentpage}/>
             </div>
         </div>
     )

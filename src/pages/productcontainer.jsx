@@ -13,6 +13,19 @@ function ProductContainer() {
   const [products, setProducts] = useState([]);
   const [selectedOption, setSelectedOption] = useState('');
 
+  async function brand(value) {
+    console.log("value", value);
+    const response = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"brand":"${value}"}`, {
+      headers: {
+        projectID: "b0egrjqjnto2",
+      },
+    });
+    const jsonData = await response.json();
+    // console.log("jsondata", jsonData.data);
+
+    setProducts(jsonData.data);
+  }
+
 
   async function getAllProductsCategoryWise(category) {
     const response = await fetch(GET_PRODUCTS_CATEGORYWISE(category), {
@@ -78,20 +91,18 @@ function ProductContainer() {
 
 
     }
-    else if (value === "Croma") {
-      const Croma = products.filter(product => product.brand === 'Croma');
-      setProducts(Croma);
-
-    }
-    else if (value === "Apple") {
-      const Apple = products.filter(product => product.brand === 'Apple');
-      setProducts(Apple);
+    else if (value === "Apple" || value==="Samsung"|| value==="LG" ||value==="Acer"||value=="OnePlus"||value==="Xiaomi" ) {
+      
+      brand(value);
 
     }
     else if (value === "electronics") {
       const electronics = products.filter(product => product.category === 'electronics');
       setProducts(electronics);
 
+    }
+    else if(value == "laptop" || value=="ac" || value=="washingMachine" || value=="kitchenappliances"|| value=="tablet"|| value=="audio"|| value=="health"||value=="refrigerator"||value=="travel"){
+      getAllProductsCategoryWise(value);
     }
 
 
@@ -110,7 +121,7 @@ function ProductContainer() {
           <div className="firstlist">
             <div className="sort-dropdown">
 
-              <select >
+              <select onChange={handleSelectChange}>
                 <option value="">Category</option>
                 <option value="electronics">Electronics</option>
                 <option value="priceLowToHigh">Price (Lowest to Highest)</option>
@@ -120,15 +131,13 @@ function ProductContainer() {
             <div className="sort-dropdown">
 
               <select onChange={handleSelectChange}>
-                <option value="">Brand</option>
-                <option value="Croma">Croma</option>
-                {/* <option value="LG">LG</option>
+                <option value="">Brand</option>     
+                <option value="LG">LG</option>
                 <option value="Acer">Acer</option>
                 <option value="OnePlus">OnePlus</option>
                 <option value="Xiaomi">Xiaomi</option>
-                <option value="Samsung">Samsung</option> */}
-                {/* <option value="Apple">Apple</option> */}
-                <option value="top rated">Top Rated</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Apple">Apple</option>              
               </select>
             </div>
             <div className="sort-dropdown">

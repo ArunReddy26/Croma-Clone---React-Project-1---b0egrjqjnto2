@@ -8,7 +8,8 @@ import { MdOutlineStar } from "react-icons/md";
 import "./productdetail.css";
 import Footer from "../components/Footer/footer";
 const Productdetail = () => {
-    const navigate=useNavigate();
+    const names = ["arun", "pratik", "prashant", "divya", "kanika", "rohin", "karishma", "megha", "bhim", "rahul", "rohin", "raghav", "akshay"];
+    const navigate = useNavigate();
     const { product_id } = useParams();
     const [productdetails, setProductDetails] = useState({});
     const [productReviews, setProductReviews] = useState([]);
@@ -32,7 +33,7 @@ const Productdetail = () => {
         try {
             const response = await fetch(PRODUCT_REVIEW(id), {
                 headers: {
-                    'projectID': 'kbtsbbfdoig1',
+                    'projectID': 'b0egrjqjnto2',
                 }
             });
             const jsonData = await response.json();
@@ -59,34 +60,34 @@ const Productdetail = () => {
     }
 
 
-    function GotoCart(id){
+    function GotoCart(id) {
 
-        if(localStorage.getItem('token')){
-        Addcart(id);
-        navigate("/cart");
+        if (localStorage.getItem('token')) {
+            Addcart(id);
+            navigate("/cart");
         }
-        else{
+        else {
             navigate("/login");
         }
 
     }
 
 
-function addedtocart(id){
+    function addedtocart(id) {
 
 
-    if(localStorage.getItem('token')){
-        Addcart(id);
-        alert("Product Added to Cart");
-       
+        if (localStorage.getItem('token')) {
+            Addcart(id);
+            alert("Product Added to Cart");
+
         }
-        else{
+        else {
             navigate("/login");
         }
 
-   
 
-}
+
+    }
 
     useEffect(() => {
         getProductDetails(product_id);
@@ -177,7 +178,7 @@ function addedtocart(id){
 
                         <div className="sp-add-to-cart-btn">
                             <button className="sp-add-to-cart" onClick={() => GotoCart(product_id)}>Buy Now</button>
-                            <button className="sp-buy-now" onClick={()=>addedtocart(product_id)}>Add to Cart</button>
+                            <button className="sp-buy-now" onClick={() => addedtocart(product_id)}>Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -189,7 +190,7 @@ function addedtocart(id){
                 </div>
                 <div className="container3">
                     <h2 style={{ color: "white", marginLeft: "2rem", marginTop: "1.2rem" }}>
-                        Reviews
+                        Customer Reviews
                     </h2>
                     <span>({productdetails.name})</span>
                     {
@@ -197,7 +198,10 @@ function addedtocart(id){
                         Array.isArray(productReviews) &&
                         productReviews.map((review) => {
                             return (
-                                <div key={review._id}>{review.text}</div>
+                                <div key={review._id}>
+                                    <div>{review.text}</div>
+                                    <div>{review.ratings}</div>
+                                </div>
                             )
                         })
                     }

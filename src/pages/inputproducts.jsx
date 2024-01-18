@@ -5,6 +5,23 @@ import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header/header";
 import Dropcard from "../components/Card/dropcard";
 const Inputproduct = () => {
+
+
+  async function brand(value) {
+    console.log("value", value);
+    const response = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"brand":"${value}"}`, {
+      headers: {
+        projectID: "b0egrjqjnto2",
+      },
+    });
+    const jsonData = await response.json();
+    // console.log("jsondata", jsonData.data);
+
+    setuserproducts(jsonData.data);
+  }
+
+
+
   const navigate = useNavigate();
 
   const [userproducts, setuserproducts] = useState([]);
@@ -20,9 +37,9 @@ const Inputproduct = () => {
       
     }
     else if(value=="mobile"|| value=="mobiles"){
-      value="iphone"
+      value="iphone";
     }
-    if (value == "laptop" || value=="ac" || value=="washingMachine" || value=="kitchenappliances"|| value=="tablet"|| value=="audio") {
+    if (value == "laptop" || value=="ac" || value=="washingMachine" || value=="kitchenappliances"|| value=="tablet"|| value=="audio"|| value=="health"||value=="refrigerator"||value=="travel") {
       try {
         const response = await fetch(
           `https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"subCategory":"${value}"}`,
@@ -102,14 +119,9 @@ const Inputproduct = () => {
       const arrival = userproducts.filter(product => product.sellerTag === 'new arrival');
       setuserproducts(arrival);
     }
-    else if (value === "Croma") {
-      const Croma = userproducts.filter(product => product.brand === 'Croma');
-      setuserproducts(Croma);
-
-    }
-    else if (value === "Apple") {
-      const Apple = userproducts.filter(product => product.brand === 'Apple');
-      setuserproducts(Apple);
+    else if (value === "Apple" || value==="Samsung"|| value==="LG" ||value==="Acer"||value=="OnePlus"||value==="Xiaomi" ) {
+      
+      brand(value);
 
     }
     else if (value === "electronics") {
@@ -144,12 +156,11 @@ const Inputproduct = () => {
 
               <select onChange={handleSelectChange} >
                 <option value="">Brand</option>
-                <option value="Croma">Croma</option>
-                {/* <option value="LG">LG</option>
+                <option value="LG">LG</option>
                 <option value="Acer">Acer</option>
                 <option value="OnePlus">OnePlus</option>
                 <option value="Xiaomi">Xiaomi</option>
-                <option value="Samsung">Samsung</option> */}
+                <option value="Samsung">Samsung</option>
                 <option value="Apple">Apple</option>
               </select>
             </div>

@@ -1,9 +1,17 @@
 .checkoutMainContainer {
-  width: 76%;
+  /* width: 76%;
+  margin: 78px auto; */
   /* height:400px; */
-  margin: 78px auto;
+
   /* outline: 1px solid red; */
   display: flex;
+  width:60%;
+  margin: 60px auto;
+
+
+
+
+
 }
 
 .paymentMethodText {
@@ -87,10 +95,17 @@
 
 .payout-form {
 
-  flex: 0.75;
+  /* flex: 0.75; */
   padding: 0 0 0 0.625rem;
   display: flex;
   flex-direction: column;
   gap: 0.9375rem;
   margin-top: 4rem;
+  border:3px solid black;
+
+
+
+  margin-right:3rem;
+  flex: 1;
+  
 }

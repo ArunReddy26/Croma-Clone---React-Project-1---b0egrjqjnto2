@@ -4,7 +4,7 @@
 .dropdowns{
     display:flex;
     justify-content: space-between;
-    margin-left: 8rem;
+    margin-left: 9.3rem;
     margin-right: 8rem;
     margin-bottom: 5rem;
 }
@@ -31,12 +31,14 @@
 
 .producContainer2 {
 
-    margin: auto;
-    width: 85%;
+    /* margin: auto;
+    width: 85%; */
  
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 5rem;
+    gap: 3rem;
 
 
 }

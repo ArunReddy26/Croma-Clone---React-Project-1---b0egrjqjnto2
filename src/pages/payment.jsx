@@ -142,8 +142,8 @@ const Payment = () => {
             </div>
           </div>
         </div>
-        {/* <div className="payout-form">
-          <div className="checkout-total-summary">
+        <div className="payout-form">
+          {/* <div className="checkout-total-summary">
             <h3 className="checkout-form-heading">Order Summary</h3>
             <div className="paymentimagecontainer" style={{ display: "flex" }}>
 
@@ -159,8 +159,9 @@ const Payment = () => {
 
             </div>
 
-          </div>
-        </div> */}
+          </div> */}
+          
+        </div>
       </div>
     </>
   );
