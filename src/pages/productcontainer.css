@@ -9,6 +9,7 @@
     margin-bottom: 5rem;
 }
 .dropdowns .firstlist{
+  margin-left: 1.4rem;
     display: flex;
     gap: 1rem;
 }

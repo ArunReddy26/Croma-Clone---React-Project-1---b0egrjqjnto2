@@ -8,24 +8,27 @@ import { IoPencil } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import BasicMenu from "../Dropdown/dropdown";
-import { Link , useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SEARCH_PRODUCT_LIST } from "../Constants/Api";
 import Maininput from "../Input/input";
 import { CiHeart } from "react-icons/ci";
 
 
 const Header = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const [dropdown, setdropdown] = useState([]);
   const [open, setopen] = useState(false);
 
-  const handlelogout=()=>{
+  const handlelogout = () => {
 
-    if(localStorage.getItem('token')){
+    if (localStorage.getItem('token')) {
       localStorage.removeItem("token");
       navigate("/");
       alert(" You logged out successfully!")
 
+    }
+    else {
+      navigate("/login");
     }
 
   }
@@ -82,20 +85,22 @@ const Header = () => {
 
     <header className="header">
       <div className="content1">
-        <div>
-          <Link to="/">
-            <img
-              src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1637759004/Croma%20Assets/CMS/Category%20icon/Final%20icon/Croma_Logo_acrkvn.svg"
-              alt="chromalogo"
-            />
-          </Link>
-        </div>
-        <div className="Menu">
+        <div className="headermobileview" >
+          <div>
+            <Link to="/">
+              <img
+                src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1637759004/Croma%20Assets/CMS/Category%20icon/Final%20icon/Croma_Logo_acrkvn.svg"
+                alt="chromalogo"
+              />
+            </Link>
+          </div>
+          <div className="Menu">
 
 
-          <BasicMenu categories={dropdown} className="dropdown" />
+            <BasicMenu categories={dropdown} className="dropdown" />
 
-          <p className="text-sm">Menu</p>
+            <p className="text-sm">Menu</p>
+          </div>
         </div>
 
         <Maininput />
@@ -108,52 +113,47 @@ const Header = () => {
       </div>
 
 
-      <div style={{ display: "flex", alignItems: "center", gap: "1.5rem", marginLeft: "8rem" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
+      <div className="headersection2">
+
+        <div className="headerlocation">
           <MdLocationOn className="MdLocationOn" />
           <p
-            style={{
-              whiteSpace: "nowrap",
-              fontSize: "0.875rem",
-              lineHeight: "1.25rem",
-            }}
+            className="headerlocationname"
           >
             Mumbai 400049
           </p>
           <IoPencil className="text-xs" />
         </div>
-        <div style={{ fontSize: "1.25rem", lineHeight: "2rem", cursor:"pointer"}}>
-          <FaUser onClick={()=>setopen(!open)}/>
+
+
+        <div className="headerusericon">
+          <FaUser onClick={() => setopen(!open)} />
           {open && (
-            <div className="dropdown-content" style={{position:"absolute", right:"8rem", top:"100%", padding:"10px", zIndex:"1", backgroundColor:"black"}}>
-              <ul className="profile">
-                <li><Link to="/mywhislist">My Whishlist</Link></li>
-                <li><Link to="/orders">My Orders</Link></li>
-                <li onClick={handlelogout}>Logout</li>
-              </ul>
+            <div className="headerdropdown-content">
+              {localStorage.getItem('token') ?
+                <ul className="headerprofile">
+
+                  <li><Link to="/mywhislist" style={{ color: "white" }}>My Whishlist</Link></li>
+                  <li><Link to="/orders" style={{ color: "white" }}>My Orders</Link></li>
+                  <li onClick={handlelogout}>Logout</li>
+                </ul> : (
+                  <ul className="headerprofile">
+                    <li onClick={handlelogout}>Login</li>
+                  </ul>
+                )
+              }
             </div>
           )}
-          {/* {open &&(
-            <div style={{ background: "white", position:"absolute" }}>
-              <ul>
-                {
-                  Profile.map((data) => {
-                    <li key={data}>{data}</li>
-                  })
-                }
 
-              </ul>
-            </div>
-          )
-
-          } */}
         </div>
-        <div style={{ fontSize: "1.25rem", lineHeight: "1rem" }}>
-          {
-            localStorage.getItem('token') ? <Link to="/cart" className="carticon"><FaCartShopping /></Link> : (
-              <Link to="/emptycart" className="carticon"><FaCartShopping /></Link>
 
-            )}
+
+        <div className="headercarticon">
+
+          {
+            <Link to="/cart" className="carticon"><FaCartShopping /></Link>
+
+          }
         </div>
       </div>
     </header>

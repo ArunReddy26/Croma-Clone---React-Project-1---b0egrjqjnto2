@@ -16,7 +16,7 @@ const Checkout = (props) => {
                 <h3 className="checkout-form-heading">Order Summary</h3>
                 <div className="cart-total-price">
                     <span className="text-capitalise">Original Price</span>
-                    <span className="price-without-discount"></span>
+                    <span className="price-without-discount">₹{Price}</span>
                 </div>
                 <div className="cart-delivery-charges">
                     <span className="text-capitalise">Delivery Charges</span>
@@ -28,40 +28,19 @@ const Checkout = (props) => {
                 </div>
                 {paymentclick ?
                     (
-                        <button
-                            className="cart-checkout-btn"
-                            onClick={paymentclick}
-                            style={{
-                                width: "100%",
-                                background: "#12daa8",
-                                color: "black",
-                                borderRadius: "8px",
-                                border: "none",
-                            }}
-                        >
-                            payment
-                        </button>
+                        ""
                     ) : (
 
                         <button
                             className="cart-checkout-btn"
                             onClick={handlecheckout}
-                            style={{
-                                width: "100%",
-                                background: "#12daa8",
-                                color: "black",
-                                borderRadius: "8px",
-                                border: "none",
-                            }}
+
                         >
                             checkout
                         </button>
 
                     )
                 }
-                {/* <div className="checkout-static-message">
-          Safe and Secure Payments. Easy returns. 100% Authentic products.
-        </div> */}
             </div>
         </div>
 

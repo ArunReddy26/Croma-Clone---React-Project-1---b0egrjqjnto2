@@ -47,6 +47,11 @@ const Banner = () => {
       navigate(`/search/refrigerator`)
 
     }
+    else if(index==5 || index==6){
+      navigate(`/unboxed`)
+
+    }
+
   }
 
   return (

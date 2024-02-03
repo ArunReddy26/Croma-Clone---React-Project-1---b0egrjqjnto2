@@ -141,9 +141,9 @@ const Inputproduct = () => {
         <div className="" style={{ padding: "1rem", textAlign: "left", marginLeft: "7rem", color: "white" }}>
           <h1>Results for "{userinput}"</h1>
         </div>
-        <div className="dropdowns">
-          <div className="firstlist">
-            <div className="sort-dropdown">
+        <div className="inputdropdowns">
+          <div className="inputfirstlist">
+            <div className="inputsort-dropdown">
 
               <select onChange={handleSelectChange}>
                 <option value="">Category</option>
@@ -152,7 +152,7 @@ const Inputproduct = () => {
                 <option value="priceHighToLow">Price (Highest to Lowest)</option>
               </select>
             </div>
-            <div className="sort-dropdown">
+            <div className="inputsort-dropdown">
 
               <select onChange={handleSelectChange} >
                 <option value="">Brand</option>
@@ -164,7 +164,7 @@ const Inputproduct = () => {
                 <option value="Apple">Apple</option>
               </select>
             </div>
-            <div className="sort-dropdown">
+            <div className="inputsort-dropdown">
 
               <select onChange={handleSelectChange} >
                 <option value="">SellerTag</option>
@@ -174,7 +174,7 @@ const Inputproduct = () => {
               </select>
             </div>
           </div>
-          <div className="sort-dropdown">
+          <div className="inputsort-dropdown">
 
             <select onChange={handleSelectChange} >
               <option value="">Sort By</option>

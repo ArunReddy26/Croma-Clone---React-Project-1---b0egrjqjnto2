@@ -1,11 +1,14 @@
-.checkoutMainContainer {
-  /* width: 76%;
-  margin: 78px auto; */
-  /* height:400px; */
-
-  /* outline: 1px solid red; */
+.checkouttotalcontainer {
   display: flex;
-  width:60%;
+  background-color: white;
+  height: 100vh;
+
+}
+
+.checkoutMainContainer {
+
+  display: flex;
+  width: 60%;
   margin: 60px auto;
 
 
@@ -94,18 +97,63 @@
 }
 
 .payout-form {
-
+  height: 40%;
   /* flex: 0.75; */
   padding: 0 0 0 0.625rem;
   display: flex;
   flex-direction: column;
   gap: 0.9375rem;
   margin-top: 4rem;
-  border:3px solid black;
-
-
-
-  margin-right:3rem;
+  border: 2px solid #088466;
+  margin-right: 3rem;
   flex: 1;
+
+}
+
+.payout-form p {
+  color: black;
+}
+
+.payout-form h2 {
+  text-align: center;
+}
+
+.shippingaddressto {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.3rem;
+}
+
+.lastcheckoutform {
+  flex: 0.75;
+  /* padding: 0 0 0 0.625rem; */
+  display: flex;
+  flex-direction: column;
+  gap: 0.9375rem;
+  margin-top: 4rem;
+  margin-right: 2rem;
+
+}
+
+.lastcheckoutotalsummary {
+  border: 1px solid #e0e0e1;
+  border-radius: 3px;
+  background-color: #fff;
+  padding: 1rem;
+  color: #585757;
+  line-height: 2;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+
+}
+
+.lastcheckoutformproducts{
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+
+}
+.lastcheckoutformproductssection img{
+  width: 200px;
   
+
 }

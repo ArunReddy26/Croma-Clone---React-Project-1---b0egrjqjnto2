@@ -4,11 +4,13 @@ import Header from "../components/Header/header";
 import { GET_PRODUCT_DETAILS, PRODUCT_REVIEW } from "../components/Constants/Api";
 import { useState, useEffect } from "react";
 import { MdOutlineStar } from "react-icons/md";
+import { Rating } from "@mui/material";
 
 import "./productdetail.css";
 import Footer from "../components/Footer/footer";
+import ReviewList from "../components/CustomerReview/customerreview";
 const Productdetail = () => {
-    const names = ["arun", "pratik", "prashant", "divya", "kanika", "rohin", "karishma", "megha", "bhim", "rahul", "rohin", "raghav", "akshay"];
+
     const navigate = useNavigate();
     const { product_id } = useParams();
     const [productdetails, setProductDetails] = useState({});
@@ -63,8 +65,8 @@ const Productdetail = () => {
     function GotoCart(id) {
 
         if (localStorage.getItem('token')) {
-            Addcart(id);
-            navigate("/cart");
+            // Addcart(id);
+            navigate("/checkout");
         }
         else {
             navigate("/login");
@@ -96,44 +98,14 @@ const Productdetail = () => {
     }, [])
 
 
-    //     const array=productdetails.features;
-    //     console.log("array", array);
-    // array.map((feature)=>{
-    //     console.log(feature);
-    // })
-    // array.map((feature)=>{
-    //     console.log(feature);
-    // })
-
-
-    // <img src={productdetails.displayImage} alt={productdetails.name} style={{ width: "240px", height: "250px" }} />
-    //         <h3>{productdetails.name}</h3>
-
-
-
-
-    //         <ul>
-    //             {productdetails.features && productdetails.features.map((feature, index) => (
-    //                 <li key={index}>{feature}</li>
-    //             ))}
-    //         </ul>
-
-
-
-
-
-    //         <div dangerouslySetInnerHTML={{ __html: productdetails.description }} />
-
 
 
     return (
         <div>
 
             <Header />
-
-
             <div className="descriptionbox">
-                <div id="sp-outer-box">
+                <div className="sp-outer-box">
                     <div id="sp-left-box">
                         <div className="sp-container">
                             <img
@@ -146,10 +118,11 @@ const Productdetail = () => {
                         <h1 id="sp-product-name">
                             {productdetails.name}
                         </h1>
+                        {/* <Rating style={{ color: "#12daa8" }} name="read-only" value={productdetails.ratings} readOnly /> */}
 
                         <div
-                            id="star"
-                            style={{ marginLeft: "20px", color: "#12daa8", textAlign: "left" }}
+                            className="productdetailstar"
+
                         >
                             <MdOutlineStar className="stars" />
                             <MdOutlineStar className="stars" />
@@ -183,28 +156,19 @@ const Productdetail = () => {
                     </div>
                 </div>
                 <div className="container2">
-                    <h2 style={{ color: "white", marginLeft: "2rem", marginTop: "1.2rem" }}>
+                    <h2 >
                         Overview
                     </h2>
                     <div dangerouslySetInnerHTML={{ __html: productdetails.description }} />
                 </div>
                 <div className="container3">
-                    <h2 style={{ color: "white", marginLeft: "2rem", marginTop: "1.2rem" }}>
+                    <h2 >
                         Customer Reviews
                     </h2>
                     <span>({productdetails.name})</span>
-                    {
-                        productReviews &&
-                        Array.isArray(productReviews) &&
-                        productReviews.map((review) => {
-                            return (
-                                <div key={review._id}>
-                                    <div>{review.text}</div>
-                                    <div>{review.ratings}</div>
-                                </div>
-                            )
-                        })
-                    }
+
+
+                    <ReviewList productReviews={productReviews} />
                 </div>
             </div>
 

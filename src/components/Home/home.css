@@ -17,8 +17,25 @@
     width: 75%;
 }
 
-.modalcontainer{
+.modalcontainer {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.mobile-bank-discount {
+    display: flex;
+    gap: 1rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    padding-top:1rem ;
+    padding-bottom: 1rem;
+    /* padding-right: 2rem; */
+}
+
+.mobile-bank-discount img {
+    width: 50%;
+    border-radius: 10px;
+    cursor: pointer;
+
 }

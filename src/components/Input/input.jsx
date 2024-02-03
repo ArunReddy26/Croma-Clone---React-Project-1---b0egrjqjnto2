@@ -102,7 +102,7 @@ const Maininput = () => {
     //     setShowSuggestions(true);
     // };
     return (
-        <div>
+        <div className="headermaininput">
             <form className="input1" onSubmit={handleInputChange}>
 
 

@@ -4,10 +4,10 @@ import { useState } from "react";
 import "./register.css";
 
 import Header from "../components/Header/header";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
 
     const [user, setuser] = useState(false);
@@ -64,11 +64,11 @@ const Register = () => {
     return (
         <div>
             <Header />
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "#191919", height: "92vh" }}>
+            <div className="mainusersignup">
                 <div className="signup">
-                    <p style={{fontSize:"1.4rem", fontWeight:"700"}}>Create New Account</p>
+                    <p className="signupcreatetext">Create New Account</p>
                     <div className="details">
-                    <input
+                        <input
                             type="text"
                             name="name"
                             className="input"
@@ -94,7 +94,9 @@ const Register = () => {
                             required
                         />
                     </div>
-                    <button style={{marginTop:"1rem"}}onClick={signedin}>Proceed</button>
+                    <div className="signupmainbutton">
+                        <button style={{ marginTop: "1rem" }} onClick={signedin}>Signup</button>
+                    </div>
                     <p className="new-user">Already Registered? <Link to="/login" style={{ color: "#12daa8" }}>Login</Link></p>
                 </div>
             </div>

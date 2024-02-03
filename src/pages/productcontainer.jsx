@@ -8,10 +8,26 @@ import "./productcontainer.css";
 import Dropcard from "../components/Card/dropcard";
 
 function ProductContainer() {
+  // Blue Star,Daikin,Haier,Voltas,Hitachi,Hisense
   const navigate = useNavigate();
   const { productCategory } = useParams();
   const [products, setProducts] = useState([]);
+  const [dropdownvalues, setdropdown] = useState([]);
   const [selectedOption, setSelectedOption] = useState('');
+
+  async function alldropdowncategories() {
+
+    const response = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/electronics/categories`, {
+      headers: {
+        projectID: "b0egrjqjnto2",
+      },
+    });
+    const jsonData = await response.json();
+    // console.log("jsondata", jsonData.data);
+
+    setdropdown(jsonData.data);
+  }
+
 
   async function brand(value) {
     console.log("value", value);
@@ -52,6 +68,7 @@ function ProductContainer() {
 
   useEffect(() => {
     getAllProductsCategoryWise(productCategory);
+    alldropdowncategories();
     window.scrollTo(0, 0);
   }, [productCategory]);
 
@@ -62,6 +79,7 @@ function ProductContainer() {
 
   const handleSelectChange = (e) => {
     const value = e.target.value;
+   
 
     if (value === "top rated") {
       dropcategories(value, productCategory)
@@ -91,8 +109,8 @@ function ProductContainer() {
 
 
     }
-    else if (value === "Apple" || value==="Samsung"|| value==="LG" ||value==="Acer"||value=="OnePlus"||value==="Xiaomi" ) {
-      
+    else if (value === "Apple" || value === "Samsung" || value === "LG" || value === "Acer" || value == "OnePlus" || value === "Xiaomi") {
+
       brand(value);
 
     }
@@ -101,9 +119,14 @@ function ProductContainer() {
       setProducts(electronics);
 
     }
-    else if(value == "laptop" || value=="ac" || value=="washingMachine" || value=="kitchenappliances"|| value=="tablet"|| value=="audio"|| value=="health"||value=="refrigerator"||value=="travel"){
-      getAllProductsCategoryWise(value);
+    else if (value == "laptop" || value == "ac" || value == "washingMachine" || value == "kitchenappliances" || value == "tablet" || value == "audio" || value == "health" || value == "refrigerator" || value == "travel"||value=="mobile"||value=="tv") {
+      // getAllProductsCategoryWise(value);
+      navigate(`/${value}`);
+      
+      
     }
+
+   
 
 
   };
@@ -114,7 +137,7 @@ function ProductContainer() {
     <div>
       <Header />
       <div className="container">
-        <div className="" style={{ padding: "1rem", textAlign: "left", marginLeft: "7rem", color: "white" }}>
+        <div className="" style={{ padding: "1rem", textAlign: "left", marginLeft: "8.3rem", color: "white" }}>
           <h1>{productCategory}</h1>
         </div>
         <div className="dropdowns">
@@ -122,22 +145,34 @@ function ProductContainer() {
             <div className="sort-dropdown">
 
               <select onChange={handleSelectChange}>
-                <option value="">Category</option>
+                {/* <option value="">Category</option>
                 <option value="electronics">Electronics</option>
                 <option value="priceLowToHigh">Price (Lowest to Highest)</option>
-                <option value="priceHighToLow">Price (Highest to Lowest)</option>
+                <option value="priceHighToLow">Price (Highest to Lowest)</option> */}
+                <option value="">Category</option>
+                {
+                  dropdownvalues.map((dropcategories) => {
+                    return (<option value={dropcategories}>{dropcategories}</option>)
+
+                  }
+
+                  )
+
+
+
+                }
               </select>
             </div>
             <div className="sort-dropdown">
 
               <select onChange={handleSelectChange}>
-                <option value="">Brand</option>     
+                <option value="">Brand</option>
                 <option value="LG">LG</option>
                 <option value="Acer">Acer</option>
                 <option value="OnePlus">OnePlus</option>
                 <option value="Xiaomi">Xiaomi</option>
                 <option value="Samsung">Samsung</option>
-                <option value="Apple">Apple</option>              
+                <option value="Apple">Apple</option>
               </select>
             </div>
             <div className="sort-dropdown">

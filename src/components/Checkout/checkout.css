@@ -82,4 +82,10 @@
   ._404-message a {
     text-decoration: none;
   }
-  
+  .cart-checkout-btn{
+    background: #12daa8;
+    color: black;
+    border-radius: 8px;
+    border: none;
+    
+  }

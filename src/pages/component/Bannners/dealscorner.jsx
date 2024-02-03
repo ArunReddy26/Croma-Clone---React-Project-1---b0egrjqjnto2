@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./newproducts.css";
 
 import Header from "../../../components/Header/header";
 import Dropcard from "../../../components/Card/dropcard";
@@ -52,9 +53,9 @@ const Dealscorner = () => {
             ) : (
 
                 <div>
-                    <div style={{ backgroundColor: "#191919" }}>
-                        <h1 style={{ color: "white", padding: "1rem" }}>Deals That Make You Smile</h1>
-                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap", gap: "2rem" }}>
+                    <div className="dealscorner">
+                        <h1  className="dealscornerheading">Deals That Make You Smile</h1>
+                        <div className="dealscornercontainer" >
                             {productlist.length > 0 &&
                                 Array.isArray(productlist) &&
                                 productlist.map((product) => {

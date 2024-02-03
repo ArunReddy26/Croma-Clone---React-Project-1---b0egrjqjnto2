@@ -1,4 +1,4 @@
-
+/* 
 .App {
   text-align: center;
 }
@@ -36,4 +36,135 @@
   to {
     transform: rotate(360deg);
   }
+} */
+@media only screen and (max-width: 600px) {
+  .header {
+    padding: 0.5rem;
+  }
+
+  .content1 {
+    flex-direction: column;
+    align-items: flex-start;
+
+  }
+
+  .headermobileview {
+    flex-direction: row-reverse;
+
+  }
+
+  .Menu .text-sm {
+    display: none;
+
+  }
+
+  .headersection2 {
+    display: none;
+  }
+
+  /* .headerusericon {
+    display: block;
+
+  }
+
+  .headercarticon {
+    display: block;
+  }  */
+
+  .mobile-bank-discount {
+    height: 60px;
+    padding: 0px;
+
+
+  }
+
+  .mobile-bank-discount img {
+
+
+    width: 70%;
+
+  }
+
+  .headermaininput {
+    width: 100%;
+  }
+
+  .carousel {
+    padding: 2rem !important;
+
+  }
+
+  .homestaticimagedeals {
+    flex-wrap: wrap;
+  }
+
+  .homestaticimagedeals .homeimages {
+    width: 45% !important;
+    margin: auto;
+  }
+
+
+
+  /* Dropdown product container page */
+  .dropdowns {
+    margin-left: 0;
+    margin-right: 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .dropdowns .firstlist {
+    flex-wrap: wrap;
+
+  }
+
+  /* Product Detail page */
+  .descriptionbox {
+    padding: 1rem;
+  }
+
+  .sp-outer-box {
+
+    flex-direction: column;
+  }
+
+  .sp-outer-box #sp-left-box {
+    width: 80%;
+  }
+
+  .sp-outer-box #sp-right-box {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .container2 {
+    margin-left: 0 !important;
+
+  }
+
+  .container3 {
+    margin-left: 0 !important;
+  }
+  /* ADD TO CART PAGE  */
+  .prodcart{
+    flex-direction: column;
+  } 
+  .cart{
+    flex-direction: column;
+    margin-left: 0;
+    
+  }
+  .carttitle{
+    text-align: center;
+  }
+  .cartseconndivnames{
+    flex-direction: column;
+  }
+  /* .cartimages{
+    width: 10%;
+  } */
+
+
+
 }

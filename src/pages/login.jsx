@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./login.css";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Header from "../components/Header/header";
 
 const Login = () => {
 
     const navigate = useNavigate();
-    const [user, setuser]=useState(false);
+    const [user, setuser] = useState(false);
 
 
 
@@ -18,14 +18,13 @@ const Login = () => {
                 body: JSON.stringify(userData),
             });
             const jsonData = await response.json();
-            if(jsonData.status === "success")
-            {
-            localStorage.setItem('token', jsonData.token);
-            delete jsonData['token'];
-            navigate("/");
-            console.log(jsonData);
+            if (jsonData.status === "success") {
+                localStorage.setItem('token', jsonData.token);
+                delete jsonData['token'];
+                navigate("/");
+                console.log(jsonData);
             }
-            else{
+            else {
                 setuser(true);
             }
         }
@@ -59,8 +58,8 @@ const Login = () => {
     }
     return (
         <div>
-        <Header/>
-            <div style={{display:"flex", alignItems:"center", justifyContent:"center", background:"#191919", height:"92vh"}}>
+            <Header />
+            <div className="mainuserlogin">
                 <div className="login">
                     <p>Please enter your Email ID or Phone number</p>
                     <div className="details">
@@ -87,12 +86,14 @@ const Login = () => {
                     </div>
 
                     <p className="terms">By continuing you agree to our terms and policies</p>
-                    <button onClick={signedin}>Continue</button>
+                    <div className="loginbutton">
+                        <button onClick={signedin}>Login</button>
+                    </div>
                     {
-                        user ? <h4 style={{color:"Red"}}>Not a Valid User Create Your Account</h4>:""
+                        user ? <h4 style={{ color: "Red", textAlign:"center" }}>Not a Valid User Create Your Account</h4> : ""
 
                     }
-                    <p className="new-user">Don't have an account? <Link to="/signup"style={{color:"#12daa8"}}>Register</Link></p>
+                    <p className="new-user">Don't have an account? <Link to="/signup" style={{ color: "#12daa8" }}>Register</Link></p>
                 </div>
             </div>
         </div>

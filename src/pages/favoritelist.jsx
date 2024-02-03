@@ -63,6 +63,7 @@ const Favouritelist = () => {
             <div>
                 {list?.length > 0 ? (
                     <div className="product-cart">
+                        <h2 >My Whishlist</h2>
                         <div style={{ display: "flex", flexDirection: "column", gap:"1.5rem"}}>
 
                             {list.map((pro) => {
@@ -77,10 +78,10 @@ const Favouritelist = () => {
 
                 ) : (
 
-                    <div className="orderscart" style={{ background: "#191919", height: "100vh" }}>
+                    <div className="favouriteorderscart">
                         
-                        <h2 style={{ textAlign: "center", color: "white" ,marginTop:"0"}}>My Whislist</h2>
-                        <div className="image" style={{ margin: "auto" }}>
+                        <h2 >My Whislist</h2>
+                        <div className="favouritewhislistimages" >
                             <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/f_auto,q_auto,d_Croma%20Assets:No_image.png/Croma%20Assets/UI%20Assets/sshz69afrixwivcsgnpx.svg" style={{ width: "260px", height: "150px" }} alt="order-cart" />
                             <h3 style={{ fontWeight: "800", color: "white" }}>Oops! Your wishlist looks empty</h3>
                             <p>Create your own wishlist with your favourites & share with your friends and loved ones!</p>

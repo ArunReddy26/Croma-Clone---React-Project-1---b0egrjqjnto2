@@ -135,10 +135,12 @@ const Cart = () => {
         <div>
 
             <Header />
+            {/* <h2 style={{ textAlign: "left", marginLeft: "8rem"}}>YOUR CART</h2> */}
 
             {products?.length > 0 ? (
                 <div className="prodcart">
-                    <div style={{ display: "flex", flexDirection: "column" }}>
+                      
+                    <div className="prodcartdiv">
 
                         {products.map((pro) => {
                             return <Cartproducts product={pro} movetowishlist={AddtoWishlist}cardClick={DeleteCart} />
@@ -152,8 +154,8 @@ const Cart = () => {
             ) : (
 
                 <div className="emptycart">
-                    <h2 style={{ textAlign: "left", marginLeft: "8rem"}}>YOUR CART</h2>
-                    <div className="image" style={{ margin: "auto" }}>
+                    <h2 style={{ textAlign: "left", marginLeft: "6rem"}}>YOUR CART</h2>
+                    <div className="image" style={{textAlign:"center"}}>
                         <img src="https://kind-leakey-f7509c.netlify.app/img/Empty.png" style={{ width: "260px", height: "150px" }} alt="empty-cart" />
                         <h3 style={{ fontWeight: "800"}}> Your Cart is Empty</h3>
                         <Link to="/" style={{ color: "#088466", fontWeight: "800", textDecoration: "underline" }}>continue shopping</Link>

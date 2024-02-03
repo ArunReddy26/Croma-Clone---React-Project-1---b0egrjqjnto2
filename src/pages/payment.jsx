@@ -6,12 +6,15 @@ import UPIForm from "./component/upi";
 import NetBankingForm from "./component/netbanking";
 import DebitCreditCardForm from "./component/debitcredit";
 import Checkoutheader from "./checkoutheader";
+import Cashondelivery from "./component/cashondelivery";
 
 const Payment = () => {
   // const [cartData, setCartDat] = useState([]);
   const [paymentMethod, setPaymentMethod] = useState(1);
   const [totalprice, settotalprice] = useState("");
   const [paymentproduct, setpaymentproduct] = useState([]);
+  const [address, setAddress] = useState(null);
+
 
 
 
@@ -35,35 +38,32 @@ const Payment = () => {
   }
 
 
-
-  // let totalPrice = 0;
-  // for (let x of cartData) {
-  //   totalPrice += x.product.price;
-  // }
-
   function handlePaymentOption(val) {
     setPaymentMethod(val);
   }
 
 
 
+
+
   useEffect(() => {
 
     Getcart();
+    const storedAddress = localStorage.getItem('addresses');
+    if (storedAddress) {
+      const parsedAddress = JSON.parse(storedAddress);
+      setAddress(parsedAddress);
+    }
 
   }, [])
+
   return (
     <>
       <Checkoutheader />
-      <div style={{ display: "flex" , backgroundColor:"white", height:"100vh"}}>
+      <div className="checkouttotalcontainer">
         <div className="checkoutMainContainer">
           <div className="paymentContainer">
-            {/* <div className="paymentMethodText">
-              <span>
-                Payable Amount: <span>{totalprice}</span>
-              </span>
-              <button className="paynowbtn">Pay Now</button>
-            </div> */}
+
             <div className="paymentOptionContainer">
               <div className="paymentOptions">
                 <div
@@ -125,10 +125,10 @@ const Payment = () => {
                     handlePaymentOption(5);
                   }}
                 >
-                  {/* <span style={{ marginRight: "10px" }}>
-                <img src="	https://images.bewakoof.com/web/cod-icon-1645705427.png" />
-              </span>
-              Cash On Delivery */}
+                  <span style={{ marginRight: "10px" }}>
+                    <img src="	https://images.bewakoof.com/web/cod-icon-1645705427.png" />
+                  </span>
+                  Cash On Delivery
                 </div>
               </div>
               <div className="paymentForm">
@@ -138,29 +138,48 @@ const Payment = () => {
                 {paymentMethod == 2 && <WalletForm totalPrice={totalprice} />}
                 {paymentMethod == 3 && <UPIForm totalPrice={totalprice} />}
                 {paymentMethod == 4 && <NetBankingForm totalPrice={totalprice} />}
+                {paymentMethod == 5 && (
+                  <Cashondelivery totalPrice={totalprice} />
+                )}
               </div>
             </div>
           </div>
         </div>
-        <div className="payout-form">
-          {/* <div className="checkout-total-summary">
-            <h3 className="checkout-form-heading">Order Summary</h3>
-            <div className="paymentimagecontainer" style={{ display: "flex" }}>
 
-          
-              {paymentproduct.map((pay, index) => (
-                <div key={index}>
-                  <img src={pay.product.displayImage} />
-                  <p>{pay.product.name}</p>
-                  <p>{pay.product.price}</p>
-                </div>
-              ))}
 
+        <div className="" style={{ display: "flex", flexDirection: "column" }}>
+          <div className="payout-form">
+            <h2>Shipping To</h2>
+            <div className="shippingaddressto">
+              <span>Name : {address?.fullname}  </span>
+              <span>Mobile : {address?.mobileno}</span>
+              <span>Pincode :{address?.pincode}</span>
+              <span>Address : {address?.street}, {address?.landmark}, {address?.area}, {address?.state}, {address?.city}</span>
+              <span>Deliver to: {address?.addresstype}</span>
+            </div>
+          </div>
+          <div className="lastcheckoutform">
+            <div className="lastcheckoutotalsummary">
+              <div className="lastcheckoutformproducts">
+                <h2>Ordering Products</h2>
+                <h3>Quantity:{paymentproduct.length} </h3>
+              </div>
+              <div className="lastcheckoutformproductssection">
+                {
+                  paymentproduct.map((payproduct) => {
+                    return (
+                      <div>
+                        <img src={payproduct.product.displayImage} alt="products"  />
+                        <h3>{payproduct.product.name}</h3>
+                      </div>
+                    )
+
+                  })
+                }
+              </div>
 
             </div>
-
-          </div> */}
-          
+          </div>
         </div>
       </div>
     </>

@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from "react";
 import "./productcard.css";
 import { FaHeart } from "react-icons/fa";
-// import { FaRegHeart } from "react-icons/fa";
 import { IoStarSharp } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { Link, useNavigate } from "react-router-dom";
+import { Rating } from "@mui/material";
 
 
 
@@ -17,7 +17,7 @@ const Productcard = (props) => {
   const [isClicked, setIsClicked] = useState(false);
   const navigate = useNavigate();
 
-  const { displayImage, price, name, _id } = props.product;
+  const { displayImage, price, name, _id, ratings } = props.product;
 
   const cardclick = () => {
     navigate(`/details/${_id}`)
@@ -57,7 +57,7 @@ const Productcard = (props) => {
 
 
   const DeleteWhislist = async (productID) => {
-    console.log("productID",productID);
+    console.log("productID", productID);
 
     const options = {
       method: 'DELETE',
@@ -82,13 +82,13 @@ const Productcard = (props) => {
   }
 
   return (
-    // <Link to={`/details/${_id}`} style={{color:"white"}}></Link>
+
     <div className="main">
       {
-        isClicked ? <FaHeart onClick={()=>delefromwhislist(_id)} className="heart" style={{ fontSize: "1.2rem", color: "#12daa8" }} /> : <CiHeart className="heart" onClick={() => addtowhislist(_id)} />
+        isClicked ? <FaHeart onClick={() => delefromwhislist(_id)} className="heart" style={{ fontSize: "1.2rem", color: "#12daa8" }} /> : <CiHeart className="heart" onClick={() => addtowhislist(_id)} />
 
       }
-      {/* <CiHeart className="heart" onClick={() => addtowhislist(_id)} /> */}
+
       <div className="image">
         <img src={displayImage} alt="" onClick={cardclick} />
       </div>
@@ -98,12 +98,15 @@ const Productcard = (props) => {
           <span>₹{price}</span>
         </div>
       </div>
-      <div className="star" onClick={cardclick}>
+      {/* <div className="star" onClick={cardclick}>
         <IoStarSharp />
         <IoStarSharp />
         <IoStarSharp />
         <IoStarSharp />
         <IoStarSharp />
+      </div> */}
+      <div className="cardstar">
+        <Rating style={{ color: "#12daa8", fontSize:"1.2rem" }} name="read-only" value={ratings} readOnly />
       </div>
     </div>
   );

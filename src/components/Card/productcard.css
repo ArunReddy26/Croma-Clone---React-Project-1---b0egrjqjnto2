@@ -47,17 +47,18 @@
     box-sizing: border-box;
     background: #121212;
   }
-  .product-name {
+  .cardproduct-name{
     display: flex;
     flex-direction: column;
     text-align: left;
   }
-  .product-name p {
+
+  .cardproduct-name p {
     font-size: 1rem;
     color: white;
     cursor: pointer;
   }
-  .product-name span {
+  .cardproduct-name span {
     font-weight: bolder;
     font-size: larger;
     color: white;

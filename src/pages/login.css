@@ -1,10 +1,21 @@
+.mainuserlogin{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #191919;
+  height: 92vh;
+}
 .login {
   width: 450px;
   height: 380px;
   padding-top: 2rem;
   margin-left: 5rem;
   background-color:black;
-  border-radius: 3px;
+  border-radius: 5px;
+}
+
+.login .loginbutton{
+  text-align: center;
 }
 
 .details {
@@ -34,8 +45,9 @@
   color: white;
 }
 
-p {
+.login p {
   color: white;
+  text-align: center;
 
 }
 

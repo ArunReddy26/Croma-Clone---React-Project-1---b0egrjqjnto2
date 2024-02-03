@@ -107,9 +107,13 @@ const Checkoutform = () => {
             // console.log("form submitted");
             localStorage.setItem('addresses', JSON.stringify(userAddress));
             setUserAddress(updateddata);
-            alert("form Details saved succesfully");
+            // alert("form Details saved succesfully");
+           
 
         }
+        navigate("/payment");
+       
+
 
 
     }
@@ -162,8 +166,8 @@ const Checkoutform = () => {
                         <button className="" name="addresstype" onClick={handleclick} value="Other">Other</button>
                     </div>
                     <div style={{display:"flex", gap:"1rem", justifyContent:"center", alignItems:"center", marginTop:"1rem"}}>
-                    <button className="" style={{width:"150px", border:"2px solid #12daa8"}}type="submit" onClick={handleform}>Save Address</button>
-                    <button className="" style={{width:"150px", border:"2px solid #12daa8"}}onClick={addnewaddress}>Add New Address</button>
+                    <button className="" style={{width:"150px", border:"2px solid #12daa8"}}type="submit" onClick={handleform}>Go to Payment</button>
+                    {/* <button className="" style={{width:"150px", border:"2px solid #12daa8"}}onClick={addnewaddress}>Add New Address</button> */}
                     </div>
                 </form>
                 <Checkout Price={totalprice} paymentclick={gottopaymentpage}/>

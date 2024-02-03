@@ -1,21 +1,10 @@
-/* .slider1{
-  width:350px;
-  height: 380px;
-  padding-left: 3rem;
-  background: #393939;
-}
-
-.slider1 .image{
-  background: #393939;
-  border-radius: 1rem;
-} */
 
 
 .dropcontainer{
   width:350px;
 }
-
-.dropcontainer .imagecontainer{
+.imagecontainer{
+  text-align: center;
   position: relative;
   background: #393939;
   border-radius: 1rem;
@@ -23,14 +12,14 @@
 }
 
 
-.dropcontainer .imagecontainer img{
+ .imagecontainer img{
   width:260px;
   height:260px;
-  background: #393939;
+ 
   padding: 1rem;
   cursor: pointer;
 }
-.dropcontainer .product-details {
+ .dropproduct-details {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,21 +28,41 @@
   box-sizing: border-box;
   background: #191919;
 }
-.product-name {
+.dropproduct-name {
   display: flex;
   flex-direction: column;
   gap:10px;
   text-align: left;
 }
-.product-name p {
+.dropproduct-name p {
   font-size: 16px;
   color: white;
+  font-weight: 800;
+  height: 56px;
+  overflow: hidden;
 }
-.product-name span {
+.dropratings{
+  color: #12daa8;
+  font-size: 1rem;
+
+}
+.dropproduct-name span {
   font-weight: bolder;
-  font-size: larger;
+ 
   color: white;
   margin-top: 5px;
+}
+.droptool{
+  color: white;
+  background: #191919;
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+
+}
+ .droptooltext{
+  font-size: 1rem;
+  position: absolute;
 }
 
 .dropheart {

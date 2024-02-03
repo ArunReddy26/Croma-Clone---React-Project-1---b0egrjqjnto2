@@ -3,13 +3,13 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "./images.css";
 import { useEffect, useState } from "react";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Productcard from "../Card/productcard";
 const Carousel = () => {
   // const { isModalOpen, setModalOpen } = props;
   // console.log("open",open);
   // console.log("close",close);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
 
 
@@ -315,6 +315,32 @@ const Carousel = () => {
     speed: 500,
     slidesToShow: 7,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
   const settings1 = {
     dots: false,
@@ -322,54 +348,94 @@ const Carousel = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
+    
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
 
   }
-
-const imageclick=(e,index)=>{
-  console.log(`Clicked on image with index: ${index}`);
-  if(index==0){ 
-    navigate(`/unboxed`)
-  }
-  else if(index==1){ 
-    navigate(`/search/iphone`)
-  }
-
-  else if(index==2){
-    navigate(`/search/tv`);
-
-
-  }
-  else if(index==3){
-
-    navigate(`/search/laptop`);
-  }
-  else if(index==5){
-    navigate(`/search/refrigerator`);
-
-  }
-
-  else if(index==7){
-    navigate(`/search/ac`);
-
-  }
-  else if(index==8){
+  const audioimagesclick=()=>{
     navigate(`/search/audio`);
 
   }
-  else if(index==9){
-    navigate(`/search/washingMachine`);
-
-  }
-  else if(index==10){
+  const kitchenimagesclick=()=>{
     navigate(`/search/kitchenappliances`);
-
   }
-  else if(index==12){
-    navigate(`/search/tablet`);
-
+  const laptopimagesclick=()=>{
+    navigate(`/search/laptop`);
   }
 
-}
+  const imageclick = (e, index) => {
+    console.log(`Clicked on image with index: ${index}`);
+    if (index == 0) {
+      navigate(`/unboxed`)
+    }
+    else if (index == 1) {
+      navigate(`/search/iphone`)
+    }
+
+    else if (index == 2) {
+      navigate(`/search/tv`);
+
+
+    }
+    else if (index == 3) {
+
+      navigate(`/search/laptop`);
+    }
+    else if (index == 5) {
+      navigate(`/search/refrigerator`);
+
+    }
+
+    else if (index == 7) {
+      navigate(`/search/ac`);
+
+    }
+    else if (index == 8 || index == 4) {
+      navigate(`/search/audio`);
+
+    }
+    else if (index == 9) {
+      navigate(`/search/washingMachine`);
+
+    }
+    else if (index == 10) {
+      navigate(`/search/kitchenappliances`);
+
+    }
+    else if (index == 12) {
+      navigate(`/search/tablet`);
+
+    }
+    else if (index == 11 || index == 13 || index == 14 || index == 15 || index == 16 || index == 17) {
+      navigate("/unboxed");
+    }
+
+  }
 
 
   return (
@@ -378,18 +444,13 @@ const imageclick=(e,index)=>{
       <Slider {...settings}>
         {images?.map((image, index) => (
           <div key={index} className="images" onClick={(e) => imageclick(e, index)} >
-            <img src={image} alt={`Image ${index + 1}`}/>
+            <img src={image} alt={`Image ${index + 1}`} />
           </div>
         ))}
       </Slider>
       <p
-        style={{
-          marginTop: "4rem",
-          fontSize: "22px",
-          textAlign: "left",
-          fontWeight: "600",
-          color: "white",
-        }}
+        className="homeheadings"
+
       >
         Deals Of The Day
       </p>
@@ -408,13 +469,7 @@ const imageclick=(e,index)=>{
 
 
       <p
-        style={{
-          marginTop: "4rem",
-          fontSize: "22px",
-          textAlign: "left",
-          fontWeight: "600",
-          color: "white",
-        }}
+        className="homeheadings"
       >
         Top Trending Deals
       </p>
@@ -432,40 +487,24 @@ const imageclick=(e,index)=>{
 
       </Slider>
       <p
-        style={{
-          marginTop: "4rem",
-          fontSize: "22px",
-          textAlign: "left",
-          fontWeight: "600",
-          color: "white",
-        }}
+        className="homeheadings"
       >
         Audio
       </p>
 
 
       <div
-        style={{
-          display: "flex",
-          width: "100%",
-          gap: "1rem",
-          marginTop: "1rem",
-        }}
+        className="homestaticimagedeals"
+
       >
         {audioimages.map((image, index) => (
 
-          <img src={image} alt={`Image ${index + 1}`} style={{ width: "265px", borderRadius: "10px" }} />
+          <img src={image} alt={`Image ${index + 1}`} className="homeimages"  onClick={() => audioimagesclick()} />
         ))}
       </div>
 
       <p
-        style={{
-          marginTop: "4rem",
-          fontSize: "22px",
-          textAlign: "left",
-          fontWeight: "600",
-          color: "white",
-        }}
+        className="homeheadings"
       >
         Deals on Audio
       </p>
@@ -482,38 +521,22 @@ const imageclick=(e,index)=>{
 
       </Slider>
       <p
-        style={{
-          marginTop: "4rem",
-          fontSize: "22px",
-          textAlign: "left",
-          fontWeight: "600",
-        }}
+        className="homeheadings"
       >
         Kitchen Appliances
       </p>
       <div
-        style={{
-          display: "flex",
-          width: "100%",
-          gap: "1rem",
-          marginTop: "1rem",
-        }}
+        className="homestaticimagedeals"
       >
 
         {kitchenimages.map((image, index) => (
 
-          <img src={image} alt={`Image ${index + 1}`} style={{ width: "265px", borderRadius: "10px" }} />
+          <img src={image} alt={`Image ${index + 1}`} className="homeimages" onClick={() => kitchenimagesclick()}/>
         ))}
       </div>
 
       <p
-        style={{
-          marginTop: "4rem",
-          fontSize: "22px",
-          textAlign: "left",
-          fontWeight: "600",
-          color: "white",
-        }}
+        className="homeheadings"
       >
         Kitchen Appliances
 
@@ -533,35 +556,25 @@ const imageclick=(e,index)=>{
 
 
       <p
-        style={{
-          marginTop: "4rem",
-          fontSize: "22px",
-          textAlign: "left",
-          fontWeight: "600",
-        }}
+        className="homeheadings"
       >
         Deals On Laptops
       </p>
 
 
       <div
-        style={{
-          display: "flex",
-          width: "100%",
-          gap: "1rem",
-          marginTop: "1rem",
-        }}
+        className="homestaticimagedeals"
       >
 
         {laptopimages.map((image, index) => (
 
-          <img src={image} alt={`Image ${index + 1}`} style={{ width: "265px", borderRadius: "10px" }} />
+          <img src={image} alt={`Image ${index + 1}`} className="homeimages" onClick={() => laptopimagesclick()}/>
         ))}
       </div>
 
-      
 
-      <Slider {...settings1} style={{marginTop:"2rem"}}>
+
+      <Slider {...settings1} style={{ marginTop: "2rem" }}>
         {
 
           laptops.map((product) => {
@@ -575,13 +588,7 @@ const imageclick=(e,index)=>{
       </Slider>
 
       <p
-        style={{
-          marginTop: "4rem",
-          fontSize: "22px",
-          textAlign: "left",
-          fontWeight: "600",
-          color: "white",
-        }}
+        className="homeheadings"
       >
         Televisions
 
@@ -602,13 +609,7 @@ const imageclick=(e,index)=>{
 
 
       <p
-        style={{
-          marginTop: "4rem",
-          fontSize: "22px",
-          textAlign: "left",
-          fontWeight: "600",
-          color: "white",
-        }}
+        className="homeheadings"
       >
         Air Conditioners
 
@@ -627,13 +628,7 @@ const imageclick=(e,index)=>{
       </Slider>
 
       <p
-        style={{
-          marginTop: "4rem",
-          fontSize: "22px",
-          textAlign: "left",
-          fontWeight: "600",
-          color: "white",
-        }}
+        className="homeheadings"
       >
         Tablets
       </p>
@@ -654,13 +649,7 @@ const imageclick=(e,index)=>{
 
 
       <p
-        style={{
-          marginTop: "4rem",
-          fontSize: "22px",
-          textAlign: "left",
-          fontWeight: "600",
-          color: "white",
-        }}
+        className="homeheadings"
       >
         Refrigerators
       </p>
@@ -680,12 +669,7 @@ const imageclick=(e,index)=>{
       </Slider>
 
       <p
-        style={{
-          marginTop: "4rem",
-          fontSize: "22px",
-          textAlign: "left",
-          fontWeight: "600",
-        }}
+        className="homeheadings"
       >
         Washing Machines
       </p>
@@ -704,12 +688,7 @@ const imageclick=(e,index)=>{
       </Slider>
 
       <p
-        style={{
-          marginTop: "4rem",
-          fontSize: "22px",
-          textAlign: "left",
-          fontWeight: "600",
-        }}
+        className="homeheadings"
       >
         Health
       </p>
@@ -727,12 +706,7 @@ const imageclick=(e,index)=>{
       </Slider>
 
       <p
-        style={{
-          marginTop: "4rem",
-          fontSize: "22px",
-          textAlign: "left",
-          fontWeight: "600",
-        }}
+        className="homeheadings"
       >
         Travel
       </p>

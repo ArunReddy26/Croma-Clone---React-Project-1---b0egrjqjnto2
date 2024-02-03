@@ -8,20 +8,21 @@ const Cartproducts = (props) => {
     return (
 
         // <div style={{ display: "flex", marginTop: "5rem", boxShadow: "1px 1px 5px rgba(0,0,0,0.2)" }}>
-        <div style={{display:"flex", gap:"1rem"}}>
+        <div className="maincart">
             <div className="cart" >
-                <div className="images">
+                <div className="cartimages">
                     <img
                         src={product && product?.product?.displayImage}
-                        alt=""
+                        alt="cartimages"
                         style={{ width: "200px", height: "200px" }}
                     />
                 </div>
-                <div style={{ display: "flex" }}>
+                <div className="cartseconndivnames">
 
-                    <div className="content">
-                        <div className="title" style={{ textAlign: "left" }}>
-                            <p style={{ width: "400px", fontWeight: "600" }}>
+                    <div className="cartcontent">
+                        <div className="carttitle">
+                            {/* <p style={{ width: "400px", fontWeight: "600" }}> */}
+                            <p className="cartproductname">
                                 {product?.product?.name}
                             </p>
                             <div className="star">
@@ -32,7 +33,7 @@ const Cartproducts = (props) => {
                                 <MdOutlineStar className="stars" />
                             </div>
                             <div style={{ marginTop: "1rem" }}>
-                                Standard Delivery <br /> December 2023
+                                Standard Delivery <br /> February 2024
                             </div>
                             <div className="Button" style={{ marginTop: "1rem" }}>
                                 <button className="btn1"onClick={() => movetowishlist(product.product._id)}>Move to Wishlist</button>

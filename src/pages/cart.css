@@ -2,6 +2,11 @@
     display: flex;
     background-color: white;
 }
+.prodcartdiv{
+    display: flex;
+    flex-direction: column;
+
+}
 .emptycart{
     background-color: white;
 }
