@@ -6,34 +6,41 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Checkoutform = () => {
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
     const [totalprice, settotalprice] = useState("");
-    
+
 
     const [local, setlocal] = useState({});
 
-    function checkdatalocal(){
-        const datainls=JSON.parse(localStorage.getItem('addresses'));
-        console.log("dacainls",datainls);
+    function checkdatalocal() {
+        const datainls = JSON.parse(localStorage.getItem('addresses'));
+        console.log("dacainls", datainls);
         setlocal(datainls);
 
     }
 
-    function addnewaddress(){
-        localStorage.removeItem('addresses');
-        setUserAddress( {
-            pincode: "",
-            fullname: "",
-            street: "",
-            landmark: "",
-            area: "",
-            city: "",
-            state: "",
-            mobileno: "",
-            addresstype: ""
+    function addnewaddress(e) {
+        e.preventDefault();
+        if (userAddress.pincode && userAddress.state && userAddress.city && userAddress.fullname && userAddress.landmark && userAddress.area && userAddress.mobileno && userAddress.addresstype && userAddress.street) {
+            localStorage.removeItem('addresses');
+            setUserAddress({
+                pincode: "",
+                fullname: "",
+                street: "",
+                landmark: "",
+                area: "",
+                city: "",
+                state: "",
+                mobileno: "",
+                addresstype: ""
 
-        })
+            })
+        }
+        else{
+            alert("Please fill all the details")
+        }
+        
     }
 
 
@@ -86,7 +93,7 @@ const Checkoutform = () => {
         e.preventDefault();
         const updateddata = { ...userAddress };
         updateddata[e.target.name] = e.target.value;
-        // console.log("updateddata", updateddata);
+
         setUserAddress(updateddata);
     }
 
@@ -95,8 +102,7 @@ const Checkoutform = () => {
         const updateddata = { ...userAddress };
         updateddata[e.target.name] = e.target.value;
         setUserAddress(updateddata);
-        // console.log("value", e.target.value);
-        // console.log("valuename", e.target.name);
+
 
     }
     const handleform = (e) => {
@@ -108,23 +114,33 @@ const Checkoutform = () => {
             localStorage.setItem('addresses', JSON.stringify(userAddress));
             setUserAddress(updateddata);
             // alert("form Details saved succesfully");
-           
+
 
         }
-        navigate("/payment");
-       
+        if (localStorage.getItem('addresses')) {
+            navigate("/payment");
+        }
+        else {
+            alert("Please fill all the details");
+
+        }
+
+
 
 
 
     }
 
-    function gottopaymentpage(){
+    function gottopaymentpage() {
+
         navigate("/payment");
     }
+
+
     return (
         <div style={{ width: "100%", height: "100%" }}>
             <Checkoutheader />
-            <div style={{ display: "flex", gap: "2rem", backgroundColor:"white"}}>
+            <div style={{ display: "flex", gap: "2rem", backgroundColor: "white" }}>
                 <form className="form-container">
                     <h1>Checkout Form</h1>
                     <div className="form-section1">
@@ -138,11 +154,9 @@ const Checkoutform = () => {
                     <h2 style={{ textAlign: "left" }}>Address Details</h2>
 
                     <div className="form-section2">
-                        {/* <label htmlFor="nickname">Nickname</label>
-                        <input type="text" id="nickname"   onChange={handleSubmit} required /> */}
 
                         <label htmlFor="pincode">Pincode<sup>*</sup></label>
-                        <input type="text" id="pincode" value={local?.pincode}name="pincode" onChange={handleSubmit} required />
+                        <input type="text" id="pincode" value={local?.pincode} name="pincode" onChange={handleSubmit} required />
 
                         <label htmlFor="street">Street<sup>*</sup></label>
                         <input type="text" id="street" value={local?.street} name="street" onChange={handleSubmit} required />
@@ -165,12 +179,12 @@ const Checkoutform = () => {
                         <button className="" name="addresstype" onClick={handleclick} value="Work">Work</button>
                         <button className="" name="addresstype" onClick={handleclick} value="Other">Other</button>
                     </div>
-                    <div style={{display:"flex", gap:"1rem", justifyContent:"center", alignItems:"center", marginTop:"1rem"}}>
-                    <button className="" style={{width:"150px", border:"2px solid #12daa8"}}type="submit" onClick={handleform}>Go to Payment</button>
-                    {/* <button className="" style={{width:"150px", border:"2px solid #12daa8"}}onClick={addnewaddress}>Add New Address</button> */}
+                    <div style={{ display: "flex", gap: "1rem", justifyContent: "center", alignItems: "center", marginTop: "1rem" }}>
+                        <button className="" style={{ width: "150px", border: "2px solid #12daa8" }} type="submit" onClick={handleform}>Go to Payment</button>
+                        <button className="" style={{ width: "150px", border: "2px solid #12daa8" }} onClick={addnewaddress}>Add New Address</button>
                     </div>
                 </form>
-                <Checkout Price={totalprice} paymentclick={gottopaymentpage}/>
+                <Checkout Price={totalprice} paymentclick={gottopaymentpage} />
             </div>
         </div>
     )

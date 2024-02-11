@@ -6,6 +6,7 @@ import Paybutton from "./paybutton";
 // import PayButton from "./Paybutton";
 
 function WalletForm(props) {
+  const {totalPrice, paymentproduct}=props;
   const [paymentNumber, setPaymentNumber] = useState(0);
   function handlePaymentOption(val) {
     setPaymentNumber(val);
@@ -30,7 +31,7 @@ function WalletForm(props) {
             <input type="radio" />
           </div>
         </div>
-        {paymentNumber == 1 && <Paybutton totalPrice={props.totalPrice} />}
+        {paymentNumber == 1 && <Paybutton totalPrice={totalPrice} paymentproduct={paymentproduct}/>}
       </div>
 
       <div>
@@ -51,7 +52,7 @@ function WalletForm(props) {
             <input type="radio" />
           </div>
         </div>
-        {paymentNumber == 2 && <Paybutton totalPrice={props.totalPrice} />}
+        {paymentNumber == 2 && <Paybutton totalPrice={totalPrice} paymentproduct={paymentproduct}/>}
       </div>
 
       <div>
@@ -72,7 +73,7 @@ function WalletForm(props) {
             <input type="radio" />
           </div>
         </div>
-        {paymentNumber == 3 && <Paybutton totalPrice={props.totalPrice} />}
+        {paymentNumber == 3 && <Paybutton totalPrice={totalPrice} paymentproduct={paymentproduct}/>}
       </div>
 
       <div>
@@ -93,7 +94,7 @@ function WalletForm(props) {
             <input type="radio" />
           </div>
         </div>
-        {paymentNumber == 4 && <Paybutton totalPrice={props.totalPrice} />}
+        {paymentNumber == 4 && <Paybutton totalPrice={totalPrice} paymentproduct={paymentproduct} />}
       </div>
     </div>
   );

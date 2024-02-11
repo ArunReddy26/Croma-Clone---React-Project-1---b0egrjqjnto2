@@ -9,13 +9,14 @@
     margin-bottom: 2rem;
 }
 
-.whislist .whislistimage {
+.whislistimage {
     background:white;
+    text-align: center;
 
 
 }
 
-.whislist .whislistimage img {
+.whislistimage img {
     width: 10rem;
     height: 13rem;
     margin-left: 1rem;
@@ -26,7 +27,6 @@
 
 
 .whislist-details {
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,6 +47,11 @@
     font-size: 1rem;
     color: black;
     cursor: pointer;
+
+    width: 246.25px;
+     height: 57px;
+     font-weight:600;
+      overflow: hidden;
 }
 
 .whislist-name span {

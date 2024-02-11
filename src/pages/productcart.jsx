@@ -7,7 +7,6 @@ const Cartproducts = (props) => {
 
     return (
 
-        // <div style={{ display: "flex", marginTop: "5rem", boxShadow: "1px 1px 5px rgba(0,0,0,0.2)" }}>
         <div className="maincart">
             <div className="cart" >
                 <div className="cartimages">
@@ -43,25 +42,9 @@ const Cartproducts = (props) => {
                     </div>
                     <h2>₹{product?.product?.price}</h2>
                 </div>
-                {/* <div className="price">
-            <div className="main1">
-                <h4>₹{product.product.price}</h4>
-                <h5>(Incl. all Taxes)</h5>
-                <div>____________</div>
-                <span className="amountstrike">
-                    <span>MRP </span>₹74,990.00
-                </span>
-                <div className="saverupee">(Save ₹25,151.00)</div>
-                <div>____________</div>
-                <span className="amountstrike">
-                    <span>₹</span>3177/mo*
-                </span>
-                <span>EMI Options</span>
-            </div>
-        </div> */}
+                
 
             </div >
-            {/* <Checkout/> */}
         </div>
 
 

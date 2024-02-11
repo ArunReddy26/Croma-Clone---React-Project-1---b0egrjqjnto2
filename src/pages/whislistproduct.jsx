@@ -8,14 +8,6 @@ const Whishlist = (props) => {
     const { wishlistproducts,addtocart,deletewish} = props;
    
 
-
-
-
-
-   
-
-
-
     return (
         <div className="whislist">
 
@@ -24,7 +16,7 @@ const Whishlist = (props) => {
             </div>
             <div className="whislist-details">
                 <div className="whislist-name">
-                    <p style={{ width: "246.25px", height: "57px", fontWeight: "600", overflow: "hidden" }}>{wishlistproducts.products.name}</p>
+                    <p>{wishlistproducts.products.name}</p>
                     <span>₹{wishlistproducts.products.price}</span>
                 </div>
             </div>

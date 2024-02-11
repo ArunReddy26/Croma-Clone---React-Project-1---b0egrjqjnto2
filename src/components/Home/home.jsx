@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Header from "../Header/header";
 import Banner from "../Banner/banner";
 import "./home.css";
@@ -9,11 +9,32 @@ import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+    const [cartcount, setcartcount]=useState(0);
+
+
+    async function Headercartcount() {
+        const promise = await fetch("https://academics.newtonschool.co/api/v1/ecommerce/cart", {
+            headers: {
+                projectID: "b0egrjqjnto2",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        });
+        const response = await promise.json();
+        setcartcount(response.results);
+    }
+    
     const navigate=useNavigate();
     function bankdiscount(){
         navigate("/lp-more-for-your-money");
 
     }
+
+
+
+  useEffect(() => {
+    Headercartcount();
+  }, []);
+
     // const [isModalOpen, setModalOpen] = useState(false);
 //   const openModal = () => setModalOpen(true);
 //   const closeModal = () => setModalOpen(false);
@@ -32,7 +53,7 @@ const Home = () => {
     return (
         <div className="Home">
            
-            <Header />
+            <Header cartcount={cartcount}/>
             <Banner />
             <div
             className="mobile-bank-discount"

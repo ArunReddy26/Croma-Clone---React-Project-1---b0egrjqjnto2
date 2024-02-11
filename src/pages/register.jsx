@@ -11,6 +11,7 @@ const Register = () => {
 
 
     const [user, setuser] = useState(false);
+    const [message, setMessage] = useState("");
 
 
 
@@ -30,6 +31,7 @@ const Register = () => {
             }
             else {
                 setuser(true);
+                setMessage(jsonData.message);
             }
         }
         catch (error) {
@@ -97,6 +99,10 @@ const Register = () => {
                     <div className="signupmainbutton">
                         <button style={{ marginTop: "1rem" }} onClick={signedin}>Signup</button>
                     </div>
+                    {
+                        message ? <h4 style={{ color: "Red", textAlign: "center" }}>{message}</h4> : ""
+
+                    }
                     <p className="new-user">Already Registered? <Link to="/login" style={{ color: "#12daa8" }}>Login</Link></p>
                 </div>
             </div>

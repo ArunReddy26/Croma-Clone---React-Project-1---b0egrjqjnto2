@@ -12,12 +12,14 @@ import Emptycart from "../pages/emptycart";
 import Checkoutform from "../pages/checkoutform";
 import Inputproduct from "../pages/inputproducts";
 import Payment from "../pages/payment";
-import Order from "../pages/order";
 import Favouritelist from "../pages/favoritelist";
 import Register from "../pages/register";
 import Bankdiscount from "../pages/bankdiscount";
 import Dealscorner from "../pages/component/Bannners/dealscorner";
 import Newproducts from "../pages/component/Bannners/newproducts";
+import OrderPlaced from "../pages/component/Order-Placed/orderplace";
+import Orderhistorycontainer from "../pages/component/Bannners/orderhistory";
+import SingleOrderHistory from "../pages/component/Singleorder-history/singleorder";
 
 
 function App() {
@@ -38,12 +40,14 @@ function App() {
       <Route path="/checkout" element={<Checkoutform/>}/>
       <Route path="/search/:userinput" element={<Inputproduct/>}/>
       <Route path="/payment" element={<Payment/>}/>
-      <Route path="/orders" element={<Order/>}/>
+      <Route path="/myorders" element={<Orderhistorycontainer/>}/>
       <Route path="/mywhislist" element={<Favouritelist/>}/>
       <Route path="/signup" element={<Register/>}/>
       <Route path="/lp-more-for-your-money" element={<Bankdiscount/>}/>
       <Route path="/dealscorner" element={<Dealscorner/>}/>
       <Route path="/unboxed" element={<Newproducts/>}/>
+      <Route path="/order-placed" element={<OrderPlaced />} />
+      <Route path="single-order-history/:orderId" element={<SingleOrderHistory />}/>
       
      
     </Routes>

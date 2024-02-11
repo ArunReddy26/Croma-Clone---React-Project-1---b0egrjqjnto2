@@ -62,13 +62,12 @@ const Favouritelist = () => {
             <Header />
             <div>
                 {list?.length > 0 ? (
-                    <div className="product-cart">
+                    <div className="favouritelistproductcart">
                         <h2 >My Whishlist</h2>
-                        <div style={{ display: "flex", flexDirection: "column", gap:"1.5rem"}}>
+                        <div className="favouritelistproducts">
 
                             {list.map((pro) => {
-                                // movetowishlist={AddtoWishlist} cardClick={DeleteCart}
-                                // addtocart={AddCart} deletewish={DeleteWhislist}
+                               
                                 return <Card wishlistproducts={pro} cardClick={DeleteWhislist} addtocart={AddCart} />
                             })}
                         </div>

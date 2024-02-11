@@ -1,11 +1,15 @@
 .searchcontainer {
-  /* height: 500vh; */
+  
   background-color: #191919;
 }
-
+.inputproductheading{
+  text-align: left;
+  padding: 1rem;
+  margin-left: 8rem;
+  color: white;
+}
 .userproductscontainer {
-  /* width: 100%;
-    height: 100%; */
+ 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +28,7 @@
   margin-bottom: 5rem;
 }
 
-.inputdropdowns .inputfirstlist {
+.inputfirstlist {
   margin-left: 1.4rem;
   display: flex;
   gap: 1rem;

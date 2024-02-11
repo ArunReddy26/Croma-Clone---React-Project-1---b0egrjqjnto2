@@ -10,4 +10,28 @@
 .emptycart{
     background-color: white;
 }
+.emptycart  h2{
+    text-align: left;
+    margin-left: 11rem;
+  
+}
+.carwhislistmain{
+    background-color: white;
 
+}
+.cartwhislistbox{
+    margin-top: 2rem;
+
+}
+.cartwhislistbox h2{
+    text-align: left;
+    margin-left: 6rem;
+
+}
+.carwhislistcontainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-left: 6rem;
+    
+}

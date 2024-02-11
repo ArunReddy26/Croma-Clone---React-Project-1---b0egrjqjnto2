@@ -62,14 +62,6 @@
     display: none;
   }
 
-  /* .headerusericon {
-    display: block;
-
-  }
-
-  .headercarticon {
-    display: block;
-  }  */
 
   .mobile-bank-discount {
     height: 60px;
@@ -106,6 +98,10 @@
 
 
   /* Dropdown product container page */
+  .containerheading{
+    margin-left: 0;
+    text-align: center;
+  }
   .dropdowns {
     margin-left: 0;
     margin-right: 0;
@@ -113,9 +109,12 @@
     gap: 1rem;
   }
 
-  .dropdowns .firstlist {
+  .firstlist {
     flex-wrap: wrap;
 
+  }
+  .secondlist{
+    margin-left: 1.3rem;
   }
 
   /* Product Detail page */
@@ -161,10 +160,43 @@
   .cartseconndivnames{
     flex-direction: column;
   }
-  /* .cartimages{
-    width: 10%;
-  } */
+  /* user serach page  */
+  .inputproductheading{
+    margin-left: 0;
+    text-align: center;
+  }
+  .inputdropdowns{
+    margin-left: 0;
+   
+    flex-wrap: wrap;
+    gap: 1rem;
 
+  }
+  .inputfirstlist {
+    flex-wrap: wrap;
 
+  }
+  .inputsecondist{
+    margin-left: 1.3rem;
+  }
+/* whislistpage css as added */
+.whislist-cart{
+  width: 90%;
+  flex-direction: column;
+  padding: 3rem;
+}
+.whislist-second-content{
+  flex-direction: column-reverse;
+ 
+
+}
+.whislist-cartimages{
+  margin-right: 0;
+
+}
+.whislistcontent1 h2{
+ text-align: center;
+
+}
 
 }

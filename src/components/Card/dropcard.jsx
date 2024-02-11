@@ -65,6 +65,7 @@ const Dropcard = (props) => {
 
     <div className="dropcontainer">
       <div className="imagecontainer">
+      
         <img src={product.displayImage} alt="" onClick={() => click(product._id)} />
 
         {

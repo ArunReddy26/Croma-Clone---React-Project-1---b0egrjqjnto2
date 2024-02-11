@@ -15,6 +15,8 @@ const Productdetail = () => {
     const { product_id } = useParams();
     const [productdetails, setProductDetails] = useState({});
     const [productReviews, setProductReviews] = useState([]);
+    const [cartcount, setcartcount] = useState(0);
+    const [btn, setbtn] = useState(false);
     async function getProductDetails(id) {
         try {
             const response = await fetch(GET_PRODUCT_DETAILS(id), {
@@ -30,6 +32,26 @@ const Productdetail = () => {
             console.log(error);
         }
     }
+
+
+    async function Getcart() {
+        const promise = await fetch("https://academics.newtonschool.co/api/v1/ecommerce/cart", {
+            headers: {
+                projectID: "b0egrjqjnto2",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        });
+        const response = await promise.json();
+        
+        if (response?.data?.items[0]?.product?._id) {
+            setbtn(true);
+        }
+        else{
+            setbtn(false);
+        }
+        setcartcount(response.results);
+    }
+
 
     async function getProductReviews(id) {
         try {
@@ -58,7 +80,9 @@ const Productdetail = () => {
         }
         const data = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/cart/${productID}`, options)
         const resData = await data.json();
-        // console.log("resdata", resData);
+        Getcart();
+
+
     }
 
 
@@ -79,6 +103,7 @@ const Productdetail = () => {
 
 
         if (localStorage.getItem('token')) {
+
             Addcart(id);
             alert("Product Added to Cart");
 
@@ -94,6 +119,7 @@ const Productdetail = () => {
     useEffect(() => {
         getProductDetails(product_id);
         getProductReviews(product_id);
+        Getcart();
         window.scrollTo(0, 0);
     }, [])
 
@@ -103,7 +129,7 @@ const Productdetail = () => {
     return (
         <div>
 
-            <Header />
+            <Header cartcount={cartcount} />
             <div className="descriptionbox">
                 <div className="sp-outer-box">
                     <div id="sp-left-box">
@@ -131,7 +157,7 @@ const Productdetail = () => {
                             <MdOutlineStar className="stars" />
                         </div>
                         <div id="sp-price-box">
-                            <span id="sp-discounted-amount">₹25990</span>
+                            <span id="sp-discounted-amount">₹{productdetails.price}</span>
                             <span className="sp-mrp-text">MRP</span>
                             <span id="sp-original-amount"></span>
                             <span className="sp-tax-text">(Inclusive of all taxes)</span>
@@ -151,7 +177,9 @@ const Productdetail = () => {
 
                         <div className="sp-add-to-cart-btn">
                             <button className="sp-add-to-cart" onClick={() => GotoCart(product_id)}>Buy Now</button>
-                            <button className="sp-buy-now" onClick={() => addedtocart(product_id)}>Add to Cart</button>
+                            {
+                                btn ? <button className="sp-buy-now" onClick={() => addedtocart(product_id)}>Go to Cart</button> : <button className="sp-buy-now" onClick={() => addedtocart(product_id)}>Add to Cart</button>
+                            }
                         </div>
                     </div>
                 </div>

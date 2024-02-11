@@ -1,7 +1,64 @@
 import { useState } from "react";
 import "./debitcredit.css";
+import { useNavigate } from "react-router-dom";
 function DebitCreditCardForm(props) {
+  const {totalPrice, paymentproduct}=props;
+  const navigate = useNavigate();
   const [checkbox, setCheckbox] = useState(false);
+  
+  const orderpostapi = async (details) => {
+
+    const promise = await fetch(
+      "https://academics.newtonschool.co/api/v1/ecommerce/order/convertCartToOrder",
+      {
+        method:"POST",
+        headers: {
+          projectID: "b0egrjqjnto2", Authorization: `Bearer ${localStorage.getItem('token')}`, "Content-Type": "application/json",
+        },
+        body:JSON.stringify(details)
+      }
+    );
+    const response = await promise.json();
+    navigate("/order-placed");
+    
+   
+   
+
+
+  }
+
+
+  function debitcreditplaceorder() {
+    const addressinls = JSON.parse(localStorage.getItem('addresses'));
+    const addressType = addressinls.addresstype.toUpperCase();
+
+    delete addressinls.fullname;
+    delete addressinls.flatno;
+    delete addressinls.mobileno;
+    delete addressinls.landmark;
+    delete addressinls.area;
+    delete addressinls.addresstype;
+
+
+
+
+
+
+    const orderdetails = {
+      productId: paymentproduct[0]?.product._id,
+      quantity: paymentproduct[0]?.quantity,
+      addressType,
+      address: {
+        ...addressinls, country: "India", zipCode: addressinls.pincode,
+
+      }
+    }
+    delete orderdetails.address.pincode;
+    if (totalPrice) {
+      orderpostapi(orderdetails);
+    }
+
+  }
   function checkBoxHandler() {
     setCheckbox(!checkbox);
   }
@@ -43,9 +100,9 @@ function DebitCreditCardForm(props) {
         </span>
       </div>
 
-      <div className={`debitButton `}>
-        <button className={`${checkbox ? "check" : "uncheck"}`}>
-          Pay ₹{props.totalPrice}
+      <div className={`debitButton`}>
+        <button className={`${checkbox ? "check" : "uncheck"}`} onClick={debitcreditplaceorder}>
+          Pay ₹{totalPrice}
         </button>
       </div>
     </div>

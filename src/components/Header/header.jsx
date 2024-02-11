@@ -14,10 +14,12 @@ import Maininput from "../Input/input";
 import { CiHeart } from "react-icons/ci";
 
 
-const Header = () => {
+const Header = (props) => {
+  // console.log("props", props.cartcount);
   const navigate = useNavigate()
   const [dropdown, setdropdown] = useState([]);
   const [open, setopen] = useState(false);
+  
 
   const handlelogout = () => {
 
@@ -32,12 +34,6 @@ const Header = () => {
     }
 
   }
-
-
-
-
-
-
   async function getDropdown() {
     const response = await fetch(
       "https://academics.newtonschool.co/api/v1/ecommerce/electronics/categories",
@@ -50,30 +46,10 @@ const Header = () => {
     const drop = await response.json();
     setdropdown(drop.data);
   }
-  // const data = ["Trending", "Best sellers", "New Arrival", "Electronics", "Top Rated"];
+  
+ 
 
-
-  const fetchinputdata = (value) => {
-    fetch(SEARCH_PRODUCT_LIST(value), {
-      headers: {
-        projectID: "b0egrjqjnto2",
-      },
-    }).then((response) => response.json()).then((json) => {
-      const array = json.data;
-      const results = array.filter((user) => {
-        return (
-          value && user.name && user.name.toLowerCase().includes(value)
-        );
-
-      })
-
-    })
-
-  }
-  // const handleChange = (value) => {
-  //   setinputdata(value);
-  //   fetchinputdata(value);
-  // }
+ 
   useEffect(() => {
     getDropdown();
   }, []);
@@ -134,7 +110,7 @@ const Header = () => {
                 <ul className="headerprofile">
 
                   <li><Link to="/mywhislist" style={{ color: "white" }}>My Whishlist</Link></li>
-                  <li><Link to="/orders" style={{ color: "white" }}>My Orders</Link></li>
+                  <li><Link to="/myorders" style={{ color: "white" }}>My Orders</Link></li>
                   <li onClick={handlelogout}>Logout</li>
                 </ul> : (
                   <ul className="headerprofile">
@@ -148,12 +124,13 @@ const Header = () => {
         </div>
 
 
-        <div className="headercarticon">
+        <div className="headercarticon" >
 
           {
             <Link to="/cart" className="carticon"><FaCartShopping /></Link>
 
           }
+          <p id="cartcountstore" style={{background:"green", width:"0.85rem", height:"0.95rem" , textAlign:"center"}}>{props.cartcount}</p>
         </div>
       </div>
     </header>

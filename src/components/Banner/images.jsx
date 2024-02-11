@@ -10,6 +10,7 @@ const Carousel = () => {
   // console.log("open",open);
   // console.log("close",close);
   const navigate = useNavigate();
+  const [imageSrc, setImageSrc] = useState("https://st2.depositphotos.com/1006899/8352/i/450/depositphotos_83524452-stock-photo-404-error-hanging-on-strings.jpg");
 
 
 
@@ -558,7 +559,8 @@ const Carousel = () => {
       <p
         className="homeheadings"
       >
-        Deals On Laptops
+        Laptops
+       
       </p>
 
 
@@ -571,6 +573,11 @@ const Carousel = () => {
           <img src={image} alt={`Image ${index + 1}`} className="homeimages" onClick={() => laptopimagesclick()}/>
         ))}
       </div>
+      <p
+        className="homeheadings"
+      >
+         Deals On Laptops
+      </p>
 
 
 

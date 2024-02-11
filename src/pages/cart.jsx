@@ -10,13 +10,27 @@ import Whishlist from "./whislistproduct";
 const Cart = () => {
     const [products, setproducts] = useState([]);
     const [whislist, setwhislist] = useState([]);
+    const [cartcount, setcartcount] = useState(0);
 
     const [totalprice, settotalprice] = useState("");
+
+    async function Cartcount() {
+        const promise = await fetch("https://academics.newtonschool.co/api/v1/ecommerce/cart", {
+            headers: {
+                projectID: "b0egrjqjnto2",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        });
+        const response = await promise.json();
+        setcartcount(response.results);
+        console.log("cartresponse", response.results);
+
+    }
 
 
     const AddCart = async (productID) => {
 
-        
+
         const options = {
             method: 'PATCH',
             headers: new Headers({ projectID: 'b0egrjqjnto2', 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}` }),
@@ -24,50 +38,58 @@ const Cart = () => {
         }
         const data = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/cart/${productID}`, options)
         const resData = await data.json();
-        DeleteWhislist(productID);  
+        DeleteWhislist(productID);
         setproducts(resData.data.items);
         settotalprice(resData.data.totalPrice);
+        Cartcount();
 
     }
     const AddtoWishlist = async (productId) => {
-        console.log("addtowishlist",productId);
+        console.log("addtowishlist", productId);
         const response = await fetch("https://academics.newtonschool.co/api/v1/ecommerce/wishlist", {
-          method: 'PATCH',
-          headers: { 'projectID' : 'b0egrjqjnto2', Authorization: `Bearer ${localStorage.getItem('token')}`, 'Content-Type': 'application/json'},
-          body: JSON.stringify({productId}),
-      });
-      const resData = await response.json();
-      console.log("resData",resData);
-    //   console.log("deletecart called");
-      DeleteCart(productId);
-      Getwhislist();
-      setproducts(resData.data.items);
-      settotalprice(resData.data.totalPrice);
-      
-      
+            method: 'PATCH',
+            headers: { 'projectID': 'b0egrjqjnto2', Authorization: `Bearer ${localStorage.getItem('token')}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ productId }),
+        });
+        const resData = await response.json();
 
-      }
+        //   console.log("deletecart called");
+        DeleteCart(productId);
+        Getwhislist();
+        setproducts(resData.data.items);
+        settotalprice(resData.data.totalPrice);
 
 
- 
+
+    }
 
 
 
 
-    const Getcart = async () => {
 
-        const promise = await fetch(
-            "https://academics.newtonschool.co/api/v1/ecommerce/cart",
-            {
-                headers: {
-                    projectID: "b0egrjqjnto2", Authorization: `Bearer ${localStorage.getItem('token')}`
-                },
-            }
-        );
-        const response = await promise.json();
 
-        setproducts(response.data?.items);
-        settotalprice(response.data?.totalPrice);
+
+    async function Getcart() {
+        try {
+
+            const promise = await fetch(
+                "https://academics.newtonschool.co/api/v1/ecommerce/cart",
+                {
+                    headers: {
+                        projectID: "b0egrjqjnto2", Authorization: `Bearer ${localStorage.getItem('token')}`
+                    },
+                }
+            );
+            const response = await promise.json();
+            // console.log("countproduct", response.data?.items.length);
+
+            setproducts(response.data?.items);
+
+            settotalprice(response.data?.totalPrice);
+        }
+        catch (error) {
+            console.log(error);
+        }
 
 
     }
@@ -81,13 +103,15 @@ const Cart = () => {
         const data = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/cart/${productID}`, options)
         const resData = await data.json();
         setproducts(resData.data.items);
-        settotalprice(resData.data.totalPrice)
+        settotalprice(resData.data.totalPrice);
+        Cartcount();
+
     }
 
 
 
     const DeleteWhislist = async (productID) => {
-       
+
         const options = {
             method: 'DELETE',
             headers: new Headers({ projectID: 'b0egrjqjnto2', 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}` })
@@ -95,20 +119,27 @@ const Cart = () => {
         const data = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/wishlist/${productID}`, options)
         const resData = await data.json();
         setwhislist(resData.data.items);
-        
-    }
-    const Getwhislist = async () => {
 
-        const wish = await fetch(
-            "https://academics.newtonschool.co/api/v1/ecommerce/wishlist",
-            {
-                headers: {
-                    projectID: "b0egrjqjnto2", Authorization: `Bearer ${localStorage.getItem('token')}`
-                },
-            }
-        );
-        const response = await wish.json();
-        setwhislist(response.data?.items)
+    }
+    async function Getwhislist() {
+
+        try {
+
+            const wish = await fetch(
+                "https://academics.newtonschool.co/api/v1/ecommerce/wishlist",
+                {
+                    headers: {
+                        projectID: "b0egrjqjnto2", Authorization: `Bearer ${localStorage.getItem('token')}`
+                    },
+                }
+            );
+            const response = await wish.json();
+            setwhislist(response.data?.items);
+            Cartcount();
+        }
+        catch (error) {
+            console.log(error);
+        }
 
 
 
@@ -124,26 +155,24 @@ const Cart = () => {
 
 
     useEffect(() => {
-        // AddCart(location.state.id);
+
         Getcart();
         Getwhislist();
-        
+
     }, [])
 
     return (
 
         <div>
 
-            <Header />
-            {/* <h2 style={{ textAlign: "left", marginLeft: "8rem"}}>YOUR CART</h2> */}
-
+            <Header cartcount={cartcount} />
             {products?.length > 0 ? (
                 <div className="prodcart">
-                      
+
                     <div className="prodcartdiv">
 
                         {products.map((pro) => {
-                            return <Cartproducts product={pro} movetowishlist={AddtoWishlist}cardClick={DeleteCart} />
+                            return <Cartproducts product={pro} movetowishlist={AddtoWishlist} cardClick={DeleteCart} />
                         })}
                     </div>
                     <Checkout Price={totalprice} />
@@ -154,10 +183,10 @@ const Cart = () => {
             ) : (
 
                 <div className="emptycart">
-                    <h2 style={{ textAlign: "left", marginLeft: "6rem"}}>YOUR CART</h2>
-                    <div className="image" style={{textAlign:"center"}}>
+                    <h2 >YOUR CART</h2>
+                    <div className="image" style={{ textAlign: "center" }}>
                         <img src="https://kind-leakey-f7509c.netlify.app/img/Empty.png" style={{ width: "260px", height: "150px" }} alt="empty-cart" />
-                        <h3 style={{ fontWeight: "800"}}> Your Cart is Empty</h3>
+                        <h3 style={{ fontWeight: "800" }}> Your Cart is Empty</h3>
                         <Link to="/" style={{ color: "#088466", fontWeight: "800", textDecoration: "underline" }}>continue shopping</Link>
                     </div>
 
@@ -167,20 +196,20 @@ const Cart = () => {
             )
 
             }
-            <div style={{backgroundColor:"white"}}>
+            <div className="carwhislistmain" >
                 {
                     whislist?.length > 0 ? (
-                        <div style={{marginTop:"2rem"}}>
+                        <div className="cartwhislistbox">
                             {/* <div style={{background:"white"}}>________________________________________________________________________________________________________________________________________________________________</div> */}
-                           {/* <hr></hr> */}
-                            <h2 style={{textAlign:"left", marginLeft:"6rem"}}>YOUR WISHLIST</h2>
+                            {/* <hr></hr> */}
+                            <h2 >YOUR WISHLIST</h2>
 
 
-                            <div style={{ display: "flex", gap:"2rem", flexWrap:"wrap", marginLeft:"6rem"}}>
+                            <div className="carwhislistcontainer">
 
                                 {whislist.map((wish) => {
-                                  
-                                    return <Whishlist wishlistproducts={wish} addtocart={AddCart}deletewish={DeleteWhislist} />
+
+                                    return <Whishlist wishlistproducts={wish} addtocart={AddCart} deletewish={DeleteWhislist} />
                                 })}
                             </div>
 

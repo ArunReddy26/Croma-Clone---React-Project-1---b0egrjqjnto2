@@ -13,57 +13,104 @@ function ProductContainer() {
   const { productCategory } = useParams();
   const [products, setProducts] = useState([]);
   const [dropdownvalues, setdropdown] = useState([]);
+  const [brands, setBrands] = useState([]);
+  const [sellerTag, setSellerTag] = useState([]);
   const [selectedOption, setSelectedOption] = useState('');
 
   async function alldropdowncategories() {
 
-    const response = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/electronics/categories`, {
-      headers: {
-        projectID: "b0egrjqjnto2",
-      },
-    });
-    const jsonData = await response.json();
-    // console.log("jsondata", jsonData.data);
+    try {
 
-    setdropdown(jsonData.data);
+      const response = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/electronics/categories`, {
+        headers: {
+          projectID: "b0egrjqjnto2",
+        },
+      });
+      const jsonData = await response.json();
+      // console.log("jsondata", jsonData.data);
+
+      setdropdown(jsonData.data);
+    }
+    catch (error) {
+      console.log(error);
+    }
+
   }
 
 
   async function brand(value) {
-    console.log("value", value);
-    const response = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"brand":"${value}"}`, {
-      headers: {
-        projectID: "b0egrjqjnto2",
-      },
-    });
-    const jsonData = await response.json();
-    // console.log("jsondata", jsonData.data);
+    try {
+      console.log("value", value);
+      const response = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"brand":"${value}","subCategory":"${productCategory}"}`, {
+        headers: {
+          projectID: "b0egrjqjnto2",
+        },
+      });
+      const jsonData = await response.json();
+      // console.log("jsondata", jsonData.data);
 
-    setProducts(jsonData.data);
+      setProducts(jsonData.data);
+    }
+    catch (error) {
+      console.log(error);
+    }
   }
 
 
   async function getAllProductsCategoryWise(category) {
-    const response = await fetch(GET_PRODUCTS_CATEGORYWISE(category), {
-      headers: {
-        projectID: "b0egrjqjnto2",
-      },
-    });
-    const jsonData = await response.json();
-    setProducts(jsonData.data);
+    try {
+      const response = await fetch(GET_PRODUCTS_CATEGORYWISE(category), {
+        headers: {
+          projectID: "b0egrjqjnto2",
+        },
+      });
+      const jsonData = await response.json();
+      // console.log("jsonDatacategory",jsonData);
+      const updatedBrand = [
+        ...new Set(
+          jsonData.data.map((item) => {
+            if (item.brand) {
+              return item.brand;
+            }
+          })
+        ),
+      ];
+      const sellerproductnames = [
+        ...new Set(
+          jsonData.data.map((item) => {
+            if (item.sellerTag) {
+              return item.sellerTag;
+            }
+          })
+        ),
+      ];
+      setProducts(jsonData.data);
+      setBrands(updatedBrand);
+      setSellerTag(sellerproductnames);
+    } catch (error) {
+      console.log("error", error)
+
+    }
+    
   }
   async function dropcategories(value, productCategory) {
-    console.log("value", value);
-    console.log("productCategory", productCategory);
-    const response = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"sellerTag":"${value}","subCategory":"${productCategory}"}`, {
-      headers: {
-        projectID: "b0egrjqjnto2",
-      },
-    });
-    const jsonData = await response.json();
-    // console.log("jsondata", jsonData.data);
 
-    setProducts(jsonData.data);
+    try {
+      console.log("value", value);
+      console.log("productCategory", productCategory);
+      const response = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"sellerTag":"${value}","subCategory":"${productCategory}"}`, {
+        headers: {
+          projectID: "b0egrjqjnto2",
+        },
+      });
+      const jsonData = await response.json();
+     
+
+      setProducts(jsonData.data);
+    }
+    catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {
@@ -79,12 +126,11 @@ function ProductContainer() {
 
   const handleSelectChange = (e) => {
     const value = e.target.value;
-   
+    console.log("value", value);
 
-    if (value === "top rated") {
-      dropcategories(value, productCategory)
-    }
-    else if (value === "priceLowToHigh") {
+
+
+    if (value === "priceLowToHigh") {
       const filteredProducts = products.filter(product => product.price > 0);
       const sortedProducts = filteredProducts.sort((a, b) => a.price - b.price);
       setProducts(sortedProducts);
@@ -94,39 +140,22 @@ function ProductContainer() {
       const sortedProducts = filteredProducts.sort((a, b) => b.price - a.price);
       setProducts(sortedProducts);
     }
-    else if (value === "trending") {
+
+    else if (value === "trending" || value === "best seller" || value === "new arrival" || value == "top rated") {
       dropcategories(value, productCategory)
 
 
     }
-    else if (value === "best seller") {
-      dropcategories(value, productCategory)
-
-
+    else if (value == "laptop" || value == "ac" || value == "washingMachine" || value == "kitchenappliances" || value == "tablet" || value == "audio" || value == "health" || value == "refrigerator" || value == "travel" || value == "mobile" || value == "tv") {
+      navigate(`/${value}`);
     }
-    else if (value === "new arrival") {
-      dropcategories(value, productCategory)
-
-
-    }
-    else if (value === "Apple" || value === "Samsung" || value === "LG" || value === "Acer" || value == "OnePlus" || value === "Xiaomi") {
+    else {
 
       brand(value);
 
     }
-    else if (value === "electronics") {
-      const electronics = products.filter(product => product.category === 'electronics');
-      setProducts(electronics);
 
-    }
-    else if (value == "laptop" || value == "ac" || value == "washingMachine" || value == "kitchenappliances" || value == "tablet" || value == "audio" || value == "health" || value == "refrigerator" || value == "travel"||value=="mobile"||value=="tv") {
-      // getAllProductsCategoryWise(value);
-      navigate(`/${value}`);
-      
-      
-    }
 
-   
 
 
   };
@@ -137,18 +166,15 @@ function ProductContainer() {
     <div>
       <Header />
       <div className="container">
-        <div className="" style={{ padding: "1rem", textAlign: "left", marginLeft: "8.3rem", color: "white" }}>
+        <div className="containerheading" >
           <h1>{productCategory}</h1>
         </div>
         <div className="dropdowns">
           <div className="firstlist">
-            <div className="sort-dropdown">
+            <div className="firstlistsort-dropdown">
 
               <select onChange={handleSelectChange}>
-                {/* <option value="">Category</option>
-                <option value="electronics">Electronics</option>
-                <option value="priceLowToHigh">Price (Lowest to Highest)</option>
-                <option value="priceHighToLow">Price (Highest to Lowest)</option> */}
+
                 <option value="">Category</option>
                 {
                   dropdownvalues.map((dropcategories) => {
@@ -163,29 +189,44 @@ function ProductContainer() {
                 }
               </select>
             </div>
-            <div className="sort-dropdown">
+            <div className="firstlistsort-dropdown">
 
               <select onChange={handleSelectChange}>
+
                 <option value="">Brand</option>
-                <option value="LG">LG</option>
-                <option value="Acer">Acer</option>
-                <option value="OnePlus">OnePlus</option>
-                <option value="Xiaomi">Xiaomi</option>
-                <option value="Samsung">Samsung</option>
-                <option value="Apple">Apple</option>
+                {
+                  brands.map((brandname) => {
+                    return (<option value={brandname}>{brandname}</option>)
+
+                  }
+
+                  )
+
+
+
+                }
               </select>
             </div>
-            <div className="sort-dropdown">
+            <div className="firstlistsort-dropdown">
 
               <select onChange={handleSelectChange} >
                 <option value="">SellerTag</option>
-                <option value="trending">Trending</option>
-                <option value="best seller">Best Seller</option>
-                <option value="new arrival">New Arrival</option>
+
+                {
+                  sellerTag.map((sellername) => {
+                    return (<option value={sellername}>{sellername}</option>)
+
+                  }
+
+                  )
+
+
+
+                }
               </select>
             </div>
           </div>
-          <div className="sort-dropdown">
+          <div className="secondlist">
 
             <select onChange={handleSelectChange} >
               <option value="">Sort By</option>

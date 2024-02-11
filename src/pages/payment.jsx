@@ -19,6 +19,7 @@ const Payment = () => {
 
 
   const Getcart = async () => {
+    
 
     const promise = await fetch(
       "https://academics.newtonschool.co/api/v1/ecommerce/cart",
@@ -29,6 +30,7 @@ const Payment = () => {
       }
     );
     const response = await promise.json();
+    console.log("getcart",response );
 
     // setproducts(response.data.items);
     setpaymentproduct(response.data.items);
@@ -49,7 +51,9 @@ const Payment = () => {
   useEffect(() => {
 
     Getcart();
+
     const storedAddress = localStorage.getItem('addresses');
+
     if (storedAddress) {
       const parsedAddress = JSON.parse(storedAddress);
       setAddress(parsedAddress);
@@ -133,13 +137,13 @@ const Payment = () => {
               </div>
               <div className="paymentForm">
                 {paymentMethod == 1 && (
-                  <DebitCreditCardForm totalPrice={totalprice} />
+                  <DebitCreditCardForm totalPrice={totalprice} paymentproduct={paymentproduct} />
                 )}
-                {paymentMethod == 2 && <WalletForm totalPrice={totalprice} />}
-                {paymentMethod == 3 && <UPIForm totalPrice={totalprice} />}
+                {paymentMethod == 2 && <WalletForm totalPrice={totalprice} paymentproduct={paymentproduct} />}
+                {paymentMethod == 3 && <UPIForm totalPrice={totalprice} paymentproduct={paymentproduct}/>}
                 {paymentMethod == 4 && <NetBankingForm totalPrice={totalprice} />}
                 {paymentMethod == 5 && (
-                  <Cashondelivery totalPrice={totalprice} />
+                  <Cashondelivery totalPrice={totalprice}  paymentproduct={paymentproduct}/>
                 )}
               </div>
             </div>
@@ -147,7 +151,7 @@ const Payment = () => {
         </div>
 
 
-        <div className="" style={{ display: "flex", flexDirection: "column" }}>
+        <div className="mainshippingform" >
           <div className="payout-form">
             <h2>Shipping To</h2>
             <div className="shippingaddressto">

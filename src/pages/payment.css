@@ -8,7 +8,7 @@
 .checkoutMainContainer {
 
   display: flex;
-  width: 60%;
+  width: 80%;
   margin: 60px auto;
 
 
@@ -33,9 +33,7 @@
 }
 
 .paymentContainer {
-  flex: 0.75;
-  /* outline: 1px solid red; */
-  /* height: 200px; */
+  flex: 1;
   border-right: 0.3px solid grey;
   box-sizing: border-box;
   padding: 20px;
@@ -43,8 +41,7 @@
 
 .cartAndPriceContainer {
   flex: 1;
-  /* outline: 1px solid red; */
-  /* height: 200px; */
+
 }
 
 .paymentOptionContainer {
@@ -55,8 +52,6 @@
 
 .paymentOptions {
   width: 35%;
-  /* height: 200px; */
-  /* outline: 1px solid red; */
   background-color: #f7f7f7;
 }
 
@@ -92,8 +87,7 @@
 
 .paymentForm {
   width: 65%;
-  /* height: 200px; */
-  /* outline: 1px solid red; */
+ 
 }
 
 .payout-form {
@@ -156,4 +150,9 @@
   width: 200px;
   
 
+}
+.mainshippingform{
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
 }

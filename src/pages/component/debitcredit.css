@@ -10,15 +10,16 @@
   .cardNumber input {
     outline: none;
     border: none;
+    color: black;
     width: 98%;
     font-family: montserrat-regular, sans-serif;
     font-size: 12px;
     padding: 5px 0;
     border-bottom: 1px solid #bcbcbc;
   }
-  .cardNumber input[placeholder] {
+  /* .cardNumber input[placeholder] {
     color: rgb(182, 180, 180);
-  }
+  } */
   
   .expiryDateAndCvv {
     display: flex;
