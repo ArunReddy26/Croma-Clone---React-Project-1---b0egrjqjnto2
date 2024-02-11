@@ -99,13 +99,6 @@ const Productcard = (props) => {
           <span>₹{price}</span>
         </div>
       </div>
-      {/* <div className="star" onClick={cardclick}>
-        <IoStarSharp />
-        <IoStarSharp />
-        <IoStarSharp />
-        <IoStarSharp />
-        <IoStarSharp />
-      </div> */}
       <div className="cardstar">
         <Rating style={{ color: "#12daa8", fontSize: "1.2rem" }} name="read-only" value={ratings} readOnly />
       </div>

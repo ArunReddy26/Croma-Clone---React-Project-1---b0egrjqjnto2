@@ -15,7 +15,7 @@ import { CiHeart } from "react-icons/ci";
 
 
 const Header = (props) => {
-  // console.log("props", props.cartcount);
+  console.log("props", props.cartcount);
   const navigate = useNavigate()
   const [dropdown, setdropdown] = useState([]);
   const [open, setopen] = useState(false);
@@ -130,7 +130,7 @@ const Header = (props) => {
             <Link to="/cart" className="carticon"><FaCartShopping /></Link>
 
           }
-          <p id="cartcountstore" style={{background:"green", width:"0.85rem", height:"0.95rem" , textAlign:"center"}}>{props.cartcount}</p>
+          <p id="cartcountstore" style={{background:"green", width:"0.85rem", height:"0.95rem" , textAlign:"center"}}>{props.cartcount?props.cartcount:0}</p>
         </div>
       </div>
     </header>

@@ -91,7 +91,7 @@ function ProductContainer() {
       console.log("error", error)
 
     }
-    
+
   }
   async function dropcategories(value, productCategory) {
 
@@ -104,7 +104,7 @@ function ProductContainer() {
         },
       });
       const jsonData = await response.json();
-     
+
 
       setProducts(jsonData.data);
     }
