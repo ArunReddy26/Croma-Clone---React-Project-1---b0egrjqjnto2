@@ -63,28 +63,13 @@ const Login = () => {
                 <div className="login">
                     <p>Please enter your Email ID or Phone number</p>
                     <div className="details">
-                        <input
-                            type="email"
-                            name="email"
-                            className="input"
-                            placeholder="Enter your Email ID"
-                            onChange={handleSubmit}
-                            required
-                        />
-                        <input
-                            type="password"
-                            name="password"
-                            className="input"
-                            placeholder="Enter your password"
-                            onChange={handleSubmit}
-                            required
-                        />
+                        <input type="email" name="email" className="input"placeholder="Enter your Email ID" onChange={handleSubmit} required/>
+                        <input type="password" name="password"className="input" placeholder="Enter your password" onChange={handleSubmit} required/>
                     </div>
                     <div className="logincheck">
                         <input type="checkbox" />
                         <p style={{ fontSize: "0.85rem" }}>Keep me signed in</p>
                     </div>
-
                     <p className="terms">By continuing you agree to our terms and policies</p>
                     <div className="loginbutton">
                         <button onClick={signedin}>Login</button>

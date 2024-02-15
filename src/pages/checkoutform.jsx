@@ -7,17 +7,13 @@ import { useNavigate } from "react-router-dom";
 
 const Checkoutform = () => {
     const navigate = useNavigate();
-
     const [totalprice, settotalprice] = useState("");
-
-
     const [local, setlocal] = useState({});
 
     function checkdatalocal() {
         const datainls = JSON.parse(localStorage.getItem('addresses'));
         console.log("dacainls", datainls);
         setlocal(datainls);
-
     }
 
     function addnewaddress(e) {
@@ -34,16 +30,12 @@ const Checkoutform = () => {
                 state: "",
                 mobileno: "",
                 addresstype: ""
-
             })
         }
-        else{
+        else {
             alert("Please fill all the details")
         }
-        
     }
-
-
     const [userAddress, setUserAddress] = useState(
         {
             pincode: "",
@@ -55,12 +47,9 @@ const Checkoutform = () => {
             state: "",
             mobileno: "",
             addresstype: ""
-
         }
     );
-
     const Getcart = async () => {
-
         const promise = await fetch(
             "https://academics.newtonschool.co/api/v1/ecommerce/cart",
             {
@@ -70,30 +59,20 @@ const Checkoutform = () => {
             }
         );
         const response = await promise.json();
-
-        // setproducts(response.data.items);
         settotalprice(response.data.totalPrice);
-
-
     }
     useEffect(() => {
         checkdatalocal();
-
-
     }, [userAddress])
 
     useEffect(() => {
-        // AddCart(location.state.id);
         Getcart();
     }, [])
-
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const updateddata = { ...userAddress };
         updateddata[e.target.name] = e.target.value;
-
         setUserAddress(updateddata);
     }
 
@@ -102,40 +81,25 @@ const Checkoutform = () => {
         const updateddata = { ...userAddress };
         updateddata[e.target.name] = e.target.value;
         setUserAddress(updateddata);
-
-
     }
     const handleform = (e) => {
         e.preventDefault();
         const updateddata = { ...userAddress };
-        // console.log("form submitted");
         if (userAddress.pincode && userAddress.state && userAddress.city && userAddress.fullname && userAddress.landmark && userAddress.area && userAddress.mobileno && userAddress.addresstype && userAddress.street) {
-            // console.log("form submitted");
+
             localStorage.setItem('addresses', JSON.stringify(userAddress));
             setUserAddress(updateddata);
-            // alert("form Details saved succesfully");
-
-
         }
         if (localStorage.getItem('addresses')) {
             navigate("/payment");
         }
         else {
             alert("Please fill all the details");
-
         }
-
-
-
-
-
     }
-
     function gottopaymentpage() {
-
         navigate("/payment");
     }
-
 
     return (
         <div style={{ width: "100%", height: "100%" }}>

@@ -5,8 +5,5 @@ export const  SEARCH_PRODUCT_LIST=(value)=>{
     return `https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?search={"name": "${value}"}`;
 
 }
-    
-
 export const GET_PRODUCT_DETAILS = (id) => `https://academics.newtonschool.co/api/v1/ecommerce/product/${id}`;  
-
 export const PRODUCT_REVIEW = (productid)=> `https://academics.newtonschool.co/api/v1/ecommerce/review/${productid}`;

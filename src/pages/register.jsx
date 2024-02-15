@@ -7,13 +7,10 @@ import Header from "../components/Header/header";
 import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
+
     const navigate = useNavigate();
-
-
     const [user, setuser] = useState(false);
     const [message, setMessage] = useState("");
-
-
 
     async function userLogin(userData) {
         try {
@@ -39,25 +36,20 @@ const Register = () => {
         }
     }
 
-    // useEffect(() => {
-    //     if (localStorage.getItem('token')) {
-    //         navigate('/');
-    //     }
-    //     window.scrollTo(0, 0);
-    // }, [])
-
     const [loginData, setLoginData] = useState({
         name: "",
         email: "",
         password: "",
         appType: "ecommerce"
     })
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const updateddata = { ...loginData };
         updateddata[e.target.name] = e.target.value;
         setLoginData(updateddata);
     }
+
     const signedin = () => {
         if (loginData.email && loginData.password && loginData.name)
             userLogin(loginData);
@@ -70,31 +62,9 @@ const Register = () => {
                 <div className="signup">
                     <p className="signupcreatetext">Create New Account</p>
                     <div className="details">
-                        <input
-                            type="text"
-                            name="name"
-                            className="input"
-                            placeholder="Enter your Name"
-                            onChange={handleSubmit}
-                            required
-                        />
-
-                        <input
-                            type="email"
-                            name="email"
-                            className="input"
-                            placeholder="Enter your Email ID"
-                            onChange={handleSubmit}
-                            required
-                        />
-                        <input
-                            type="password"
-                            name="password"
-                            className="input"
-                            placeholder="Enter your password"
-                            onChange={handleSubmit}
-                            required
-                        />
+                        <input type="text" name="name" className="input"placeholder="Enter your Name"onChange={handleSubmit} required/>
+                        <input type="email" name="email" className="input" placeholder="Enter your Email ID" onChange={handleSubmit} required />
+                        <input type="password" name="password" className="input" placeholder="Enter your password" onChange={handleSubmit} required/>
                     </div>
                     <div className="signupmainbutton">
                         <button style={{ marginTop: "1rem" }} onClick={signedin}>Signup</button>

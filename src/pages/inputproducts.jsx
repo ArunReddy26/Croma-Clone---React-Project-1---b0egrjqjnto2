@@ -5,30 +5,24 @@ import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header/header";
 import Dropcard from "../components/Card/dropcard";
 import { GET_PRODUCTS_CATEGORYWISE } from "../components/Constants/Api";
+
 const Inputproduct = () => {
   const [userdropdownvalues, setuserdropdown] = useState([]);
   const [userbrands, setuserBrands] = useState([]);
   const [usersellerTag, setuserSellerTag] = useState([]);
-
   const navigate = useNavigate();
-
   const [userproducts, setuserproducts] = useState([]);
   const [userproductheading, setuserproductheading] = useState(userinput);
   const { userinput } = useParams();
 
-
-
   async function alldropdowncategories() {
     try {
-
       const response = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/electronics/categories`, {
         headers: {
           projectID: "b0egrjqjnto2",
         },
       });
       const jsonData = await response.json();
-      // console.log("jsondata", jsonData.data);
-
       setuserdropdown(jsonData.data);
     }
     catch (error) {
@@ -36,25 +30,19 @@ const Inputproduct = () => {
     }
   }
 
-
-
   async function userbrand(value, inputdata) {
     try {
-      console.log("value", value);
       const response = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"brand":"${value}","subCategory":"${inputdata}"}`, {
         headers: {
           projectID: "b0egrjqjnto2",
         },
       });
       const jsonData = await response.json();
-
-
       setuserproducts(jsonData.data);
     } catch (error) {
       console.log(error);
     }
   }
-
 
   async function getAllProductsCategoryWise(category) {
     setuserproductheading(category)
@@ -65,7 +53,6 @@ const Inputproduct = () => {
         },
       });
       const jsonData = await response.json();
-      // console.log("jsonDatacategory",jsonData);
       const updatedBrand = [
         ...new Set(
           jsonData.data.map((item) => {
@@ -85,29 +72,19 @@ const Inputproduct = () => {
         ),
       ];
       setuserproducts(jsonData.data);
-
       setuserBrands(updatedBrand);
       setuserSellerTag(sellerproductnames);
     } catch (error) {
       console.log("error", error)
-
     }
-
-
   }
-
-
-
   const cardclick = (_id) => {
     navigate(`/details/${_id}`)
   }
-
   const updateSuggestions = async (value) => {
-
     if (value == "washingmachine") {
       value = "washingMachine";
       setuserproductheading(value);
-
     }
     else if (value == "mobiles") {
       value = "iphone";
@@ -125,7 +102,6 @@ const Inputproduct = () => {
           }
         );
         const results = await response.json();
-
         const updatedBrand = [
           ...new Set(
             results.data.map((item) => {
@@ -199,15 +175,12 @@ const Inputproduct = () => {
     if (userinput) {
       updateSuggestions(userinput.toLowerCase());
     }
-    // getAllProductsCategoryWise(userinput.toLowerCase());
     alldropdowncategories();
     window.scrollTo(0, 0);
   }, [userinput]);
 
   const handleSelectChange = (e) => {
     const value = e.target.value;
-
-    console.log("value", value);
     if (value === "top rated") {
       const topRatedProducts = userproducts.filter(product => product.sellerTag === 'top rated');
       setuserproducts(topRatedProducts);
@@ -231,13 +204,6 @@ const Inputproduct = () => {
     else {
       userbrand(value, userinput.toLowerCase());
     }
-
-
-
-
-
-
-
   };
 
   return (
@@ -259,11 +225,7 @@ const Inputproduct = () => {
                     return (<option value={dropcategories}>{dropcategories}</option>)
 
                   }
-
                   )
-
-
-
                 }
               </select>
             </div>
@@ -275,44 +237,30 @@ const Inputproduct = () => {
                     return (<option value={brandname}>{brandname}</option>)
 
                   }
-
                   )
-
-
-
                 }
               </select>
             </div>
             <div className="inputsort-dropdown">
-
-
               <select onChange={handleSelectChange} >
                 <option value="">SellerTag</option>
-
                 {
                   usersellerTag.map((sellername) => {
                     return (<option value={sellername}>{sellername}</option>)
-
                   }
-
                   )
-
-
-
                 }
               </select>
             </div>
           </div>
           <div className="inputsecondist">
-
-            <select onChange={handleSelectChange} >
+           <select onChange={handleSelectChange} >
               <option value="">Sort By</option>
               <option value="top rated">Top Rated</option>
               <option value="priceLowToHigh">Price (Lowest to Highest)</option>
               <option value="priceHighToLow">Price (Highest to Lowest)</option>
             </select>
           </div>
-
         </div>
         <div className="userproductscontainer">
           {userproducts &&

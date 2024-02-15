@@ -1,16 +1,10 @@
 import React from "react";
 import "./whislistproduct.css";
 
-
-
-
 const Whishlist = (props) => {
-    const { wishlistproducts,addtocart,deletewish} = props;
-   
-
+    const { wishlistproducts, addtocart, deletewish } = props;
     return (
         <div className="whislist">
-
             <div className="whislistimage">
                 <img src={wishlistproducts.products.displayImage} alt="" />
             </div>
@@ -24,9 +18,7 @@ const Whishlist = (props) => {
                 <button className="whislisttocart" onClick={() => addtocart(wishlistproducts.products._id)}>Add to Cart</button>
                 <button className="Removewhislist" onClick={() => deletewish(wishlistproducts.products._id)}>Remove</button>
             </div>
-
         </div>
     )
-
 }
 export default Whishlist;

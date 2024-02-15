@@ -36,14 +36,11 @@ const Dealscorner = () => {
     const cardclick = (_id) => {
         navigate(`/details/${_id}`)
     }
+
     useEffect(() => {
         getAllproducts();
         window.scrollTo(0, 0);
-
-
     }, []);
-
-
 
     return (
         <div>
@@ -51,7 +48,6 @@ const Dealscorner = () => {
             {loading ? (
                 <Loader />
             ) : (
-
                 <div>
                     <div className="dealscorner">
                         <h1  className="dealscornerheading">Deals That Make You Smile</h1>
@@ -62,7 +58,6 @@ const Dealscorner = () => {
                                     return <Dropcard key={product._id} product={product} click={cardclick} />;
                                 })
                             }
-
                         </div>
                     </div>
                     <Footer />

@@ -1,8 +1,7 @@
 import "./order.css";
 import { Link } from "react-router-dom";
 
-function OrderHistoryComponent(props) {
- 
+function OrderHistoryComponent(props) { 
   return (
     <>
       <div className="orderNumber">
@@ -16,14 +15,9 @@ function OrderHistoryComponent(props) {
           <div className="productName">
             {props.data.order.items[0].product.name}
           </div>
-          {/* <div className="productSize">Size : S</div> */}
-
-          {/* <div className="productDeliveryDate">01 FEB, 2024</div> */}
-
           <div className="orderConfirmButton">
             <button>CONFIRMED</button>
           </div>
-
           <div className="orderInfoButton">
             <Link to={`/single-order-history/${props.data.order._id}`}>
               <button>ORDER INFO</button>

@@ -26,13 +26,11 @@ const Productdetail = () => {
             });
             const jsonData = await response.json();
             setProductDetails(jsonData.data);
-
         }
         catch (error) {
             console.log(error);
         }
     }
-
 
     async function Getcart() {
         const promise = await fetch("https://academics.newtonschool.co/api/v1/ecommerce/cart", {
@@ -41,8 +39,7 @@ const Productdetail = () => {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
         });
-        const response = await promise.json();
-        
+        const response = await promise.json();   
         if (response?.data?.items[0]?.product?._id) {
             setbtn(true);
         }
@@ -51,7 +48,6 @@ const Productdetail = () => {
         }
         setcartcount(response.results);
     }
-
 
     async function getProductReviews(id) {
         try {
@@ -62,15 +58,11 @@ const Productdetail = () => {
             });
             const jsonData = await response.json();
             setProductReviews(jsonData.data);
-            // console.log(jsonData);
         }
         catch (error) {
             console.log(error);
         }
     }
-
-
-
 
     const Addcart = async (productID) => {
         const options = {
@@ -81,39 +73,25 @@ const Productdetail = () => {
         const data = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/cart/${productID}`, options)
         const resData = await data.json();
         Getcart();
-
-
     }
 
-
     function GotoCart(id) {
-
         if (localStorage.getItem('token')) {
-            // Addcart(id);
             navigate("/checkout");
         }
         else {
             navigate("/login");
         }
-
     }
 
-
     function addedtocart(id) {
-
-
         if (localStorage.getItem('token')) {
-
-            Addcart(id);
-            alert("Product Added to Cart");
-
+    Addcart(id);
+       alert("Product Added to Cart");
         }
         else {
             navigate("/login");
         }
-
-
-
     }
 
     useEffect(() => {
@@ -123,33 +101,21 @@ const Productdetail = () => {
         window.scrollTo(0, 0);
     }, [])
 
-
-
-
     return (
         <div>
-
-            <Header cartcount={cartcount} />
+           <Header cartcount={cartcount} />
             <div className="descriptionbox">
                 <div className="sp-outer-box">
                     <div id="sp-left-box">
                         <div className="sp-container">
-                            <img
-                                id="sp-image"
-                                src={productdetails.displayImage}
-                            />
+                            <img id="sp-image" src={productdetails.displayImage}/>
                         </div>
                     </div>
                     <div id="sp-right-box">
                         <h1 id="sp-product-name">
                             {productdetails.name}
                         </h1>
-                        {/* <Rating style={{ color: "#12daa8" }} name="read-only" value={productdetails.ratings} readOnly /> */}
-
-                        <div
-                            className="productdetailstar"
-
-                        >
+                        <div className="productdetailstar">
                             <MdOutlineStar className="stars" />
                             <MdOutlineStar className="stars" />
                             <MdOutlineStar className="stars" />
@@ -162,9 +128,7 @@ const Productdetail = () => {
                             <span id="sp-original-amount"></span>
                             <span className="sp-tax-text">(Inclusive of all taxes)</span>
                         </div>
-
                         <hr />
-
                         <div className="key-features">
                             <h4>Key Features:</h4>
                             <ul>
@@ -184,40 +148,17 @@ const Productdetail = () => {
                     </div>
                 </div>
                 <div className="container2">
-                    <h2 >
-                        Overview
-                    </h2>
+                    <h2 >Overview</h2>
                     <div dangerouslySetInnerHTML={{ __html: productdetails.description }} />
                 </div>
                 <div className="container3">
-                    <h2 >
-                        Customer Reviews
-                    </h2>
+                    <h2>Customer Reviews</h2>
                     <span>({productdetails.name})</span>
-
-
                     <ReviewList productReviews={productReviews} />
                 </div>
             </div>
-
             <Footer />
-
-
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
     )
-
-
 }
 export default Productdetail;

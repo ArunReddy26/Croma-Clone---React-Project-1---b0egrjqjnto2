@@ -8,7 +8,6 @@ import "./productcontainer.css";
 import Dropcard from "../components/Card/dropcard";
 
 function ProductContainer() {
-  // Blue Star,Daikin,Haier,Voltas,Hitachi,Hisense
   const navigate = useNavigate();
   const { productCategory } = useParams();
   const [products, setProducts] = useState([]);
@@ -18,44 +17,34 @@ function ProductContainer() {
   const [selectedOption, setSelectedOption] = useState('');
 
   async function alldropdowncategories() {
-
     try {
-
       const response = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/electronics/categories`, {
         headers: {
           projectID: "b0egrjqjnto2",
         },
       });
       const jsonData = await response.json();
-      // console.log("jsondata", jsonData.data);
-
       setdropdown(jsonData.data);
     }
     catch (error) {
       console.log(error);
     }
-
   }
-
 
   async function brand(value) {
     try {
-      console.log("value", value);
       const response = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"brand":"${value}","subCategory":"${productCategory}"}`, {
         headers: {
           projectID: "b0egrjqjnto2",
         },
       });
       const jsonData = await response.json();
-      // console.log("jsondata", jsonData.data);
-
       setProducts(jsonData.data);
     }
     catch (error) {
       console.log(error);
     }
   }
-
 
   async function getAllProductsCategoryWise(category) {
     try {
@@ -65,7 +54,6 @@ function ProductContainer() {
         },
       });
       const jsonData = await response.json();
-      // console.log("jsonDatacategory",jsonData);
       const updatedBrand = [
         ...new Set(
           jsonData.data.map((item) => {
@@ -89,23 +77,17 @@ function ProductContainer() {
       setSellerTag(sellerproductnames);
     } catch (error) {
       console.log("error", error)
-
     }
-
   }
-  async function dropcategories(value, productCategory) {
 
+  async function dropcategories(value, productCategory) {
     try {
-      console.log("value", value);
-      console.log("productCategory", productCategory);
       const response = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"sellerTag":"${value}","subCategory":"${productCategory}"}`, {
         headers: {
           projectID: "b0egrjqjnto2",
         },
       });
       const jsonData = await response.json();
-
-
       setProducts(jsonData.data);
     }
     catch (error) {
@@ -123,13 +105,8 @@ function ProductContainer() {
     navigate(`/details/${_id}`)
   }
 
-
   const handleSelectChange = (e) => {
     const value = e.target.value;
-    console.log("value", value);
-
-
-
     if (value === "priceLowToHigh") {
       const filteredProducts = products.filter(product => product.price > 0);
       const sortedProducts = filteredProducts.sort((a, b) => a.price - b.price);
@@ -140,27 +117,16 @@ function ProductContainer() {
       const sortedProducts = filteredProducts.sort((a, b) => b.price - a.price);
       setProducts(sortedProducts);
     }
-
     else if (value === "trending" || value === "best seller" || value === "new arrival" || value == "top rated") {
       dropcategories(value, productCategory)
-
-
     }
     else if (value == "laptop" || value == "ac" || value == "washingMachine" || value == "kitchenappliances" || value == "tablet" || value == "audio" || value == "health" || value == "refrigerator" || value == "travel" || value == "mobile" || value == "tv") {
       navigate(`/${value}`);
     }
     else {
-
       brand(value);
-
     }
-
-
-
-
   };
-
-
 
   return (
     <div>
@@ -172,62 +138,40 @@ function ProductContainer() {
         <div className="dropdowns">
           <div className="firstlist">
             <div className="firstlistsort-dropdown">
-
               <select onChange={handleSelectChange}>
-
-                <option value="">Category</option>
+            <option value="">Category</option>
                 {
                   dropdownvalues.map((dropcategories) => {
                     return (<option value={dropcategories}>{dropcategories}</option>)
-
                   }
-
                   )
-
-
-
                 }
               </select>
             </div>
             <div className="firstlistsort-dropdown">
-
               <select onChange={handleSelectChange}>
-
                 <option value="">Brand</option>
                 {
                   brands.map((brandname) => {
                     return (<option value={brandname}>{brandname}</option>)
-
                   }
-
                   )
-
-
-
                 }
               </select>
             </div>
             <div className="firstlistsort-dropdown">
-
               <select onChange={handleSelectChange} >
                 <option value="">SellerTag</option>
-
                 {
                   sellerTag.map((sellername) => {
                     return (<option value={sellername}>{sellername}</option>)
-
                   }
-
-                  )
-
-
-
+                 )
                 }
               </select>
             </div>
           </div>
           <div className="secondlist">
-
             <select onChange={handleSelectChange} >
               <option value="">Sort By</option>
               <option value="top rated">Top Rated</option>
@@ -235,7 +179,6 @@ function ProductContainer() {
               <option value="priceHighToLow">Price (Highest to Lowest)</option>
             </select>
           </div>
-
         </div>
         <div className="producContainer2">
           {products.length > 0 &&
@@ -249,5 +192,4 @@ function ProductContainer() {
     </div>
   );
 }
-
 export default ProductContainer;

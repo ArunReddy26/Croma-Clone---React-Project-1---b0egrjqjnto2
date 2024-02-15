@@ -11,7 +11,6 @@ const Emptycart = () => {
                 <h3 style={{ fontWeight: "800" }}> Your Cart is Empty</h3>
                 <Link to="/" style={{ color: "#088466", fontWeight: "800", textDecoration:"underline" }}>continue shopping</Link>
             </div>
-
         </div>
     )
 }

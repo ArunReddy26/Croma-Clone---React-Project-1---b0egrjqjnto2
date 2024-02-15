@@ -5,15 +5,10 @@ import "./images.css";
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Productcard from "../Card/productcard";
+
 const Carousel = () => {
-  // const { isModalOpen, setModalOpen } = props;
-  // console.log("open",open);
-  // console.log("close",close);
   const navigate = useNavigate();
   const [imageSrc, setImageSrc] = useState("https://st2.depositphotos.com/1006899/8352/i/450/depositphotos_83524452-stock-photo-404-error-hanging-on-strings.jpg");
-
-
-
   const [productlist, setproductlist] = useState([]);
   const [audio, setaudio] = useState([]);
   const [kitchenappliances, setkitchenappliances] = useState([]);
@@ -25,10 +20,7 @@ const Carousel = () => {
   const [tablet, settablet] = useState([]);
   const [refrigerator, setrefrigerator] = useState([]);
   const [health, sethealth] = useState([]);
-
   const [travel, settravel] = useState([]);
-
-
 
   async function getAllproducts() {
     const response = await fetch(
@@ -41,10 +33,9 @@ const Carousel = () => {
     );
     const promise = await response.json();
     const data = promise.data;
-
-
     setproductlist(data);
   }
+
   async function gettrendingproducts() {
     const response = await fetch(
       'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"sellerTag":"top rated"}',
@@ -56,8 +47,6 @@ const Carousel = () => {
     );
     const promise = await response.json();
     const data = promise.data;
-
-
     setproductlist(data);
   }
 
@@ -72,11 +61,8 @@ const Carousel = () => {
     );
     const promise = await response.json();
     const data = promise.data;
-
-
     settrending(data);
   }
-
 
   async function getlaptopProducts() {
     const response = await fetch(
@@ -90,12 +76,7 @@ const Carousel = () => {
     const promise = await response.json();
     const data = promise.data;
     setlaptops(data);
-
-
-
-
   }
-
 
   async function gettvProducts() {
     const response = await fetch(
@@ -109,9 +90,6 @@ const Carousel = () => {
     const promise = await response.json();
     const data = promise.data;
     settelevision(data);
-
-
-
   }
 
 
@@ -127,9 +105,6 @@ const Carousel = () => {
     const promise = await response.json();
     const data = promise.data;
     setac(data);
-
-
-
   }
 
   async function gettabletProducts() {
@@ -144,9 +119,6 @@ const Carousel = () => {
     const promise = await response.json();
     const data = promise.data;
     settablet(data);
-
-
-
   }
 
   async function getrefrigerator() {
@@ -161,9 +133,6 @@ const Carousel = () => {
     const promise = await response.json();
     const data = promise.data;
     setrefrigerator(data);
-
-
-
   }
 
   async function gethealth() {
@@ -178,9 +147,6 @@ const Carousel = () => {
     const promise = await response.json();
     const data = promise.data;
     sethealth(data);
-
-
-
   }
 
 
@@ -196,9 +162,6 @@ const Carousel = () => {
     const promise = await response.json();
     const data = promise.data;
     settravel(data);
-
-
-
   }
 
   async function getAudioproduct() {
@@ -212,17 +175,9 @@ const Carousel = () => {
     );
     const promise2 = await response.json();
     const data = promise2.data;
-
     const audio = data.filter((item) => item.subCategory === "audio");
-
-
-    const washing = data.filter(
-      (item) => item.subCategory === "washingMachine"
-    );
-
+    const washing = data.filter((item) => item.subCategory === "washingMachine");
     setaudio(audio);
-
-
     setwashingMachine(washing);
 
   }
@@ -238,15 +193,9 @@ const Carousel = () => {
     );
     const promise2 = await response.json();
     const data = promise2.data;
-    const kitchenappliances = data.filter(
-      (item) => item.subCategory === "kitchenappliances"
-    );
+    const kitchenappliances = data.filter((item) => item.subCategory === "kitchenappliances");
     setkitchenappliances(kitchenappliances);
   }
-
-
-
-
 
   useEffect(() => {
     getlaptopProducts();
@@ -260,7 +209,6 @@ const Carousel = () => {
     getTravel();
     gettrendingproducts();
     getKitchenproduct();
-
   }, [])
 
   const images = [
@@ -284,8 +232,6 @@ const Carousel = () => {
     "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1683281227/Croma%20Assets/CMS/LP%20Page%20Banners/2023/HP%20Category%20Navigation/gaming_categoryicons_hfqpze.png?tr=w-720",
   ];
 
-
-
   const audioimages = [
     "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1703567882/Croma%20Assets/CMS/Homepage%20Banners/01_Homepage%20Bugs%20Daily/Dec%202023/26-12-2023/HP_4Split_audio_TWS_26dec2023_njwbdp.png?tr=w-720",
     "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1702271762/Croma%20Assets/CMS/Homepage%20Banners/01_Homepage%20Bugs%20Daily/Dec%202023/11-12-2023/HP_4Split_audio_croma_11dec2023_hc990y.png?tr=w-720",
@@ -298,8 +244,6 @@ const Carousel = () => {
     "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1702271769/Croma%20Assets/CMS/Homepage%20Banners/01_Homepage%20Bugs%20Daily/Dec%202023/11-12-2023/HP_4Split_KA_mixer_11dec2023_upoifc.png?tr=w-480",
     "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1700975390/Croma%20Assets/CMS/Homepage%20Banners/01_Homepage%20Bugs%20Daily/Nov%202023/26-11-2023/HP_4Split_KA_Chimnneys_26Nov2023_iibz9w.png?tr=w-480",
     "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1700459132/Croma%20Assets/CMS/Homepage%20Banners/01_Homepage%20Bugs%20Daily/Nov%202023/20-11-2023/HP_4Split_KA_CM_20Nov2023_pofymo.png?tr=w-480",
-
-
   ]
 
   const laptopimages = [
@@ -307,9 +251,8 @@ const Carousel = () => {
     "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1702360434/Croma%20Assets/CMS/Homepage%20Banners/01_Homepage%20Bugs%20Daily/Dec%202023/12-12-2023/HP_4Split_Laptops_professional_12dec2023_turuvi.png?tr=w-480",
     "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1702360431/Croma%20Assets/CMS/Homepage%20Banners/01_Homepage%20Bugs%20Daily/Dec%202023/12-12-2023/HP_4Split_Laptops_gaming_12dec2023_rqmz8k.png?tr=w-480",
     "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1702360433/Croma%20Assets/CMS/Homepage%20Banners/01_Homepage%20Bugs%20Daily/Dec%202023/12-12-2023/HP_4Split_Laptops_latesttech_12dec2023_xkll2z.png?tr=w-480",
-
-
   ]
+
   const settings = {
     dots: false,
     infinite: false,
@@ -349,7 +292,7 @@ const Carousel = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    
+
     responsive: [
       {
         breakpoint: 1024,
@@ -378,14 +321,16 @@ const Carousel = () => {
     ]
 
   }
-  const audioimagesclick=()=>{
-    navigate(`/search/audio`);
 
+  const audioimagesclick = () => {
+    navigate(`/search/audio`);
   }
-  const kitchenimagesclick=()=>{
+
+  const kitchenimagesclick = () => {
     navigate(`/search/kitchenappliances`);
   }
-  const laptopimagesclick=()=>{
+
+  const laptopimagesclick = () => {
     navigate(`/search/laptop`);
   }
 
@@ -397,50 +342,36 @@ const Carousel = () => {
     else if (index == 1) {
       navigate(`/search/iphone`)
     }
-
     else if (index == 2) {
       navigate(`/search/tv`);
-
-
     }
     else if (index == 3) {
-
       navigate(`/search/laptop`);
     }
     else if (index == 5) {
       navigate(`/search/refrigerator`);
-
     }
-
     else if (index == 7) {
       navigate(`/search/ac`);
-
     }
     else if (index == 8 || index == 4) {
       navigate(`/search/audio`);
-
     }
     else if (index == 9) {
       navigate(`/search/washingMachine`);
-
     }
     else if (index == 10) {
       navigate(`/search/kitchenappliances`);
-
     }
     else if (index == 12) {
       navigate(`/search/tablet`);
-
     }
     else if (index == 11 || index == 13 || index == 14 || index == 15 || index == 16 || index == 17) {
       navigate("/unboxed");
     }
-
   }
 
-
   return (
-
     <div className="carousel">
       <Slider {...settings}>
         {images?.map((image, index) => (
@@ -449,298 +380,135 @@ const Carousel = () => {
           </div>
         ))}
       </Slider>
-      <p
-        className="homeheadings"
 
-      >
-        Deals Of The Day
-      </p>
+      <p className="homeheadings">Deals Of The Day</p>
       <Slider {...settings1}>
         {
-
           productlist.map((product) => {
-
             return <Productcard product={product} />
-
           })
-
         }
-
       </Slider>
 
-
-      <p
-        className="homeheadings"
-      >
-        Top Trending Deals
-      </p>
-
+      <p className="homeheadings">Top Trending Deals</p>
       <Slider {...settings1}>
         {
-
           trending.map((product) => {
-
             return <Productcard product={product} />
-
           })
-
         }
-
       </Slider>
-      <p
-        className="homeheadings"
-      >
-        Audio
-      </p>
 
-
-      <div
-        className="homestaticimagedeals"
-
-      >
+      <p className="homeheadings">Audio</p>
+      <div className="homestaticimagedeals">
         {audioimages.map((image, index) => (
-
-          <img src={image} alt={`Image ${index + 1}`} className="homeimages"  onClick={() => audioimagesclick()} />
+          <img src={image} alt={`Image ${index + 1}`} className="homeimages" onClick={() => audioimagesclick()} />
         ))}
       </div>
 
-      <p
-        className="homeheadings"
-      >
-        Deals on Audio
-      </p>
+      <p className="homeheadings">Deals on Audio</p>
       <Slider {...settings1}>
         {
-
           audio.map((product) => {
-
             return <Productcard product={product} />
-
           })
-
         }
-
       </Slider>
-      <p
-        className="homeheadings"
-      >
-        Kitchen Appliances
-      </p>
-      <div
-        className="homestaticimagedeals"
-      >
 
+      <p className="homeheadings">Kitchen Appliances</p>
+      <div className="homestaticimagedeals">
         {kitchenimages.map((image, index) => (
-
-          <img src={image} alt={`Image ${index + 1}`} className="homeimages" onClick={() => kitchenimagesclick()}/>
+          <img src={image} alt={`Image ${index + 1}`} className="homeimages" onClick={() => kitchenimagesclick()} />
         ))}
       </div>
 
-      <p
-        className="homeheadings"
-      >
-        Kitchen Appliances
-
-      </p>
+      <p className="homeheadings" >Kitchen Appliances</p>
       <Slider {...settings1}>
         {
-
           kitchenappliances.map((product) => {
-
             return <Productcard product={product} />
-
           })
-
         }
-
       </Slider>
 
-
-      <p
-        className="homeheadings"
-      >
-        Laptops
-       
-      </p>
-
-
-      <div
-        className="homestaticimagedeals"
-      >
-
+      <p className="homeheadings">Laptops</p>
+      <div className="homestaticimagedeals">
         {laptopimages.map((image, index) => (
-
-          <img src={image} alt={`Image ${index + 1}`} className="homeimages" onClick={() => laptopimagesclick()}/>
+          <img src={image} alt={`Image ${index + 1}`} className="homeimages" onClick={() => laptopimagesclick()} />
         ))}
       </div>
-      <p
-        className="homeheadings"
-      >
-         Deals On Laptops
-      </p>
 
-
-
+      <p className="homeheadings">Deals On Laptops</p>
       <Slider {...settings1} style={{ marginTop: "2rem" }}>
         {
-
           laptops.map((product) => {
-
             return <Productcard product={product} />
-
           })
-
         }
-
       </Slider>
 
-      <p
-        className="homeheadings"
-      >
-        Televisions
-
-      </p>
-
+      <p className="homeheadings">Televisions</p>
       <Slider {...settings1}>
         {
-
           television.map((product) => {
-
             return <Productcard product={product} />
-
           })
-
         }
-
       </Slider>
 
-
-      <p
-        className="homeheadings"
-      >
-        Air Conditioners
-
-      </p>
+      <p className="homeheadings">Air Conditioners</p>
       <Slider {...settings1}>
         {
-
           ac.map((product) => {
-
             return <Productcard product={product} />
-
           })
-
         }
-
       </Slider>
 
-      <p
-        className="homeheadings"
-      >
-        Tablets
-      </p>
-
+      <p className="homeheadings">Tablets</p>
       <Slider {...settings1}>
         {
-
           tablet.map((product) => {
-
             return <Productcard product={product} />
-
           })
-
         }
-
       </Slider>
 
-
-
-      <p
-        className="homeheadings"
-      >
-        Refrigerators
-      </p>
-
-
+      <p className="homeheadings">Refrigerators</p>
       <Slider {...settings1}>
         {
-
           refrigerator.map((product) => {
-
             return <Productcard product={product} />
-
           })
-
         }
-
       </Slider>
 
-      <p
-        className="homeheadings"
-      >
-        Washing Machines
-      </p>
-
+      <p className="homeheadings">Washing Machines</p>
       <Slider {...settings1}>
         {
-
           washingMachine.map((product) => {
-
             return <Productcard product={product} />
-
           })
-
         }
-
       </Slider>
 
-      <p
-        className="homeheadings"
-      >
-        Health
-      </p>
+      <p className="homeheadings">Health   </p>
       <Slider {...settings1}>
         {
-
           health.map((product) => {
-
             return <Productcard product={product} />
-
           })
-
         }
-
       </Slider>
 
-      <p
-        className="homeheadings"
-      >
-        Travel
-      </p>
-
-
+      <p className="homeheadings">Travel</p>
       <Slider {...settings1}>
         {
-
           travel.map((product) => {
-
             return <Productcard product={product} />
-
           })
-
         }
-
       </Slider>
-
-
-
-
-
-
-
-
-
-
     </div>
   );
 };

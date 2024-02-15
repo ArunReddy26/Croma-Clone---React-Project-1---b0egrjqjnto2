@@ -18,9 +18,7 @@ export default function BasicMenu(props) {
     setAnchorEl(null);
     setIsMenuOpen(false);
   };
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   return (
     <div>
       <Button
@@ -46,16 +44,11 @@ export default function BasicMenu(props) {
           "aria-labelledby": "basic-button",
         }}
       >
-        {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem> */}
         {categories.map((category) => {
           return (
             <Link to={`/${category}`} key={category}>
-
               <MenuItem onClick={handleClose}>{category}</MenuItem>
             </Link>
-
           );
         })}
       </Menu>

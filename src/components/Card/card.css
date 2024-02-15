@@ -243,7 +243,8 @@
 
 .whislistButton {
   display: flex;
-  gap: 1rem
+  gap: 1rem;
+  margintop:1rem
 }
 
 .whislistButtonadd {
@@ -279,6 +280,11 @@
 }
 .whislist-second-content{
   display: flex;
-  margin-left: 1rem;
-  
+  margin-left: 1rem; 
+}
+
+.whislist-second-content h2{
+  color:white;
+  lineheight:1rem;
+  marginleft:2rem;
 }

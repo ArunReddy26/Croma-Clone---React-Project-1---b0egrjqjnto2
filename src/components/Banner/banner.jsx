@@ -16,6 +16,7 @@ const Banner = () => {
     autoplay: true,
     autoPlaySpeed: 500,
   };
+
   const images = [
     "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1702044593/Croma%20Assets/CMS/LP%20Page%20Banners/2023/Deals%20Corner/2023/Dec/Rotating/HP/HP_DealsCorner_GIF_Compressed_8Dec2023_gazl4l.gif?tr=w-2048",
     "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1702556899/Croma%20Assets/CMS/LP%20Page%20Banners/2023/HP%20Top%20Rotating%20Deals/December/17%20Dec/desktop/HP_SB_17Dec2023_lghfdr.jpg?tr=w-2048",
@@ -30,8 +31,6 @@ const Banner = () => {
     console.log(`Clicked on image with index: ${index}`);
     if(index==0){
       navigate("/dealscorner");
-    
-
     }
     else if(index==1){ 
       navigate(`/search/audio`)
@@ -41,21 +40,16 @@ const Banner = () => {
     }
     else if(index==3){
       navigate(`/search/tablet`)
-
     }
     else if(index==4){
       navigate(`/search/refrigerator`)
-
     }
     else if(index==5 || index==6){
       navigate(`/unboxed`)
-
     }
-
   }
 
-  return (
-    
+  return (   
     <Slider {...settings}>
       {images.map((image, index) => {
         return (
