@@ -166,7 +166,7 @@ const Carousel = () => {
 
   async function getAudioproduct() {
     const response = await fetch(
-      "https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=100&page=5",
+      `https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"subCategory":"audio"}`,
       {
         headers: {
           projectID: "b0egrjqjnto2",
@@ -175,11 +175,21 @@ const Carousel = () => {
     );
     const promise2 = await response.json();
     const data = promise2.data;
-    const audio = data.filter((item) => item.subCategory === "audio");
-    const washing = data.filter((item) => item.subCategory === "washingMachine");
-    setaudio(audio);
-    setwashingMachine(washing);
+    setaudio(data);
+  }
 
+  async function getWashingproduct() {
+    const response = await fetch(
+      `https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"subCategory":"washingMachine"}`,
+      {
+        headers: {
+          projectID: "b0egrjqjnto2",
+        },
+      }
+    );
+    const promise2 = await response.json();
+    const data = promise2.data;
+    setwashingMachine(data);
   }
 
   async function getKitchenproduct() {
@@ -209,6 +219,7 @@ const Carousel = () => {
     getTravel();
     gettrendingproducts();
     getKitchenproduct();
+    getWashingproduct();
   }, [])
 
   const images = [

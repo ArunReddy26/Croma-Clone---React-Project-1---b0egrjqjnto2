@@ -91,7 +91,7 @@ const Header = (props) => {
           {
             <Link to="/cart" className="carticon"><FaCartShopping /></Link>
           }
-          <p id="cartcountstore" style={{ background: "green", width: "0.85rem", height: "0.95rem", textAlign: "center" }}>{props.cartcount ? props.cartcount : 0}</p>
+          <p id="cartcountstore">{props.cartcount ? props.cartcount : 0}</p>
         </div>
       </div>
     </header>

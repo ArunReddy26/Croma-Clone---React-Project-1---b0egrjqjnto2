@@ -128,3 +128,11 @@
   display: flex;
   align-items: center;
 }
+#cartcountstore{
+  background:#12daa8;
+  width:0.85rem;
+  height:0.95rem;
+  text-align:center;
+  color:black;
+
+}

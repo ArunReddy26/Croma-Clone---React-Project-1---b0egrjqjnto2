@@ -5,10 +5,8 @@ import OrderHistoryComponent from "../Order-History/order";
 import Header from "../../../components/Header/header";
 
 function Orderhistorycontainer() {
-
     const [orderData, setOrderData] = useState([]);
     const navigate = useNavigate();
-
     async function getOrderData() {
         try {
             let result = await fetch(
@@ -22,25 +20,18 @@ function Orderhistorycontainer() {
                 }
             );
             let resultResponse = await result.json();
-
-
             if (resultResponse.status === "success") {
                   setOrderData(resultResponse.data);
                 console.log('orderData', resultResponse.data);
             }
         } catch {
             console.log("errorrrrrrrrrrrr");
-            //navigate("/");
         }
     }
-
     useEffect(() => {
         getOrderData();
         window.scrollTo(0, 0);
     }, []);
-
-
-
 
     return (
         <>
