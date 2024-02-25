@@ -9,16 +9,9 @@ import { FaTwitter } from "react-icons/fa";
 const Footer = () => {
     return (
         <footer>
-
-
             <div className="foo">
                 <div className="foo_item">
                     <h3 className="foothead">CONNECT WITH US</h3>
-                    {/* <div className="foo_input">
-                    <input type="email" name="" id="foo_email" placeholder="Enter Email ID"/>
-                    <button className="email_btn"><i className="fas fa-arrow-right"></i></button>
-                </div> */}
-
                     <div className="contact_us">
                         <div className="contact_us_item"><a href="https://www.youtube.com/user/CromaRetail"><CiYoutube className="logo" /></a></div>
                         <div className="contact_us_item"><a href="https://www.facebook.com/CromaRetail/"><SlSocialFacebook className="logo" /></a></div>
@@ -64,28 +57,10 @@ const Footer = () => {
                         <div><a href="#top">Audio & Video</a></div>
                         <div><a href="#top">Top Brands</a></div>
                         <div><a href="#top">Health & Fitness</a></div>
-
-                        {/* <div><p>Televisions & Accessories</p></div>
-                        <div><p>Grooming & Personal Care</p></div>
-                        <div><p >Home Appliances</p></div>
-                        <div><p>Cameras & Accessories</p></div>
-                        <div><p>Phones & Wearables</p></div>
-                        <div><p>Smart Devices</p></div>
-                        <div><p>Computers & Tablets</p></div>
-                        <div><p>Gaming</p></div>
-                        <div><p>Kitchen Appliances</p></div>
-                        <div><p>Accessories</p></div>
-                        <div><p>Audio & Video</p></div>
-                        <div><p>Top Brands</p></div>
-                        <div><p>Health & Fitness</p></div> */}
                     </div>
                 </div>
             </div>
-
         </footer>
     )
-
-
-
 }
 export default Footer;

@@ -77,6 +77,7 @@ const Productdetail = () => {
 
     function GotoCart(id) {
         if (localStorage.getItem('token')) {
+            Addcart(id);
             navigate("/checkout");
         }
         else {

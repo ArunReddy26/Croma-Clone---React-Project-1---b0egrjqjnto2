@@ -33,7 +33,7 @@ const Checkoutform = () => {
             })
         }
         else {
-            alert("Please fill all the details")
+            alert("All The Details are cleared");
         }
     }
     const [userAddress, setUserAddress] = useState(
@@ -59,15 +59,12 @@ const Checkoutform = () => {
             }
         );
         const response = await promise.json();
-        settotalprice(response.data.totalPrice);
+        settotalprice(response.data?.totalPrice);
     }
     useEffect(() => {
         checkdatalocal();
-    }, [userAddress])
-
-    useEffect(() => {
         Getcart();
-    }, [])
+    }, [userAddress])
 
     const handleSubmit = (e) => {
         e.preventDefault();

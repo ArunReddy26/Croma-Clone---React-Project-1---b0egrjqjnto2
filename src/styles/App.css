@@ -198,5 +198,8 @@
  text-align: center;
 
 }
-
+/* Footer  */
+footer{
+  display:none;
+}
 }

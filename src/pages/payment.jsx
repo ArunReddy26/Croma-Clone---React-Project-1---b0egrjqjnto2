@@ -16,6 +16,7 @@ const Payment = () => {
   const [address, setAddress] = useState(null);
 
   const Getcart = async () => {
+    try{
     const promise = await fetch(
       "https://academics.newtonschool.co/api/v1/ecommerce/cart",
       {
@@ -27,6 +28,10 @@ const Payment = () => {
     const response = await promise.json();
     setpaymentproduct(response.data.items);
     settotalprice(response.data.totalPrice);
+    }
+    catch(error){
+      console.log("error", error);
+    }
   }
 
   function handlePaymentOption(val) {

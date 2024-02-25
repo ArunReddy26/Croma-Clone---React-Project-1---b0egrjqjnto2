@@ -9,11 +9,11 @@ function OrderHistoryComponent(props) {
       </div>
       <div className="orderHistoryComponentBox">
         <div className="orderHistoryComponentImage">
-          <img src={props.data.order.items[0].product.displayImage} />
+          <img src={props.data.order.items[0].product?.displayImage} />
         </div>
         <div className="orderHistoryComponentText">
           <div className="productName">
-            {props.data.order.items[0].product.name}
+            {props.data.order.items[0].product?.name}
           </div>
           <div className="orderConfirmButton">
             <button>CONFIRMED</button>
