@@ -8,6 +8,8 @@ import Paybutton from "./paybutton";
 function WalletForm(props) {
   const {totalPrice, paymentproduct}=props;
   const [paymentNumber, setPaymentNumber] = useState(0);
+  console.log("payment",paymentproduct);
+
   function handlePaymentOption(val) {
     setPaymentNumber(val);
   }

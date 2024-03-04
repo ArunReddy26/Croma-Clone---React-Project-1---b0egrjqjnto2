@@ -5,6 +5,8 @@ import { useState } from "react";
 
 function NetBankingForm(props) {
     const {totalPrice, paymentproduct}=props;
+    
+    console.log("payment",paymentproduct);
 
     const [paymentNumber, setPaymentNumber] = useState(0);
     function handlePaymentOption(val) {

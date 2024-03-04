@@ -1,8 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import "./paybutton.css";
 
 function Paybutton(props) {
+  const navigate=useNavigate();
   const {totalPrice, paymentproduct}=props;
-
 
   const orderpostapi = async (details) => {
 
@@ -19,10 +20,6 @@ function Paybutton(props) {
     const response = await promise.json();
     navigate("/order-placed");
 
-
-
-
-
   }
 
   function placeorderbutton() {
@@ -35,12 +32,6 @@ function Paybutton(props) {
     delete addressinls.landmark;
     delete addressinls.area;
     delete addressinls.addresstype;
-
-
-
-
-
-
     const orderdetails = {
       productId: paymentproduct[0]?.product._id,
       quantity: paymentproduct[0]?.quantity,
@@ -50,6 +41,7 @@ function Paybutton(props) {
 
       }
     }
+
     delete orderdetails.address.pincode;
     if (totalPrice) {
       orderpostapi(orderdetails);

@@ -13,6 +13,18 @@ const Cart = () => {
     const [cartcount, setcartcount] = useState(0);
     const [totalprice, settotalprice] = useState("");
 
+    // async function Clearcart(){
+    //     const options = {
+    //         method: 'DELETE',
+    //         headers: new Headers({ projectID: 'b0egrjqjnto2', 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}` }),
+    //     }
+    //     const data = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/cart/`, options);
+    //     const resData = await data.json();
+    //     setproducts(resData?.data?.items);
+    //    Cartcount();
+
+    // }
+
     async function Cartcount() {
         const promise = await fetch("https://academics.newtonschool.co/api/v1/ecommerce/cart", {
             headers: {

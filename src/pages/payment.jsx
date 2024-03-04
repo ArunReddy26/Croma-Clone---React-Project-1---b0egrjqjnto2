@@ -9,27 +9,27 @@ import Checkoutheader from "./checkoutheader";
 import Cashondelivery from "./component/cashondelivery";
 
 const Payment = () => {
-  
+
   const [paymentMethod, setPaymentMethod] = useState(1);
   const [totalprice, settotalprice] = useState("");
   const [paymentproduct, setpaymentproduct] = useState([]);
   const [address, setAddress] = useState(null);
 
   const Getcart = async () => {
-    try{
-    const promise = await fetch(
-      "https://academics.newtonschool.co/api/v1/ecommerce/cart",
-      {
-        headers: {
-          projectID: "b0egrjqjnto2", Authorization: `Bearer ${localStorage.getItem('token')}`
-        },
-      }
-    );
-    const response = await promise.json();
-    setpaymentproduct(response.data.items);
-    settotalprice(response.data.totalPrice);
+    try {
+      const promise = await fetch(
+        "https://academics.newtonschool.co/api/v1/ecommerce/cart",
+        {
+          headers: {
+            projectID: "b0egrjqjnto2", Authorization: `Bearer ${localStorage.getItem('token')}`
+          },
+        }
+      );
+      const response = await promise.json();
+      setpaymentproduct(response.data.items);
+      settotalprice(response.data.totalPrice);
     }
-    catch(error){
+    catch (error) {
       console.log("error", error);
     }
   }
@@ -55,31 +55,31 @@ const Payment = () => {
           <div className="paymentContainer">
             <div className="paymentOptionContainer">
               <div className="paymentOptions">
-                <div className={`paymentType ${paymentMethod == 1 ? "paymentTypeOnClick" : ""}`} onClick={() => {handlePaymentOption(1)}}>
+                <div className={`paymentType ${paymentMethod == 1 ? "paymentTypeOnClick" : ""}`} onClick={() => { handlePaymentOption(1) }}>
                   <span style={{ marginRight: "10px" }}>
                     <img src="https://assets.juspay.in/hyper/images/croma/ic_card.png" />
                   </span>
-                 Credit / Debit Cards
+                  Credit / Debit Cards
                 </div>
-                <div className={`paymentType ${paymentMethod == 2 ? "paymentTypeOnClick" : ""}`} onClick={() => {handlePaymentOption(2)}}>
+                <div className={`paymentType ${paymentMethod == 2 ? "paymentTypeOnClick" : ""}`} onClick={() => { handlePaymentOption(2) }}>
                   <span style={{ marginRight: "10px" }}>
                     <img src="https://assets.juspay.in/hyper/images/croma/wallet_icon.png" />
                   </span>
                   Wallet
                 </div>
-                <div className={`paymentType ${paymentMethod == 3 ? "paymentTypeOnClick" : ""}`} onClick={() => {handlePaymentOption(3)}}>
+                <div className={`paymentType ${paymentMethod == 3 ? "paymentTypeOnClick" : ""}`} onClick={() => { handlePaymentOption(3) }}>
                   <span style={{ marginRight: "10px" }}>
                     <img src="https://assets.juspay.in/hyper/images/croma/ic_upi_icon.png" />
                   </span>
                   UPI
                 </div>
-                <div className={`paymentType ${paymentMethod == 4 ? "paymentTypeOnClick" : ""}`} onClick={() => {handlePaymentOption(4)}}>
+                <div className={`paymentType ${paymentMethod == 4 ? "paymentTypeOnClick" : ""}`} onClick={() => { handlePaymentOption(4) }}>
                   <span style={{ marginRight: "10px" }}>
                     <img src="https://assets.juspay.in/hyper/images/croma/net_banking_icon.png" />
                   </span>
                   Net banking
                 </div>
-                <div className={`paymentType ${paymentMethod == 5 ? "paymentTypeOnClick" : ""}`}onClick={() => {handlePaymentOption(5)}}>
+                <div className={`paymentType ${paymentMethod == 5 ? "paymentTypeOnClick" : ""}`} onClick={() => { handlePaymentOption(5) }}>
                   <span style={{ marginRight: "10px" }}>
                     <img src="	https://images.bewakoof.com/web/cod-icon-1645705427.png" />
                   </span>
@@ -91,10 +91,10 @@ const Payment = () => {
                   <DebitCreditCardForm totalPrice={totalprice} paymentproduct={paymentproduct} />
                 )}
                 {paymentMethod == 2 && <WalletForm totalPrice={totalprice} paymentproduct={paymentproduct} />}
-                {paymentMethod == 3 && <UPIForm totalPrice={totalprice} paymentproduct={paymentproduct}/>}
-                {paymentMethod == 4 && <NetBankingForm totalPrice={totalprice} />}
+                {paymentMethod == 3 && <UPIForm totalPrice={totalprice} paymentproduct={paymentproduct} />}
+                {paymentMethod == 4 && <NetBankingForm totalPrice={totalprice} paymentproduct={paymentproduct} />}
                 {paymentMethod == 5 && (
-                  <Cashondelivery totalPrice={totalprice}  paymentproduct={paymentproduct}/>
+                  <Cashondelivery totalPrice={totalprice} paymentproduct={paymentproduct} />
                 )}
               </div>
             </div>
@@ -122,7 +122,7 @@ const Payment = () => {
                   paymentproduct.map((payproduct) => {
                     return (
                       <div>
-                        <img src={payproduct.product.displayImage} alt="products"  />
+                        <img src={payproduct.product.displayImage} alt="products" />
                         <h3>{payproduct.product.name}</h3>
                       </div>
                     )
