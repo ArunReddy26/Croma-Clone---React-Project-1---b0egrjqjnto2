@@ -13,28 +13,39 @@ const Checkoutform = () => {
     function checkdatalocal() {
         const datainls = JSON.parse(localStorage.getItem('addresses'));
         console.log("dacainls", datainls);
-        setlocal(datainls);
+        if(localStorage.getItem('addresses')){
+            setlocal(datainls);
+        }
+        else{
+            setlocal({})
+
+        }
+       
+        
     }
 
     function addnewaddress(e) {
         e.preventDefault();
-        if (userAddress.pincode && userAddress.state && userAddress.city && userAddress.fullname && userAddress.landmark && userAddress.area && userAddress.mobileno && userAddress.addresstype && userAddress.street) {
-            localStorage.removeItem('addresses');
-            setUserAddress({
-                pincode: "",
-                fullname: "",
-                street: "",
-                landmark: "",
-                area: "",
-                city: "",
-                state: "",
-                mobileno: "",
-                addresstype: ""
-            })
-        }
-        else {
-            alert("All The Details are cleared");
-        }
+        localStorage.removeItem('addresses');
+        checkdatalocal();
+        // if (userAddress.pincode && userAddress.state && userAddress.city && userAddress.fullname && userAddress.landmark && userAddress.area && userAddress.mobileno && userAddress.addresstype && userAddress.street) {
+        //     localStorage.removeItem('addresses');
+        //     setUserAddress({
+        //         pincode: "",
+        //         fullname: "",
+        //         street: "",
+        //         landmark: "",
+        //         area: "",
+        //         city: "",
+        //         state: "",
+        //         mobileno: "",
+        //         addresstype: ""
+        //     })
+        //     setlocal("");
+        // }
+        // else {
+        //     alert("All The Details are cleared");
+        // }
     }
     const [userAddress, setUserAddress] = useState(
         {
