@@ -5,6 +5,7 @@ import Cartproducts from "./productcart";
 import Checkout from "../components/Checkout/checkout";
 import "./cart.css";
 import Whishlist from "./whislistproduct";
+import MobileCart from "./Mobileresponsive/cart";
 
 
 const Cart = () => {
@@ -130,13 +131,16 @@ const Cart = () => {
     }, [])
 
     return (
-        <div>
+        <div className="mediacartquery">
             <Header cartcount={cartcount} />
             {products?.length > 0 ? (
                 <div className="prodcart">
                     <div className="prodcartdiv">
                         {products.map((pro) => {
                             return <Cartproducts product={pro} movetowishlist={AddtoWishlist} cardClick={DeleteCart} />
+                        })}
+                        {products.map((pro) => {
+                            return <MobileCart product={pro} movetowishlist={AddtoWishlist} cardClick={DeleteCart} />
                         })}
                     </div>
                     <Checkout Price={totalprice} />
@@ -157,13 +161,13 @@ const Cart = () => {
                     whislist?.length > 0 ? (
                         <div className="cartwhislistbox">
                             <h2 >YOUR WISHLIST</h2>
-                            <div className="carwhislistcontainer">
-                                {whislist.map((wish) => {
+                                <div className="carwhislistcontainer">
+                                    {whislist.map((wish) => {
 
-                                    return <Whishlist wishlistproducts={wish} addtocart={AddCart} deletewish={DeleteWhislist} />
-                                })}
+                                        return <Whishlist wishlistproducts={wish} addtocart={AddCart} deletewish={DeleteWhislist} />
+                                    })}
+                                </div>
                             </div>
-                        </div>
                     ) : (
                         <div></div>
                     )

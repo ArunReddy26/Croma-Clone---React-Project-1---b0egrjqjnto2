@@ -15,6 +15,22 @@ const Inputproduct = () => {
   const [userproductheading, setuserproductheading] = useState(userinput);
   const { userinput } = useParams();
 
+  async function dropcategories(value, productCategory) {
+    try {
+      const response = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"sellerTag":"${value}","subCategory":"${productCategory}"}`, {
+        headers: {
+          projectID: "b0egrjqjnto2",
+        },
+      });
+      const jsonData = await response.json();
+      setuserproducts(jsonData.data);
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
+
   async function alldropdowncategories() {
     try {
       const response = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/electronics/categories`, {
@@ -215,9 +231,9 @@ const Inputproduct = () => {
         </div>
         <div className="inputdropdowns">
           <div className="inputfirstlist">
-            <div className="inputsort-dropdown">
+            {/* <div className="inputsort-dropdown">
 
-              <select onChange={handleSelectChange}>
+              <select onChange={handleSelectChange} className="sortfirstselect">
 
                 <option value="">Category</option>
                 {
@@ -228,14 +244,13 @@ const Inputproduct = () => {
                   )
                 }
               </select>
-            </div>
+            </div> */}
             <div className="inputsort-dropdown">
               <select onChange={handleSelectChange}>
                 <option value="">Brand</option>
                 {
                   userbrands.map((brandname) => {
                     return (<option value={brandname}>{brandname}</option>)
-
                   }
                   )
                 }
@@ -254,7 +269,7 @@ const Inputproduct = () => {
             </div>
           </div>
           <div className="inputsecondist">
-           <select onChange={handleSelectChange} >
+            <select onChange={handleSelectChange} >
               <option value="">Sort By</option>
               <option value="top rated">Top Rated</option>
               <option value="priceLowToHigh">Price (Lowest to Highest)</option>

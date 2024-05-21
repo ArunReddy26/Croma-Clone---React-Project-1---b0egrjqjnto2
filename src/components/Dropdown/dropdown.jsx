@@ -45,9 +45,10 @@ export default function BasicMenu(props) {
         }}
       >
         {categories.map((category) => {
+          // console.log("category", category.charAt(0).toUpperCase()+ category.slice(1));
           return (
             <Link to={`/${category}`} key={category}>
-              <MenuItem onClick={handleClose}>{category}</MenuItem>
+              <MenuItem onClick={handleClose}>{category.charAt(0).toUpperCase()+ category.slice(1)}</MenuItem>
             </Link>
           );
         })}

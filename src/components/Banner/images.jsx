@@ -23,188 +23,267 @@ const Carousel = () => {
   const [travel, settravel] = useState([]);
 
   async function getAllproducts() {
-    const response = await fetch(
-      'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"sellerTag":"top rated"}',
-      {
-        headers: {
-          projectID: "b0egrjqjnto2",
-        },
-      }
-    );
-    const promise = await response.json();
-    const data = promise.data;
-    setproductlist(data);
+    try {
+      const response = await fetch(
+        'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"sellerTag":"top rated"}',
+        {
+          headers: {
+            projectID: "b0egrjqjnto2",
+          },
+        }
+      );
+      const promise = await response.json();
+      const data = promise.data;
+      setproductlist(data);
+    } catch (error) {
+      console.log('error', error)
+    }
   }
 
   async function gettrendingproducts() {
-    const response = await fetch(
-      'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"sellerTag":"top rated"}',
-      {
-        headers: {
-          projectID: "b0egrjqjnto2",
-        },
-      }
-    );
-    const promise = await response.json();
-    const data = promise.data;
-    setproductlist(data);
+    try {
+
+
+      const response = await fetch(
+        'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"sellerTag":"top rated"}',
+        {
+          headers: {
+            projectID: "b0egrjqjnto2",
+          },
+        }
+      );
+      const promise = await response.json();
+      const data = promise.data;
+      setproductlist(data);
+    } catch (error) {
+      console.log('error', error)
+    }
   }
 
   async function getAllproducts() {
-    const response = await fetch(
-      'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"sellerTag":"trending"}',
-      {
-        headers: {
-          projectID: "b0egrjqjnto2",
-        },
-      }
-    );
-    const promise = await response.json();
-    const data = promise.data;
-    settrending(data);
+    try {
+
+
+      const response = await fetch(
+        'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"sellerTag":"trending"}',
+        {
+          headers: {
+            projectID: "b0egrjqjnto2",
+          },
+        }
+      );
+      const promise = await response.json();
+      const data = promise.data;
+      settrending(data);
+    }
+    catch (error) {
+      console.log('error', error)
+    }
   }
 
   async function getlaptopProducts() {
-    const response = await fetch(
-      'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"subCategory":"laptop"}',
-      {
-        headers: {
-          projectID: "b0egrjqjnto2",
-        },
-      }
-    );
-    const promise = await response.json();
-    const data = promise.data;
-    setlaptops(data);
+    try {
+
+
+      const response = await fetch(
+        'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"subCategory":"laptop"}',
+        {
+          headers: {
+            projectID: "b0egrjqjnto2",
+          },
+        }
+      );
+      const promise = await response.json();
+      const data = promise.data;
+      setlaptops(data);
+    }
+    catch (error) {
+      console.log('error', error)
+    }
   }
 
   async function gettvProducts() {
-    const response = await fetch(
-      'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"subCategory":"tv"}',
-      {
-        headers: {
-          projectID: "b0egrjqjnto2",
-        },
-      }
-    );
-    const promise = await response.json();
-    const data = promise.data;
-    settelevision(data);
+    try {
+      const response = await fetch(
+        'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"subCategory":"tv"}',
+        {
+          headers: {
+            projectID: "b0egrjqjnto2",
+          },
+        }
+      );
+      const promise = await response.json();
+      const data = promise.data;
+      settelevision(data);
+    }
+    catch (error) {
+      console.log('error', error)
+    }
   }
 
 
   async function getacProducts() {
-    const response = await fetch(
-      'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"subCategory":"ac"}',
-      {
-        headers: {
-          projectID: "b0egrjqjnto2",
-        },
-      }
-    );
-    const promise = await response.json();
-    const data = promise.data;
-    setac(data);
+    try {
+      const response = await fetch(
+        'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"subCategory":"ac"}',
+        {
+          headers: {
+            projectID: "b0egrjqjnto2",
+          },
+        }
+      );
+      const promise = await response.json();
+      const data = promise.data;
+      setac(data);
+    }
+    catch (error) {
+      console.log('error', error)
+    }
   }
 
   async function gettabletProducts() {
-    const response = await fetch(
-      'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"subCategory":"tablet"}',
-      {
-        headers: {
-          projectID: "b0egrjqjnto2",
-        },
-      }
-    );
-    const promise = await response.json();
-    const data = promise.data;
-    settablet(data);
+    try {
+
+
+      const response = await fetch(
+        'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"subCategory":"tablet"}',
+        {
+          headers: {
+            projectID: "b0egrjqjnto2",
+          },
+        }
+      );
+      const promise = await response.json();
+      const data = promise.data;
+      settablet(data);
+    }
+    catch (error) {
+      console.log('error', error)
+    }
   }
 
   async function getrefrigerator() {
-    const response = await fetch(
-      'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"subCategory":"refrigerator"}',
-      {
-        headers: {
-          projectID: "b0egrjqjnto2",
-        },
-      }
-    );
-    const promise = await response.json();
-    const data = promise.data;
-    setrefrigerator(data);
+    try {
+
+
+      const response = await fetch(
+        'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"subCategory":"refrigerator"}',
+        {
+          headers: {
+            projectID: "b0egrjqjnto2",
+          },
+        }
+      );
+      const promise = await response.json();
+      const data = promise.data;
+      setrefrigerator(data);
+    }
+    catch (error) {
+      console.log('error', error)
+    }
   }
 
   async function gethealth() {
-    const response = await fetch(
-      'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"subCategory":"health"}',
-      {
-        headers: {
-          projectID: "b0egrjqjnto2",
-        },
-      }
-    );
-    const promise = await response.json();
-    const data = promise.data;
-    sethealth(data);
+    try {
+
+
+      const response = await fetch(
+        'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"subCategory":"health"}',
+        {
+          headers: {
+            projectID: "b0egrjqjnto2",
+          },
+        }
+      );
+      const promise = await response.json();
+      const data = promise.data;
+      sethealth(data);
+    } catch (error) {
+      console.log('error', error)
+    }
+
   }
 
 
   async function getTravel() {
-    const response = await fetch(
-      'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"subCategory":"travel"}',
-      {
-        headers: {
-          projectID: "b0egrjqjnto2",
-        },
-      }
-    );
-    const promise = await response.json();
-    const data = promise.data;
-    settravel(data);
+    try {
+
+      const response = await fetch(
+        'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?filter={"subCategory":"travel"}',
+        {
+          headers: {
+            projectID: "b0egrjqjnto2",
+          },
+        }
+      );
+      const promise = await response.json();
+      const data = promise.data;
+      settravel(data);
+    }
+    catch (error) {
+      console.log('error', error)
+    }
   }
 
   async function getAudioproduct() {
-    const response = await fetch(
-      `https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"subCategory":"audio"}`,
-      {
-        headers: {
-          projectID: "b0egrjqjnto2",
-        },
-      }
-    );
-    const promise2 = await response.json();
-    const data = promise2.data;
-    setaudio(data);
+    try {
+
+
+      const response = await fetch(
+        `https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"subCategory":"audio"}`,
+        {
+          headers: {
+            projectID: "b0egrjqjnto2",
+          },
+        }
+      );
+      const promise2 = await response.json();
+      const data = promise2.data;
+      setaudio(data);
+    }
+    catch (error) {
+      console.log('error', error)
+    }
   }
 
   async function getWashingproduct() {
-    const response = await fetch(
-      `https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"subCategory":"washingMachine"}`,
-      {
-        headers: {
-          projectID: "b0egrjqjnto2",
-        },
-      }
-    );
-    const promise2 = await response.json();
-    const data = promise2.data;
-    setwashingMachine(data);
+    try {
+      const response = await fetch(
+        `https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"subCategory":"washingMachine"}`,
+        {
+          headers: {
+            projectID: "b0egrjqjnto2",
+          },
+        }
+      );
+      const promise2 = await response.json();
+      const data = promise2.data;
+      setwashingMachine(data);
+    }
+    catch (error) {
+      console.log('error', error)
+    }
   }
 
   async function getKitchenproduct() {
-    const response = await fetch(
-      'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"subCategory":"kitchenappliances"}',
-      {
-        headers: {
-          projectID: "b0egrjqjnto2",
-        },
-      }
-    );
-    const promise2 = await response.json();
-    const data = promise2.data;
-    const kitchenappliances = data.filter((item) => item.subCategory === "kitchenappliances");
-    setkitchenappliances(kitchenappliances);
+    try {
+
+      const response = await fetch(
+        'https://academics.newtonschool.co/api/v1/ecommerce/electronics/products?limit=50&filter={"subCategory":"kitchenappliances"}',
+        {
+          headers: {
+            projectID: "b0egrjqjnto2",
+          },
+        }
+      );
+      const promise2 = await response.json();
+      const data = promise2.data;
+      const kitchenappliances = data.filter((item) => item.subCategory === "kitchenappliances");
+      setkitchenappliances(kitchenappliances);
+    }
+    catch (error) {
+      console.log('error', error)
+    }
   }
 
   useEffect(() => {
@@ -263,7 +342,33 @@ const Carousel = () => {
     "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1702360431/Croma%20Assets/CMS/Homepage%20Banners/01_Homepage%20Bugs%20Daily/Dec%202023/12-12-2023/HP_4Split_Laptops_gaming_12dec2023_rqmz8k.png?tr=w-480",
     "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1702360433/Croma%20Assets/CMS/Homepage%20Banners/01_Homepage%20Bugs%20Daily/Dec%202023/12-12-2023/HP_4Split_Laptops_latesttech_12dec2023_xkll2z.png?tr=w-480",
   ]
+  const washingmachines = [
+    "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1713879559/Croma%20Assets/CMS/LP%20Page%20Banners/2024/PCP/WM/April/23042024/MPCP_4split_newatcroma_WM_Bestseller_23April2024_g14p2f.png?tr=w-360",
+    "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1713879472/Croma%20Assets/CMS/LP%20Page%20Banners/2024/PCP/WM/April/23042024/MPCP_4split_newatcroma_WM_Whirpool_23April2024_eipnd5.png?tr=w-360",
+    "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1713879536/Croma%20Assets/CMS/LP%20Page%20Banners/2024/PCP/WM/April/23042024/PCP_4split_newatcroma_WM_FL_23April2024_zcqswp.png?tr=w-480",
+    "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1713879586/Croma%20Assets/CMS/LP%20Page%20Banners/2024/PCP/WM/April/23042024/PCP_4split_newatcroma_WM_FA_23April2024_johxtc.png?tr=w-1024",
+  ]
+  const refrigerators = [
+    "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1698220072/Croma%20Assets/CMS/Bugs/01012023/040423/ref/PCP_ref_types_FrenchDoor_28Oct2023_sqwwdv.png?tr=w-1024",
+    "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1698220072/Croma%20Assets/CMS/Bugs/01012023/040423/ref/PCP_ref_types_SBS_28Oct2023_rfswbo.png?tr=w-1024",
+    "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1688389313/Croma%20Assets/CMS/PCP/July-2023/03-07-2023/DESKTOP/Choose%20Your%20Type/PCP_ref_types_DD_22May2023_tpotel.png?tr=w-1024",
+    "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1698220073/Croma%20Assets/CMS/Bugs/01012023/040423/ref/PCP_ref_types_Singledoor_28Oct2023_iw5kls.png?tr=w-1024",
 
+  ]
+  const airconditioners = [
+    "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1715578462/Croma%20Assets/CMS/LP%20Page%20Banners/2024/PCP/May/PCP_4split_HOC_AC_1T3S_12May2024_jakjuq.png?tr=w-1024",
+    "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1712904802/Croma%20Assets/CMS/LP%20Page%20Banners/2024/PCP/Website%20change%20banner/PCP_4split_HOC_AC_Window_12april2024_c6c6pf.png?tr=w-1024",
+    "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1698229072/Croma%20Assets/CMS/PCP/Oct-2023/25-10-2023/AC%20PCP%20Features/D/PCP_4Split_FTM_inverter_25oct2023_kmehza.png?tr=w-1024",
+    "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1698229072/Croma%20Assets/CMS/PCP/Oct-2023/25-10-2023/AC%20PCP%20Features/D/PCP_4Split_FTM_performance_25oct2023_fq0q3b.png?tr=w-1024",
+  ]
+
+  const tvs = [
+    "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1684504627/Croma%20Assets/CMS/PCP/TV%20PCP/PCP_TV_NC_OS_firetv_15may2023_rjdkui.png?tr=w-1024",
+    "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1685420323/Croma%20Assets/CMS/Bugs/01012023/040423/PCP_TV_NC_rightype_OLEDTV_15may2023_o2ioff.png?tr=w-1024",
+    "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1684504682/Croma%20Assets/CMS/PCP/TV%20PCP/PCP_TV_NC_rightype_QLED_15may2023_yzotzq.png?tr=w-1024",
+    "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1684504682/Croma%20Assets/CMS/PCP/TV%20PCP/PCP_TV_NC_rightype_LED_15may2023_bqpmmo.png?tr=w-1024",
+
+  ]
   const settings = {
     dots: false,
     infinite: false,
@@ -332,7 +437,21 @@ const Carousel = () => {
     ]
 
   }
+  const tvsimagesclick = () => {
+    navigate(`/search/tv`);
 
+  }
+  const airconditionersimagesclick = () => {
+    navigate(`/search/ac`);
+
+  }
+  const refrigeratorsimagesclick = () => {
+    navigate(`/search/refrigerator`);
+  }
+  const washingimagesclick = () => {
+    navigate(`/search/washingmachine`);
+
+  }
   const audioimagesclick = () => {
     navigate(`/search/audio`);
   }
@@ -391,24 +510,27 @@ const Carousel = () => {
           </div>
         ))}
       </Slider>
+      <p className="homeheadings_1">Deals Of The Day</p>
+      <div className="slider-container">
+        <Slider {...settings1}>
+          {
+            productlist.map((product) => {
+              return <Productcard product={product} />
+            })
+          }
+        </Slider>
+      </div>
 
-      <p className="homeheadings">Deals Of The Day</p>
-      <Slider {...settings1}>
-        {
-          productlist.map((product) => {
-            return <Productcard product={product} />
-          })
-        }
-      </Slider>
-
-      <p className="homeheadings">Top Trending Deals</p>
-      <Slider {...settings1}>
-        {
-          trending.map((product) => {
-            return <Productcard product={product} />
-          })
-        }
-      </Slider>
+      <p className="homeheadings_1">Top Trending Deals</p>
+      <div className="slider-container">
+        <Slider {...settings1}>
+          {
+            trending.map((product) => {
+              return <Productcard product={product} />
+            })
+          }
+        </Slider>
+      </div>
 
       <p className="homeheadings">Audio</p>
       <div className="homestaticimagedeals">
@@ -417,14 +539,16 @@ const Carousel = () => {
         ))}
       </div>
 
-      <p className="homeheadings">Deals on Audio</p>
-      <Slider {...settings1}>
-        {
-          audio.map((product) => {
-            return <Productcard product={product} />
-          })
-        }
-      </Slider>
+      <p className="homeheadings_1">Deals on Audio</p>
+      <div className="slider-container">
+        <Slider {...settings1}>
+          {
+            audio.map((product) => {
+              return <Productcard product={product} />
+            })
+          }
+        </Slider>
+      </div>
 
       <p className="homeheadings">Kitchen Appliances</p>
       <div className="homestaticimagedeals">
@@ -433,14 +557,16 @@ const Carousel = () => {
         ))}
       </div>
 
-      <p className="homeheadings" >Kitchen Appliances</p>
-      <Slider {...settings1}>
-        {
-          kitchenappliances.map((product) => {
-            return <Productcard product={product} />
-          })
-        }
-      </Slider>
+      <p className="homeheadings_1" >Kitchen Appliances</p>
+      <div className="slider-container">
+        <Slider {...settings1}>
+          {
+            kitchenappliances.map((product) => {
+              return <Productcard product={product} />
+            })
+          }
+        </Slider>
+      </div>
 
       <p className="homeheadings">Laptops</p>
       <div className="homestaticimagedeals">
@@ -449,77 +575,114 @@ const Carousel = () => {
         ))}
       </div>
 
-      <p className="homeheadings">Deals On Laptops</p>
-      <Slider {...settings1} style={{ marginTop: "2rem" }}>
-        {
-          laptops.map((product) => {
-            return <Productcard product={product} />
-          })
-        }
-      </Slider>
+      <p className="homeheadings_1">Deals On Laptops</p>
+      <div className="slider-container">
+        <Slider {...settings1} style={{ marginTop: "2rem" }}>
+          {
+            laptops.map((product) => {
+              return <Productcard product={product} />
+            })
+          }
+        </Slider>
+      </div>
 
       <p className="homeheadings">Televisions</p>
-      <Slider {...settings1}>
-        {
-          television.map((product) => {
-            return <Productcard product={product} />
-          })
-        }
-      </Slider>
+      <div className="homestaticimagedeals">
+        {tvs.map((image, index) => (
+          <img src={image} alt={`Image ${index + 1}`} className="homeimages" onClick={() => tvsimagesclick()} />
+        ))}
+      </div>
+      <div className="slider-container">
+        <Slider {...settings1}>
+          {
+            television.map((product) => {
+              return <Productcard product={product} />
+            })
+          }
+        </Slider>
+      </div>
 
       <p className="homeheadings">Air Conditioners</p>
-      <Slider {...settings1}>
-        {
-          ac.map((product) => {
-            return <Productcard product={product} />
-          })
-        }
-      </Slider>
+      <div className="homestaticimagedeals">
+        {airconditioners.map((image, index) => (
+          <img src={image} alt={`Image ${index + 1}`} className="homeimages" onClick={() => airconditionersimagesclick()} />
+        ))}
+      </div>
+      <div className="slider-container">
+        <Slider {...settings1}>
+          {
+            ac.map((product) => {
+              return <Productcard product={product} />
+            })
+          }
+        </Slider>
+      </div>
 
-      <p className="homeheadings">Tablets</p>
-      <Slider {...settings1}>
-        {
-          tablet.map((product) => {
-            return <Productcard product={product} />
-          })
-        }
-      </Slider>
+      <p className="homeheadings_1">Tablets</p>
+      <div className="slider-container">
+        <Slider {...settings1}>
+          {
+            tablet.map((product) => {
+              return <Productcard product={product} />
+            })
+          }
+        </Slider>
+      </div>
 
       <p className="homeheadings">Refrigerators</p>
-      <Slider {...settings1}>
-        {
-          refrigerator.map((product) => {
-            return <Productcard product={product} />
-          })
-        }
-      </Slider>
+      <div className="homestaticimagedeals">
+        {refrigerators.map((image, index) => (
+          <img src={image} alt={`Image ${index + 1}`} className="homeimages" onClick={() => refrigeratorsimagesclick()} />
+        ))}
+      </div>
+      <div className="slider-container">
+        <Slider {...settings1}>
+          {
+            refrigerator.map((product) => {
+              return <Productcard product={product} />
+            })
+          }
+        </Slider>
+      </div>
 
       <p className="homeheadings">Washing Machines</p>
-      <Slider {...settings1}>
-        {
-          washingMachine.map((product) => {
-            return <Productcard product={product} />
-          })
-        }
-      </Slider>
+      <div className="homestaticimagedeals">
+        {washingmachines.map((image, index) => (
+          <img src={image} alt={`Image ${index + 1}`} className="homeimages" onClick={() => washingimagesclick()} />
+        ))}
+      </div>
+      <div className="slider-container">
+        <Slider {...settings1}>
+          {
+            washingMachine.map((product) => {
+              return <Productcard product={product} />
+            })
+          }
+        </Slider>
+      </div>
 
-      <p className="homeheadings">Health   </p>
-      <Slider {...settings1}>
-        {
-          health.map((product) => {
-            return <Productcard product={product} />
-          })
-        }
-      </Slider>
+      <p className="homeheadings_1">Health</p>
+      <div className="slider-container">
 
-      <p className="homeheadings">Travel</p>
-      <Slider {...settings1}>
-        {
-          travel.map((product) => {
-            return <Productcard product={product} />
-          })
-        }
-      </Slider>
+        <Slider {...settings1}>
+          {
+            health.map((product) => {
+              return <Productcard product={product} />
+            })
+          }
+        </Slider>
+      </div>
+
+      <p className="homeheadings_1">Travel</p>
+      <div className="slider-container">
+        <Slider {...settings1}>
+          {
+            travel.map((product) => {
+              return <Productcard product={product} />
+            })
+          }
+        </Slider>
+      </div>
     </div>
   );
 };

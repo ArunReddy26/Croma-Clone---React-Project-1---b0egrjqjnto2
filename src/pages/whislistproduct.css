@@ -83,3 +83,10 @@
 .Removewhislist:hover{
     border-color: rgb(66, 248, 194);
 }
+
+@media (max-width: 600px) {
+    .carwhislistcontainer {
+        margin-left:0rem;
+        padding: 2rem 4rem;
+    }
+}

@@ -1,0 +1,80 @@
+
+
+.mobileproduct-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 300px;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 15px;
+}
+
+.mobileproduct-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.mobileproduct-info {
+    margin: 10px 0;
+}
+
+.mobileproduct-name {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.mobileproduct-price {
+    color: black;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+.mobileproduct-rating {
+    color: #f39c12;
+}
+
+.pmobileproduct-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.mobilebtn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 48%;
+    font-size: 1em;
+}
+
+.mobilebtn:hover {
+    background-color: #2980b9;
+}
+
+@media (min-width: 769px) {
+    .mobileproduct-card {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .mobileproduct-buttons {
+        flex-direction: column;
+    }
+
+    .mobilebtn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .mobilebtn:last-child {
+        margin-bottom: 0;
+    }
+}

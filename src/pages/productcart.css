@@ -61,4 +61,8 @@
   .heading {
     width: 100px;
   }
-  
+  @media (max-width: 768px) {
+    .maincart {
+        display: none;
+    }
+}

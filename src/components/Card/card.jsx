@@ -2,9 +2,11 @@ import "./card.css";
 import React from "react";
 import { MdOutlineStar } from "react-icons/md";
 import { CiHeart } from "react-icons/ci";
+import { Rating } from "@mui/material";
 
 const Card = (props) => {
   const { wishlistproducts, cardClick, addtocart } = props;
+  console.log("wishlistproducts", wishlistproducts);
   return (
     <div className="whislist-cart">
       <div className="whislist-cartimages">
@@ -15,11 +17,7 @@ const Card = (props) => {
           <div className="whislisttitle" >
             <p>{wishlistproducts.products.name}</p>
             <div className="star">
-              <MdOutlineStar className="stars" />
-              <MdOutlineStar className="stars" />
-              <MdOutlineStar className="stars" />
-              <MdOutlineStar className="stars" />
-              <MdOutlineStar className="stars" />
+              <Rating style={{ color: "#12daa8", fontSize: "1.2rem" }} name="read-only" value={wishlistproducts.products.ratings} readOnly/>
             </div>
             <div className="whislistproductdelivery">
               Standard Delivery By<br /> February 2024

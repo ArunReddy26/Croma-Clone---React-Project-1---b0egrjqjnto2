@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./banner.css"; // Import your custom CSS file
+import "./banner.css"; 
 import { useNavigate } from "react-router-dom";
 
 const Banner = () => {

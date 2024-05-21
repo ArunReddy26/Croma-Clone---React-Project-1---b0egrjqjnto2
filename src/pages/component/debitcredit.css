@@ -88,4 +88,11 @@
     background: #12daa8;
     color: black;
   }
+
+  .error-message {
+    color: red;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
   

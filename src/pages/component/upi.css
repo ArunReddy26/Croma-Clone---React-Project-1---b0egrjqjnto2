@@ -60,3 +60,12 @@
     font-size: 14px;
     font-weight: 600;
 }
+
+.uncheckupibtn {
+    background-color: #d6d6d6;
+    color: #949494;
+  }
+  .checkupibtn {
+    background: #12daa8;
+    color: black;
+  }

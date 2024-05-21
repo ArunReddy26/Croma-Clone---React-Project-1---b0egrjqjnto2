@@ -3,7 +3,7 @@ import "./checkout.css";
 import { useNavigate } from "react-router-dom";
 
 const Checkout = (props) => {
-    const { Price, paymentclick} = props;
+    const { Price, paymentclick } = props;
     const navigate = useNavigate();
 
     const handlecheckout = () => {
@@ -30,7 +30,7 @@ const Checkout = (props) => {
                     (
                         ""
                     ) : (
-                        <button className="cart-checkout-btn"onClick={handlecheckout}>checkout</button>
+                        <button className="cart-checkout-btn" onClick={handlecheckout}>checkout</button>
                     )
                 }
                 {/* <div >

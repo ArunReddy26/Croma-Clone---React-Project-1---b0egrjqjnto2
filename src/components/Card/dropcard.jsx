@@ -47,10 +47,10 @@ const Dropcard = (props) => {
     alert("Product removed from Whislist");
     DeleteWhislist(_id);
   }
-  
+
   return (
     <div className="dropcontainer">
-      <div className="imagecontainer">   
+      <div className="imagecontainer">
         <img src={product.displayImage} alt="" onClick={() => click(product._id)} />
         {
           isClicked ? <FaHeart onClick={() => delefromwhislist(product._id)} className="dropheart" style={{ fontSize: "1.2rem", color: "#12daa8" }} /> : <CiHeart className="dropheart" onClick={() => addtowhislist(product._id)} />

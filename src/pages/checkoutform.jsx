@@ -13,15 +13,12 @@ const Checkoutform = () => {
     function checkdatalocal() {
         const datainls = JSON.parse(localStorage.getItem('addresses'));
         console.log("dacainls", datainls);
-        if(localStorage.getItem('addresses')){
+        if (localStorage.getItem('addresses')) {
             setlocal(datainls);
         }
-        else{
+        else {
             setlocal({})
-
         }
-       
-        
     }
 
     function addnewaddress(e) {
@@ -46,6 +43,19 @@ const Checkoutform = () => {
         // else {
         //     alert("All The Details are cleared");
         // }
+
+        setUserAddress({
+            pincode: "",
+            fullname: "",
+            street: "",
+            landmark: "",
+            area: "",
+            city: "",
+            state: "",
+            mobileno: "",
+            addresstype: ""
+        });
+        setlocal({});
     }
     const [userAddress, setUserAddress] = useState(
         {
@@ -110,46 +120,43 @@ const Checkoutform = () => {
     }
 
     return (
-        <div style={{ width: "100%", height: "100%" }}>
+        <div>
             <Checkoutheader />
-            <div style={{ display: "flex", gap: "2rem", backgroundColor: "white" }}>
+            <div style={{ display: "flex", gap: "2rem", backgroundColor: "white" }} className="formmediaquery">
                 <form className="form-container">
                     <h1>Checkout Form</h1>
                     <div className="form-section1">
-                        <label htmlFor="name">Name<sup>*</sup></label>
-                        <input type="text" value={local?.fullname} id="name" name="fullname" onChange={handleSubmit} required />
-
+                    <label htmlFor="name">Name<sup>*</sup></label>
+                        <input type="text" value={userAddress.fullname} id="name" name="fullname" onChange={handleSubmit} required />
                         <label htmlFor="phone">Phone<sup>*</sup></label>
-                        <input type="text" value={local?.mobileno} id="phone" name="mobileno" onChange={handleSubmit} required />
+                        <input type="number" value={userAddress.mobileno} id="phone" name="mobileno" placeholder="Enter in numbers only" onChange={handleSubmit} required />
                     </div>
-
                     <h2 style={{ textAlign: "left" }}>Address Details</h2>
-
                     <div className="form-section2">
-
-                        <label htmlFor="pincode">Pincode<sup>*</sup></label>
-                        <input type="text" id="pincode" value={local?.pincode} name="pincode" onChange={handleSubmit} required />
-
+                    <label htmlFor="pincode">Pincode<sup>*</sup></label>
+                        <input type="number" id="pincode" value={userAddress.pincode} name="pincode" placeholder="Enter in numbers only" onChange={handleSubmit} required />
                         <label htmlFor="street">Street<sup>*</sup></label>
-                        <input type="text" id="street" value={local?.street} name="street" onChange={handleSubmit} required />
-
+                        <input type="text" id="street" value={userAddress.street} name="street" onChange={handleSubmit} required />
                         <label htmlFor="landmark">Landmark<sup>*</sup></label>
-                        <input type="text" id="landmark" value={local?.landmark} name="landmark" onChange={handleSubmit} required />
-
+                        <input type="text" id="landmark" value={userAddress.landmark} name="landmark" onChange={handleSubmit} required />
                         <label htmlFor="area">Section/Area<sup>*</sup></label>
-                        <input type="text" id="area" name="area" value={local?.area} onChange={handleSubmit} required />
-
+                        <input type="text" id="area" name="area" value={userAddress.area} onChange={handleSubmit} required />
                         <label htmlFor="state">State<sup>*</sup></label>
-                        <input type="text" id="state" name="state" value={local?.state} onChange={handleSubmit} required />
-
+                        <input type="text" id="state" name="state" value={userAddress.state} onChange={handleSubmit} required />
                         <label htmlFor="city">City<sup>*</sup></label>
-                        <input type="text" id="city" name="city" value={local?.city} onChange={handleSubmit} required />
+                        <input type="text" id="city" name="city" value={userAddress.city} onChange={handleSubmit} required />
                     </div>
-                    <label htmlFor="street" >Address Type</label>
+                    <label htmlFor="street" >Address Type<sup>*</sup></label>
                     <div className="form-btns">
-                        <button className="" name="addresstype" onClick={handleclick} value="Home">Home</button>
+                        <input type="radio" name="addresstype" value="Home" checked={userAddress.addresstype === "Home"} onChange={handleSubmit} />
+                        <label htmlFor="state">Home</label>
+                        <input type="radio" name="addresstype" value="Work" checked={userAddress.addresstype === "Work"} onChange={handleSubmit} />
+                        <label htmlFor="state" >Work</label>
+                        <input type="radio" name="addresstype" value="Other" checked={userAddress.addresstype === "Other"} onChange={handleSubmit} />
+                        <label htmlFor="state">Other</label>
+                        {/* <button className="" name="addresstype" onClick={handleclick} value="Home">Home</button>
                         <button className="" name="addresstype" onClick={handleclick} value="Work">Work</button>
-                        <button className="" name="addresstype" onClick={handleclick} value="Other">Other</button>
+                        <button className="" name="addresstype" onClick={handleclick} value="Other">Other</button> */}
                     </div>
                     <div style={{ display: "flex", gap: "1rem", justifyContent: "center", alignItems: "center", marginTop: "1rem" }}>
                         <button className="" style={{ width: "150px", border: "2px solid #12daa8" }} type="submit" onClick={handleform}>Go to Payment</button>

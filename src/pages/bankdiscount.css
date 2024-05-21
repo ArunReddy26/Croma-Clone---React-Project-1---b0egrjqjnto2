@@ -1,0 +1,35 @@
+.bankdiscountcontainer {
+    background-color: #191919;
+    margin: auto;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.bankdiscounttitle {
+    text-align: center;
+}
+
+.bankdiscountimage-container {
+    text-align: center;
+}
+
+.bankdiscountresponsive-image {
+    width: 100%;
+    max-width: 950px;
+    height: auto;
+    margin-top: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .bankdiscountcontainer {
+        padding: 0.5rem;
+    }
+
+    .bankdiscountresponsive-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin-top: 0.5rem;
+    }
+}

@@ -7,6 +7,7 @@ const Login = () => {
 
     const navigate = useNavigate();
     const [user, setuser] = useState(false);
+    const [logmsg, setlogmsg] = useState(false);
 
 
 
@@ -52,8 +53,13 @@ const Login = () => {
         setLoginData(updateddata);
     }
     const signedin = () => {
-        if (loginData.email && loginData.password)
+        if (loginData.email && loginData.password){
             userLogin(loginData);
+        }
+        else{
+            setlogmsg(true);
+
+        }
 
     }
     return (
@@ -74,6 +80,10 @@ const Login = () => {
                     <div className="loginbutton">
                         <button onClick={signedin}>Login</button>
                     </div>
+                    {
+                        logmsg? <h4 style={{ color: "Red", textAlign:"center" }}>Enter Your Email And Password</h4> : ""
+
+                    }
                     {
                         user ? <h4 style={{ color: "Red", textAlign:"center" }}>Not a Valid User Create Your Account</h4> : ""
 

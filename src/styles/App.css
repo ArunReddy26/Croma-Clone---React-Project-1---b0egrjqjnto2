@@ -48,34 +48,36 @@
 
   }
 
-  .headermobileview {
-    flex-direction: row-reverse;
-
-  }
-
-  .Menu .text-sm {
+  .text-sm {
     display: none;
-
   }
+  .headerlocation{
+    display:none;
 
+  } 
   .headersection2 {
-    display: none;
-  }
+    padding: 0; 
+    margin-left: 0; 
+    align-items: baseline;
+    margin-top:1.5rem;
+
+}
+.headercarticon p {
+  right:1%;
+  top:1rem;
+}
+.headermobileview{
+  flex-direction: row-reverse;
+}
 
 
-  .mobile-bank-discount {
+  /* .mobile-bank-discount {
     height: 60px;
-    padding: 0px;
-
-
   }
 
   .mobile-bank-discount img {
-
-
-    width: 70%;
-
-  }
+    width:100%;
+  } */
 
   .headermaininput {
     width: 100%;
@@ -114,9 +116,11 @@
 
   }
   .secondlist{
-    margin-left: 1.3rem;
+    margin-left: 2.2rem;
   }
-
+.sortfirstselect{
+  display:none;
+}
   /* Product Detail page */
   .descriptionbox {
     padding: 1rem;
@@ -145,20 +149,15 @@
   .container3 {
     margin-left: 0 !important;
   }
+
   /* ADD TO CART PAGE  */
   .prodcart{
+    margin:auto;
     flex-direction: column;
   } 
-  .cart{
-    flex-direction: column;
-    margin-left: 0;
-    
-  }
-  .carttitle{
-    text-align: center;
-  }
-  .cartseconndivnames{
-    flex-direction: column;
+  .prodcartdiv{
+    margin: auto;
+    gap: 1.5rem;
   }
   /* user serach page  */
   .inputproductheading{
@@ -167,9 +166,10 @@
   }
   .inputdropdowns{
     margin-left: 0;
-   
+    margin-right: 0;
     flex-wrap: wrap;
     gap: 1rem;
+    justify-content:center;
 
   }
   .inputfirstlist {
@@ -179,27 +179,9 @@
   .inputsecondist{
     margin-left: 1.3rem;
   }
-/* whislistpage css as added */
-.whislist-cart{
-  width: 90%;
-  flex-direction: column;
-  padding: 3rem;
-}
-.whislist-second-content{
-  flex-direction: column-reverse;
- 
-
-}
-.whislist-cartimages{
-  margin-right: 0;
-
-}
-.whislistcontent1 h2{
- text-align: center;
-
-}
 /* Footer  */
 footer{
   display:none;
 }
+
 }

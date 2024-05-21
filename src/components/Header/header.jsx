@@ -10,6 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { SEARCH_PRODUCT_LIST } from "../Constants/Api";
 import Maininput from "../Input/input";
 import { CiHeart } from "react-icons/ci";
+import MenuComponent from "../../pages/Mobileresponsive/menubar";
 
 const Header = (props) => {
   const navigate = useNavigate()
@@ -57,25 +58,28 @@ const Header = (props) => {
             </Link>
           </div>
           <div className="Menu">
+
             <BasicMenu categories={dropdown} className="dropdown" />
+
+            {/* <MenuComponent categories={dropdown} /> */}
             <p className="text-sm">Menu</p>
           </div>
         </div>
         <Maininput />
       </div>
       <div className="headersection2">
-        <div className="headerlocation">
+        {/* <div className="headerlocation">
           <MdLocationOn className="MdLocationOn" />
           <p className="headerlocationname">Mumbai 400049</p>
           <IoPencil className="text-xs" />
-        </div>
+        </div> */}
         <div className="headerusericon">
           <FaUser onClick={() => setopen(!open)} />
           {open && (
             <div className="headerdropdown-content">
               {localStorage.getItem('token') ?
                 <ul className="headerprofile">
-                  <li><Link to="/mywhislist" style={{ color: "white" }}>My Whishlist</Link></li>
+                  <li><Link to="/mywishlist" style={{ color: "white" }}>My Wishlist</Link></li>
                   <li><Link to="/myorders" style={{ color: "white" }}>My Orders</Link></li>
                   <li onClick={handlelogout}>Logout</li>
                 </ul> : (

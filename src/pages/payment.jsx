@@ -40,11 +40,11 @@ const Payment = () => {
 
   useEffect(() => {
     Getcart();
-    const storedAddress = localStorage.getItem('addresses');
-    if (storedAddress) {
-      const parsedAddress = JSON.parse(storedAddress);
-      setAddress(parsedAddress);
-    }
+    // const storedAddress = localStorage.getItem('addresses');
+    // if (storedAddress) {
+    //   const parsedAddress = JSON.parse(storedAddress);
+    //   setAddress(parsedAddress);
+    // }
   }, [])
 
   return (
@@ -100,7 +100,7 @@ const Payment = () => {
             </div>
           </div>
         </div>
-        <div className="mainshippingform" >
+        {/* <div className="mainshippingform" >
           <div className="payout-form">
             <h2>Shipping To</h2>
             <div className="shippingaddressto">
@@ -131,7 +131,7 @@ const Payment = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

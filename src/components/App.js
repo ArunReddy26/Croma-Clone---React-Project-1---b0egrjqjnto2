@@ -20,40 +20,31 @@ import Newproducts from "../pages/component/Bannners/newproducts";
 import OrderPlaced from "../pages/component/Order-Placed/orderplace";
 import Orderhistorycontainer from "../pages/component/Bannners/orderhistory";
 import SingleOrderHistory from "../pages/component/Singleorder-history/singleorder";
-
-
 function App() {
-
   return (
     <Router>
-
-    <div className="App">
-     
-      <Routes>
-      <Route path="/" element={<Home/>}/>
-      
-      <Route path="/:productCategory" element={<ProductContainer />} />
-      <Route path="/cart" element={<ProtectedRoute><Cart/></ProtectedRoute>} />
-      <Route path="/details/:product_id" element={<Productdetail/>}/>
-      <Route path="/login" element={<Login/>}/>
-      <Route path="/emptycart" element={<Emptycart/>}/>
-      <Route path="/checkout" element={<Checkoutform/>}/>
-      <Route path="/search/:userinput" element={<Inputproduct/>}/>
-      <Route path="/payment" element={<Payment/>}/>
-      <Route path="/myorders" element={<Orderhistorycontainer/>}/>
-      <Route path="/mywhislist" element={<Favouritelist/>}/>
-      <Route path="/signup" element={<Register/>}/>
-      <Route path="/lp-more-for-your-money" element={<Bankdiscount/>}/>
-      <Route path="/dealscorner" element={<Dealscorner/>}/>
-      <Route path="/unboxed" element={<Newproducts/>}/>
-      <Route path="/order-placed" element={<OrderPlaced />} />
-      <Route path="single-order-history/:orderId" element={<SingleOrderHistory />}/>
-      
-     
-    </Routes>
-    </div >
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/:productCategory" element={<ProductContainer />} />
+          <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
+          <Route path="/details/:product_id" element={<Productdetail />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/emptycart" element={<Emptycart />} />
+          <Route path="/checkout" element={<Checkoutform />} />
+          <Route path="/search/:userinput" element={<Inputproduct />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/myorders" element={<Orderhistorycontainer />} />
+          <Route path="/mywishlist" element={<Favouritelist />} />
+          <Route path="/signup" element={<Register />} />
+          <Route path="/lp-more-for-your-money" element={<Bankdiscount />} />
+          <Route path="/dealscorner" element={<Dealscorner />} />
+          <Route path="/unboxed" element={<Newproducts />} />
+          <Route path="/order-placed" element={<OrderPlaced />} />
+          <Route path="single-order-history/:orderId" element={<SingleOrderHistory />} />
+        </Routes>
+      </div >
     </Router>
   )
 }
-
 export default App;

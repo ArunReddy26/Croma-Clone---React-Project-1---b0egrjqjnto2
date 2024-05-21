@@ -53,16 +53,16 @@ const Favouritelist = () => {
             <div>
                 {list?.length > 0 ? (
                     <div className="favouritelistproductcart">
-                        <h2 >My Whishlist</h2>
+                        <h2 >My Wishlist</h2>
                         <div className="favouritelistproducts">
-                            {list.map((pro) => {                            
+                            {list.map((pro) => {
                                 return <Card wishlistproducts={pro} cardClick={DeleteWhislist} addtocart={AddCart} />
                             })}
                         </div>
                     </div>
                 ) : (
-                    <div className="favouriteorderscart">                       
-                        <h2 >My Whislist</h2>
+                    <div className="favouriteorderscart">
+                        <h2 >My Wishlist</h2>
                         <div className="favouritewhislistimages" >
                             <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/f_auto,q_auto,d_Croma%20Assets:No_image.png/Croma%20Assets/UI%20Assets/sshz69afrixwivcsgnpx.svg" style={{ width: "260px", height: "150px" }} alt="order-cart" />
                             <h3 style={{ fontWeight: "800", color: "white" }}>Oops! Your wishlist looks empty</h3>

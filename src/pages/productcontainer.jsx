@@ -137,9 +137,9 @@ function ProductContainer() {
         </div>
         <div className="dropdowns">
           <div className="firstlist">
-            <div className="firstlistsort-dropdown">
-              <select onChange={handleSelectChange}>
-            <option value="">Category</option>
+            {/* <div className="firstlistsort-dropdown">
+              <select onChange={handleSelectChange} className="sortfirstselect">
+                <option value="">Category</option>
                 {
                   dropdownvalues.map((dropcategories) => {
                     return (<option value={dropcategories}>{dropcategories}</option>)
@@ -147,7 +147,7 @@ function ProductContainer() {
                   )
                 }
               </select>
-            </div>
+            </div> */}
             <div className="firstlistsort-dropdown">
               <select onChange={handleSelectChange}>
                 <option value="">Brand</option>
@@ -166,7 +166,7 @@ function ProductContainer() {
                   sellerTag.map((sellername) => {
                     return (<option value={sellername}>{sellername}</option>)
                   }
-                 )
+                  )
                 }
               </select>
             </div>

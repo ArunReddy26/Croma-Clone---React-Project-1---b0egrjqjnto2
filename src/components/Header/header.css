@@ -128,11 +128,23 @@
   display: flex;
   align-items: center;
 }
-#cartcountstore{
-  background:#12daa8;
-  width:0.85rem;
-  height:0.95rem;
-  text-align:center;
-  color:black;
 
+#cartcountstore {
+  background: #12daa8;
+  width: 0.85rem;
+  height: 0.95rem;
+  text-align: center;
+  color: black;
+
+}
+
+@media only screen and (max-width: 600px) {
+  .headerdropdown-content {
+    right: 2rem;
+    top: 50%;
+  }
+
+  .Menudesktopversion {
+    display: none;
+  }
 }

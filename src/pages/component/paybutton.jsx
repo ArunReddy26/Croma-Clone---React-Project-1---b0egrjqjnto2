@@ -6,7 +6,6 @@ function Paybutton(props) {
   const {totalPrice, paymentproduct}=props;
 
   const orderpostapi = async (details) => {
-
     const promise = await fetch(
       "https://academics.newtonschool.co/api/v1/ecommerce/order/convertCartToOrder",
       {
@@ -19,13 +18,11 @@ function Paybutton(props) {
     );
     const response = await promise.json();
     navigate("/order-placed");
-
   }
 
   function placeorderbutton() {
     const addressinls = JSON.parse(localStorage.getItem('addresses'));
     const addressType = addressinls.addresstype.toUpperCase();
-
     delete addressinls.fullname;
     delete addressinls.flatno;
     delete addressinls.mobileno;
@@ -41,15 +38,11 @@ function Paybutton(props) {
 
       }
     }
-
     delete orderdetails.address.pincode;
     if (totalPrice) {
       orderpostapi(orderdetails);
     }
-
   }
-
-
   return (
     <div className="payButton">
       <button onClick={placeorderbutton}>Pay ₹{totalPrice}</button>
