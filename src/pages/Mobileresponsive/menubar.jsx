@@ -27,7 +27,7 @@ const MenuComponent = (props) => {
                         {categories.map((category) => {
                             return (
                                 <Link to={`/${category}`} key={category}>
-                                    <MenuItem >{category.charAt(0).toUpperCase() + category.slice(1)}</MenuItem>
+                                    <MenuItem onClick={toggleMenu}>{category.charAt(0).toUpperCase() + category.slice(1)}</MenuItem>
                                 </Link>
                             );
                         })}
