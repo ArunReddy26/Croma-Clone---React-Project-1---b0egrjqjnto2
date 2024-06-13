@@ -143,8 +143,10 @@
     right: 2rem;
     top: 50%;
   }
-
-  .Menudesktopversion {
+  .basicMenu{
     display: none;
+  }
+  .content1 img{
+    margin-left: 6rem;
   }
 }

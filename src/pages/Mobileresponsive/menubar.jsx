@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { MdOutlineMenu } from "react-icons/md";
 import { IoCloseSharp } from "react-icons/io5";
 import "./menubar.css";
+import { MenuItem } from "@mui/material";
+import { Link } from "react-router-dom";
 
-const MenuComponent = () => {
+const MenuComponent = (props) => {
+    const { categories } = props;
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -19,11 +22,17 @@ const MenuComponent = () => {
                 <button className="close-icon" onClick={toggleMenu}>
                     <IoCloseSharp />
                 </button>
-                <ul className="menu-items">
-                    <li>Ac</li>
-                    <li>Tv</li>
-                    <li>Tables</li>
-                </ul>
+                <div>
+                    <ul className="menu-items-category">
+                        {categories.map((category) => {
+                            return (
+                                <Link to={`/${category}`} key={category}>
+                                    <MenuItem >{category.charAt(0).toUpperCase() + category.slice(1)}</MenuItem>
+                                </Link>
+                            );
+                        })}
+                    </ul>
+                </div>
             </div>
         </div>
     );

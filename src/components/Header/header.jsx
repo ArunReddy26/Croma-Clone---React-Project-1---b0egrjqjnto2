@@ -58,21 +58,18 @@ const Header = (props) => {
             </Link>
           </div>
           <div className="Menu">
-
-            <BasicMenu categories={dropdown} className="dropdown" />
-
-            {/* <MenuComponent categories={dropdown} /> */}
+            <div className="basicMenu">
+              <BasicMenu categories={dropdown} className="dropdown" />
+            </div>
+            <div className="menuComponent">
+              <MenuComponent categories={dropdown} />
+            </div>
             <p className="text-sm">Menu</p>
           </div>
         </div>
         <Maininput />
       </div>
       <div className="headersection2">
-        {/* <div className="headerlocation">
-          <MdLocationOn className="MdLocationOn" />
-          <p className="headerlocationname">Mumbai 400049</p>
-          <IoPencil className="text-xs" />
-        </div> */}
         <div className="headerusericon">
           <FaUser onClick={() => setopen(!open)} />
           {open && (

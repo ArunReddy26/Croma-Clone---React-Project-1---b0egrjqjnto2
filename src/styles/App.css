@@ -51,33 +51,28 @@
   .text-sm {
     display: none;
   }
-  .headerlocation{
-    display:none;
 
-  } 
-  .headersection2 {
-    padding: 0; 
-    margin-left: 0; 
-    align-items: baseline;
-    margin-top:1.5rem;
+  .headerlocation {
+    display: none;
 
-}
-.headercarticon p {
-  right:1%;
-  top:1rem;
-}
-.headermobileview{
-  flex-direction: row-reverse;
-}
-
-
-  /* .mobile-bank-discount {
-    height: 60px;
   }
 
-  .mobile-bank-discount img {
-    width:100%;
-  } */
+  .headersection2 {
+    padding: 0;
+    margin-left: 0;
+    align-items: baseline;
+    margin-top: 1.5rem;
+
+  }
+
+  .headercarticon p {
+    right: 1%;
+    top: 1rem;
+  }
+
+  .headermobileview {
+    flex-direction: row-reverse;
+  }
 
   .headermaininput {
     width: 100%;
@@ -100,10 +95,11 @@
 
 
   /* Dropdown product container page */
-  .containerheading{
+  .containerheading {
     margin-left: 0;
     text-align: center;
   }
+
   .dropdowns {
     margin-left: 0;
     margin-right: 0;
@@ -115,12 +111,15 @@
     flex-wrap: wrap;
 
   }
-  .secondlist{
+
+  .secondlist {
     margin-left: 2.2rem;
   }
-.sortfirstselect{
-  display:none;
-}
+
+  .sortfirstselect {
+    display: none;
+  }
+
   /* Product Detail page */
   .descriptionbox {
     padding: 1rem;
@@ -151,37 +150,43 @@
   }
 
   /* ADD TO CART PAGE  */
-  .prodcart{
-    margin:auto;
+  .prodcart {
+    margin: auto;
     flex-direction: column;
-  } 
-  .prodcartdiv{
+  }
+
+  .prodcartdiv {
     margin: auto;
     gap: 1.5rem;
   }
+
   /* user serach page  */
-  .inputproductheading{
+  .inputproductheading {
     margin-left: 0;
     text-align: center;
   }
-  .inputdropdowns{
+
+  .inputdropdowns {
     margin-left: 0;
     margin-right: 0;
     flex-wrap: wrap;
     gap: 1rem;
-    justify-content:center;
+    justify-content: center;
 
   }
+
   .inputfirstlist {
     flex-wrap: wrap;
 
   }
-  .inputsecondist{
+
+  .inputsecondist {
     margin-left: 1.3rem;
   }
-/* Footer  */
-footer{
-  display:none;
-}
+
+  /* Footer  */
+  footer {
+    display: none;
+  }
 
 }

@@ -1,66 +1,81 @@
 /* Base styles for the menu container and icons */
 .menu-container {
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    z-index: 1001; /* Ensure it stays on top */
-    display: none; /* Hide by default */
-  }
-  
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1001; /* Ensure it stays on top */
+}
+
+.menu-icon, .close-icon {
+  font-size: 2rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+  padding: 0; /* Remove extra space around the button */
+  margin: 0; /* Remove extra space around the button */
+}
+
+/* Menu styles */
+.menu {
+  position: fixed;
+  top: 0;
+  left: -110%;
+  width: 100px;
+  height: 100%;
+  background-color: #121212;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem;
+  transition: left 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.menu.open {
+  left: 0;
+}
+
+.close-icon {
+  align-self: flex-end;
+  margin-bottom: 1rem;
+}
+
+.menu-items-category {
+  list-style: none;
+  padding: 0;
+  margin-left: 4rem;
+  text-align: center;
+}
+
+.menu-items-category li {
+  padding: 1rem 0;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+  font-weight: 800;
+}
+.menu-items-category li:hover {
+  color:green;  
+}
+
+@media (max-width: 600px) {  
   .menu-icon, .close-icon {
-    font-size: 2rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: white;
+    font-size: 1.5rem;
+    width: 30%;
   }
-  
-  /* Menu styles */
   .menu {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 250px;
-    height: 100%;
-    background-color: #121212;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-    transition: left 0.3s ease-in-out;
-    z-index: 1000;
+    width: 100%;
   }
-  
-  .menu.open {
-    left: 0;
+  .menu-container{
+    top: 2rem;
+
   }
-  
-  .close-icon {
-    align-self: flex-end;
-    margin-bottom: 1rem;
+}
+
+
+@media (min-width:768px) {
+  .menu-container {
+    display: none; /* Show on mobile screens */
   }
-  
-  .menu-items {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .menu-items li {
-    padding: 1rem 0;
-    color: white;
-    cursor: pointer;
-  }
-  
-  /* Show menu only on mobile screens */
-  @media (max-width: 768px) {
-    .menu-container {
-      display: block;
-    }
-    .menu-icon, .close-icon {
-      font-size: 1.5rem;
-    }
-    .menu {
-      width: 100%;
-    }
-  }
-  
+}
