@@ -4,6 +4,8 @@ import "./checkoutform.css";
 import Checkout from "../components/Checkout/checkout";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Checkoutform = () => {
     const navigate = useNavigate();
@@ -25,25 +27,6 @@ const Checkoutform = () => {
         e.preventDefault();
         localStorage.removeItem('addresses');
         checkdatalocal();
-        // if (userAddress.pincode && userAddress.state && userAddress.city && userAddress.fullname && userAddress.landmark && userAddress.area && userAddress.mobileno && userAddress.addresstype && userAddress.street) {
-        //     localStorage.removeItem('addresses');
-        //     setUserAddress({
-        //         pincode: "",
-        //         fullname: "",
-        //         street: "",
-        //         landmark: "",
-        //         area: "",
-        //         city: "",
-        //         state: "",
-        //         mobileno: "",
-        //         addresstype: ""
-        //     })
-        //     setlocal("");
-        // }
-        // else {
-        //     alert("All The Details are cleared");
-        // }
-
         setUserAddress({
             pincode: "",
             fullname: "",
@@ -112,9 +95,23 @@ const Checkoutform = () => {
             navigate("/payment");
         }
         else {
-            alert("Please fill all the details");
+            notify()
         }
     }
+    const notify = () => {
+
+            toast.info('Please Fill all details!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+    }
+
     function gottopaymentpage() {
         navigate("/payment");
     }
@@ -154,9 +151,6 @@ const Checkoutform = () => {
                         <label htmlFor="state" >Work</label>
                         <input type="radio" name="addresstype" value="Other" checked={userAddress.addresstype === "Other"} onChange={handleSubmit} />
                         <label htmlFor="state">Other</label>
-                        {/* <button className="" name="addresstype" onClick={handleclick} value="Home">Home</button>
-                        <button className="" name="addresstype" onClick={handleclick} value="Work">Work</button>
-                        <button className="" name="addresstype" onClick={handleclick} value="Other">Other</button> */}
                     </div>
                     <div style={{ display: "flex", gap: "1rem", justifyContent: "center", alignItems: "center", marginTop: "1rem" }}>
                         <button className="" style={{ width: "150px", border: "2px solid #12daa8" }} type="submit" onClick={handleform}>Go to Payment</button>

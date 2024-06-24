@@ -5,6 +5,8 @@ import { GET_PRODUCT_DETAILS, PRODUCT_REVIEW } from "../components/Constants/Api
 import { useState, useEffect } from "react";
 import { MdOutlineStar } from "react-icons/md";
 import { Rating } from "@mui/material";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import "./productdetail.css";
 import Footer from "../components/Footer/footer";
@@ -39,11 +41,11 @@ const Productdetail = () => {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
         });
-        const response = await promise.json();   
+        const response = await promise.json();
         if (response?.data?.items[0]?.product?._id) {
             setbtn(true);
         }
-        else{
+        else {
             setbtn(false);
         }
         setcartcount(response.results);
@@ -77,18 +79,32 @@ const Productdetail = () => {
 
     function GotoCart(id) {
         if (localStorage.getItem('token')) {
-            Addcart(id);
+            Addcart(id)
             navigate("/checkout");
         }
         else {
             navigate("/login");
         }
     }
+    const notify = () => {
+        toast.success('Product Added to cart!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+    
+    }
+
 
     function addedtocart(id) {
         if (localStorage.getItem('token')) {
-    Addcart(id);
-       alert("Product Added to Cart");
+            Addcart(id);
+            notify();
         }
         else {
             navigate("/login");
@@ -101,15 +117,14 @@ const Productdetail = () => {
         Getcart();
         window.scrollTo(0, 0);
     }, [])
-
     return (
         <div>
-           <Header cartcount={cartcount} />
+            <Header cartcount={cartcount} />
             <div className="descriptionbox">
                 <div className="sp-outer-box">
                     <div id="sp-left-box">
                         <div className="sp-container">
-                            <img id="sp-image" src={productdetails.displayImage}/>
+                            <img id="sp-image" src={productdetails.displayImage} />
                         </div>
                     </div>
                     <div id="sp-right-box">

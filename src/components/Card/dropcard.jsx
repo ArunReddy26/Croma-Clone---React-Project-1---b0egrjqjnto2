@@ -6,12 +6,16 @@ import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Dropcard = (props) => {
 
   const [isClicked, setIsClicked] = useState(false);
   const { product, click } = props;
   const navigate = useNavigate();
+
+
 
   const DeleteWhislist = async (productID) => {
     const options = {
@@ -21,7 +25,34 @@ const Dropcard = (props) => {
     const data = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/wishlist/${productID}`, options)
     const resData = await data.json();
   }
+  const addnotify = () => {
+    toast.success('Product Added to wishlist!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
 
+}
+
+
+const removenotify = () => {
+  toast.success('Product Removed from wishlist!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+
+}
   const AddtoWishlist = async (productId) => {
     const response = await fetch("https://academics.newtonschool.co/api/v1/ecommerce/wishlist", {
       method: 'PATCH',
@@ -35,7 +66,7 @@ const Dropcard = (props) => {
     if (localStorage.getItem('token')) {
       setIsClicked(true);
       AddtoWishlist(_id);
-      alert("Product Added to Whislist");
+      addnotify();
     }
     else {
       navigate("/login");
@@ -44,9 +75,11 @@ const Dropcard = (props) => {
 
   function delefromwhislist(_id) {
     setIsClicked(false);
-    alert("Product removed from Whislist");
     DeleteWhislist(_id);
+    removenotify();
   }
+
+
 
   return (
     <div className="dropcontainer">

@@ -11,17 +11,34 @@ import { SEARCH_PRODUCT_LIST } from "../Constants/Api";
 import Maininput from "../Input/input";
 import { CiHeart } from "react-icons/ci";
 import MenuComponent from "../../pages/Mobileresponsive/menubar";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = (props) => {
   const navigate = useNavigate()
   const [dropdown, setdropdown] = useState([]);
   const [open, setopen] = useState(false);
 
+
+  const logoutnotify = () => {
+    toast.success('Logout Successful', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+
+}
+
   const handlelogout = () => {
     if (localStorage.getItem('token')) {
       localStorage.removeItem("token");
       navigate("/");
-      alert(" You logged out successfully!")
+      logoutnotify();
     }
     else {
       navigate("/login");

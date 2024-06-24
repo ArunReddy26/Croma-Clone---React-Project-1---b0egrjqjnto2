@@ -1,10 +1,12 @@
 import { useState } from "react";
 import "./upi.css";
+import { useNavigate } from "react-router-dom";
 function UPIForm(props) {
   const { totalPrice, paymentproduct } = props;
   const [upiId, setUpiId] = useState('');
   const [checkbox, setCheckbox] = useState(false);
   const [error, setError] = useState('');
+  const navigate=useNavigate();
 
   const validateUpiId = (id) => {
     if (!id) return 'UPI ID is required';
@@ -18,7 +20,7 @@ function UPIForm(props) {
     setError(errorMessage);
 
     if (!errorMessage) {
-      console.log('UPI ID verified:', upiId);
+      navigate("/order-placed");
     }
   };
 
@@ -52,7 +54,7 @@ function UPIForm(props) {
         </div>
 
         <div className="UPIButton">
-          <button type="submit" className={`${checkbox ? "checkupibtn" : "uncheckupibtn"}`}>VERIFY</button>
+          <button type="submit" className={`${checkbox ? "checkupibtn" : "uncheckupibtn"}`}>Pay ₹{totalPrice}</button>
         </div>
       </div>
     </form>

@@ -133,7 +133,7 @@ function ProductContainer() {
       <Header />
       <div className="container">
         <div className="containerheading" >
-          <h1>{productCategory}</h1>
+          <h1>{productCategory.charAt(0).toUpperCase()+ productCategory.slice(1)}</h1>
         </div>
         <div className="dropdowns">
           <div className="firstlist">

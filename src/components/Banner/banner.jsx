@@ -15,6 +15,7 @@ const Banner = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoPlaySpeed: 500,
+    arrows: false,
   };
 
   const images = [

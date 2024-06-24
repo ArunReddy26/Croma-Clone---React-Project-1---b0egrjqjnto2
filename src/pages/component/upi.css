@@ -55,8 +55,6 @@
     align-items: center;
     border: none;
     border-radius: 4px;
-    background-color: #d6d6d6;
-    color: #949494;
     font-size: 14px;
     font-weight: 600;
 }
@@ -67,5 +65,5 @@
   }
   .checkupibtn {
     background: #12daa8;
-    color: black;
+    color:black;
   }

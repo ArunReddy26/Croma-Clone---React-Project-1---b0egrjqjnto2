@@ -6,6 +6,8 @@ import { IoStarSharp } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { Link, useNavigate } from "react-router-dom";
 import { Rating } from "@mui/material";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Productcard = (props) => {
   const navigate = useNavigate();
@@ -18,6 +20,35 @@ const Productcard = (props) => {
 
   }
   
+  const addnotify = () => {
+    toast.success('Product Added to wishlist!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+
+}
+
+
+const removenotify = () => {
+  toast.success('Product Removed from wishlist!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+
+}
+
   const cardclick = () => {
     navigate(`/details/${_id}`)
   }
@@ -26,6 +57,7 @@ const Productcard = (props) => {
     if (localStorage.getItem('token')) {
       setIsClicked(true);
       AddtoWishlist(_id);
+      addnotify();
     }
     else {
       navigate("/login");
@@ -35,6 +67,7 @@ const Productcard = (props) => {
   function delefromwhislist(_id) {
     setIsClicked(false);
     DeleteWhislist(_id);
+    removenotify();
   }
 
   const DeleteWhislist = async (productID) => {

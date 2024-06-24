@@ -286,3 +286,8 @@ width: 75%;
   text-align: left;
 }
 
+.Toastify__toast {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
